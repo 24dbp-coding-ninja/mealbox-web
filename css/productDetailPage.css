@@ -12,11 +12,6 @@ body {
     height: 911px;
     /* margin:auto; */
 }
-nav {
-    width: 1920px;
-    height: 52px;
-    background-color: pink;
-}
 .container {
     display: flex;
     justify-content:center;
