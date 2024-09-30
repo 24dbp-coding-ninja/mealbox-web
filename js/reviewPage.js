@@ -6,7 +6,7 @@ const reviews = [
         rating: 4,
         text: '진짜 너무 너무 맛있어요! 제 식사 스콘은 모네랑 바스크입니다! 색깔이랑 치즈가 최애예요! 다음에는 치즈맛 구매하려고요! 기회되시면 비트맛도 나오면 좋을 것 같아요!',
         product: '맛있딜리, 색색브리 (7개)',
-        image: './img/gobdoritang.png'
+        image: "../img/gobdoritang.png"
     },
     {
         productId: 'gobdoritang',
@@ -15,7 +15,7 @@ const reviews = [
         rating: 5,
         text: '좋은 맛이었어요! 하지만 조금 비쌌어요.',
         product: '맛있딜리, 초코브리 (5개)',
-        image: 'image.png'
+        image: '../img/gobdoritang.png'
     },
     {
         productId: 'gobdoritang',
@@ -24,7 +24,7 @@ const reviews = [
         rating: 3,
         text: '괜찮은 맛, 하지만 기대에 미치지 못했어요.',
         product: '맛있딜리, 과일브리 (6개)',
-        image: 'image.png'
+        image: '../img/gobdoritang.png'
     }
 ];
 
@@ -34,13 +34,13 @@ function displayReviews(sortedReviews) {
 
     sortedReviews.forEach(review => {
         const reviewHtml = `
-            <div class="review-header">
+            <div class="review_header">
+                <img src="${review.image}" alt="상품 이미지" class="product_image">
                 <div>${review.nickname}</div>
-                <span class="rating">${'⭐️'.repeat(review.rating)}</span>
-                <span>${review.date}</span>
             </div>
-            <img src="${review.image}" alt="상품 이미지" class="product_image">
-            <div class="review-text">
+            <span class="rating">${'⭐️'.repeat(review.rating)}</span>
+            <span>${review.date}</span>
+            <div class="review_text">
                 <p>${review.text}</p>
             </div>
             <div class="footer">
