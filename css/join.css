@@ -159,7 +159,7 @@ hr{
 #join_input > .text {
     margin: 10px 0px;
     font-size:15px;
-    color: red;/*초반에는 white로 설정. 나중에 입력을 빼먹었을 때, js이용하여 빨간색으로 바꾸는 용도*/
+    color: white;/*초반에는 white로 설정. 나중에 입력을 빼먹었을 때, js이용하여 빨간색으로 바꾸는 용도*/
 }
 /***버튼 부분***/
 #buttons{
