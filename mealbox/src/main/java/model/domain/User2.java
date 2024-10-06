@@ -1,16 +1,16 @@
-package mealbox;
+package model.domain;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class User {
+public class User2 {
 	private String id;
 	private String password;
 	private String name;
 	private String phone;
 	private String email;
 	private String address;
-	private List<Order> orderHistory = new ArrayList<>(); //주문 목록
+	//private List<Order> orderHistory = new ArrayList<>(); //주문 목록
 	
 	public String getId() {
 		return id;
@@ -60,7 +60,8 @@ public class User {
 		str += "휴대폰: " + getPhone() + "\n";
 		str += "이메일: " + getEmail() + "\n";
 		str += "주소: " + getAddress() + "\n";
-		str += "주문내역" + "\n" + printOrderHistory() + "\n";
+		//str += "주문내역" + "\n" + printOrderHistory() + "\n";
+		System.out.print(str);
 		
 	}
 	
@@ -76,18 +77,15 @@ public class User {
 	}
 	
 	/*여기서부터 코드 미완 --> Order class를 봐야할 듯*/
-	public void addOrder(Order order) {
-		orderHistory.add(order);/*private인데 접근 가능한지 잘 모르겠음*/
-	}
-	public void cancelOrder(Order order) {
-		orderHistory.remove(order);
-	}
-	public void refundOrder(Order order) {
-		order.refundOrder();
-	}
-	
+	//public void addOrder(Order order) {
+		//orderHistory.add(order);/*private인데 접근 가능한지 잘 모르겠음*/
+	//}
+	//public void cancelOrder(Order order) {
+		//orderHistory.remove(order);
+	//}
+
 	/*주문내역 출럭 --> 주문번호, 금액, 취소여부, 환불여부 등 Order class를 봐야할 듯*/
-	public String printOrderHistory(Order order) {
+	/*public String printOrderHistory(Order order) {
 		String rslt ="";
 		rslt += "회원id:" + getId() + "\n";
 		rslt += "주문번호: " + "\n";
@@ -95,5 +93,5 @@ public class User {
 		rslt += "취소여부: " + "\n";
 		rslt += "환불여부: " + "\n";
 		return rslt;
-	}
+	}*/
 }
