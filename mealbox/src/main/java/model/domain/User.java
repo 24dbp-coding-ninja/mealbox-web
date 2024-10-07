@@ -10,7 +10,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String address;
-	private List<OrderItem> orderHistory; //주문 목록
+	private List<Order> orderHistory; //주문 목록
 	
 	public User() {
 		orderHistory = new ArrayList<>();
@@ -61,7 +61,12 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	public List<Order> getOrderHistory(){
+		return orderHistory;
+	}
+	public void setOrderHistory(List<Order> orderHistory) {
+		this.orderHistory = orderHistory;
+	}
 	
 	/*기능*/
 	//사용자 정보
@@ -88,21 +93,16 @@ public class User {
 		return id.equals(userid);
 	}
 	
-	
-	public void addOrder(OrderItem item) {
-		orderHistory.add(item);
-	}
-	public void cancelOrder(OrderItem item) {
-		orderHistory.remove(item);
-	}
-
-	//주문내역 출럭 --> 주문번호, 금액, 취소여부
+	//주문내역 출럭
 	public String printOrderHistory() {
 		String rslt ="";
-		for(OrderItem item : orderHistory) {
-			rslt += "상품명"+ item.getOrderItemId() + "\n";
-			rslt +=  "상품수량" + item.getQuantity() + "\n";
-			rslt += "총가격" + item.calculatePrice() + "\n";
+		for(Order order : orderHistory) {
+			for(OrderItem item : order.getOrderItems()) {
+				rslt += "구매목록\n";
+				rslt += "상품id: " + item.getOrderItemId() + "\n";
+				rslt += "수량: " + item.getQuantity() + "\n";
+				rslt += "가격: " + item.getPrice() + "\n";
+			}
 		}
 		return rslt;
 	}
