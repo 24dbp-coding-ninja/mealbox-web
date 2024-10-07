@@ -10,7 +10,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String address;
-	private List<Order> orderHistory; //주문 목록
+	private List<OrderItem> orderHistory; //주문 목록
 	
 	public User() {
 		orderHistory = new ArrayList<>();
@@ -89,23 +89,20 @@ public class User {
 	}
 	
 	
-	//여기서부터 코드 미완
-	public void addOrder(Order order) {
-		orderHistory.add(order);
+	public void addOrder(OrderItem item) {
+		orderHistory.add(item);
 	}
-	public void cancelOrder(Order order) {
-		orderHistory.remove(order);
+	public void cancelOrder(OrderItem item) {
+		orderHistory.remove(item);
 	}
 
-	//주문내역 출럭 --> 주문번호, 금액, 취소여부, 환불여부
+	//주문내역 출럭 --> 주문번호, 금액, 취소여부
 	public String printOrderHistory() {
 		String rslt ="";
-		for(Order order : orderHistory) {
-			rslt += "주문번호: " + order.getOrderId()+"\n";
-			rslt += "상품명: " + "\n";
-			rslt += "상품수량: " +"\n";
-			rslt += "금액: " + "\n";
-			rslt += "취소여부: " + "\n";
+		for(OrderItem item : orderHistory) {
+			rslt += "상품명"+ item.getOrderItemId() + "\n";
+			rslt +=  "상품수량" + item.getQuantity() + "\n";
+			rslt += "총가격" + item.calculatePrice() + "\n";
 		}
 		return rslt;
 	}
