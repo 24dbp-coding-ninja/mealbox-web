@@ -1,119 +1,112 @@
 package model.domain;
 
-/**
- * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
- */
+import java.util.List;
+import java.util.ArrayList;
+
 public class User {
-	private String userId;
+	private String id;
 	private String password;
 	private String name;
-	private String email;
 	private String phone;
-	private int commId;
-	private String commName;
-
-	public User() { }		// 기본 생성자
+	private String email;
+	private String address;
+	private List<Order> orderHistory; //주문 목록
 	
-	public User(String userId, String password, String name, String email, String phone, int commId) {
-		this.userId = userId;
+	public User() {
+		orderHistory = new ArrayList<>();
+	}
+	public User(String id, String password, String name, String phone, String email, String address) {
+		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.email = email;
 		this.phone = phone;
-		this.commId = commId;
-	}
-	
-	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {
-		this(userId, password, name, email, phone, commId);
-		this.commName = commName;
-	}
-
-	public User(String userId, String name, String email, String phone) {
-		this.userId = userId;
-		this.name = name;
 		this.email = email;
-		this.phone = phone;		
+		this.address = address;
+		orderHistory = new ArrayList<>();
 	}
 	
-	/*public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phone = updateUser.phone;
-    }*/
-	
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return id;
 	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(String id) {
+		this.id = id;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public int getCommId() {
-		return commId;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setCommId(int commId) {
-		this.commId = commId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-
-	public String getCommName() {
-		return commName;
+	public String getAddress() {
+		return address;
 	}
-
-	public void setCommName(String commName) {
-		this.commName = commName;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-
 	
-	/* 비밀번호 검사 */
+	
+	/*기능*/
+	//사용자 정보
+	public void printUserInfo() {
+		String str="";
+		str += "아이디: " + getId() + "\n";
+		str += "비밀번호: " + getPassword() + "\n";
+		str += "이름: " + getName() + "\n";
+		str += "휴대폰: " + getPhone() + "\n";
+		str += "이메일: " + getEmail() + "\n";
+		str += "주소: " + getAddress() + "\n";
+		str += "주문내역" + "\n" + printOrderHistory() + "\n";//구매자 아이디든 이름이든 조인해야하는데 이걸 java로 구현해야하는건가? 아님 sql?
+		System.out.print(str);
+	}
+	
 	public boolean matchPassword(String password) {
-		if (password == null) {
+		if(password == null) {
 			return false;
 		}
 		return this.password.equals(password);
 	}
 	
 	public boolean isSameUser(String userid) {
-        return this.userId.equals(userid);
-    }
+		return id.equals(userid);
+	}
+	
+	
+	//여기서부터 코드 미완
+	public void addOrder(Order order) {
+		orderHistory.add(order);
+	}
+	public void cancelOrder(Order order) {
+		orderHistory.remove(order);
+	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", commId=" + commId + "]";
-	}	
+	//주문내역 출럭 --> 주문번호, 금액, 취소여부, 환불여부
+	public String printOrderHistory() {
+		String rslt ="";
+		for(Order order : orderHistory) {
+			rslt += "주문번호: " + order.getOrderId()+"\n";
+			rslt += "상품명: " + "\n";
+			rslt += "상품수량: " +"\n";
+			rslt += "금액: " + "\n";
+			rslt += "취소여부: " + "\n";
+		}
+		return rslt;
+	}
 }
