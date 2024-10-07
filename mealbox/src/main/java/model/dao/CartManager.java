@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartManager {
-
+/*
     // 싱글턴 인스턴스
     private static CartManager instance = new CartManager();
 
@@ -57,4 +57,5 @@ public class CartManager {
         // 제품 이름을 기준으로 해당 제품 삭제
         products.removeIf(cart -> cart.getName().equals(productName));
     }
+    */
 }
