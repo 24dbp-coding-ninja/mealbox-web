@@ -36,10 +36,10 @@ public class UpdateUserController implements Controller {
 			if (UserSessionUtils.isLoginUser(updateId, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
 				// 현재 로그인한 사용자가 수정 대상 사용자이거나 관리자인 경우 -> 수정 가능
-								
+				/*				
 				List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
 				request.setAttribute("commList", commList);	
-				
+				*/
 				return "/user/updateForm.jsp";   // 검색한 사용자 정보 및 커뮤니티 리스트를 updateForm으로 전송     
 			}    
 			
@@ -52,12 +52,13 @@ public class UpdateUserController implements Controller {
     	
     	// POST request (회원정보가 parameter로 전송됨)
     	User updateUser = new User(
-    		request.getParameter("userId"),
-    		request.getParameter("password"),
-    		request.getParameter("name"),
-    		request.getParameter("email"),
-    		request.getParameter("phone"),
-			Integer.parseInt(request.getParameter("commId")));
+    			request.getParameter("id"),
+    			request.getParameter("password"),
+    			request.getParameter("name"),
+    			request.getParameter("phone_part1") + "-" +request.getParameter("phone_part2") + "-" +request.getParameter("phone_part3"),
+    			request.getParameter("email_id") + "@" +request.getParameter("email_domain"),
+    			request.getParameter("address"));
+			
 
     	log.debug("Update User : {}", updateUser);
 

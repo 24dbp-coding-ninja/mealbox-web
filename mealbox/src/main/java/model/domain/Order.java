@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
 	private int orderId;
-	private String purchaser;
+	private String purchaser; //구매자 이름
 	private String purPhone;
 	private String recipient;
 	private String recPhone;

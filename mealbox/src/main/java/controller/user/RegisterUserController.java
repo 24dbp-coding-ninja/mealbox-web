@@ -24,34 +24,34 @@ public class RegisterUserController implements Controller {
 
        	if (request.getMethod().equals("GET")) {	
     		// GET request: 회원정보 등록 form 요청	
-    		log.debug("RegisterForm Request");
-
+    		log.debug("join Request");
+    		/*
     		List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
 			request.setAttribute("commList", commList);	
-		
-			return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
+    		 */
+			return "/user/join.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
 	    }	
 
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
-			request.getParameter("userId"),
+			request.getParameter("id"),
 			request.getParameter("password"),
 			request.getParameter("name"),
-			request.getParameter("email"),
-			request.getParameter("phone"),
-			Integer.parseInt(request.getParameter("commId")));
+			request.getParameter("phone_part1") + "-" +request.getParameter("phone_part2") + "-" +request.getParameter("phone_part3"),
+			request.getParameter("email_id") + "@" +request.getParameter("email_domain"),
+			request.getParameter("address"));
 		
         log.debug("Create User : {}", user);
 
 		try {
 			manager.create(user);
-	        return "redirect:/user/list";	// 성공 시 사용자 리스트 화면으로 redirect
+	        return "redirect:/user/list";	// 성공 시 사용자 리스트 화면으로 redirect --> 메인화면으로 이동하도록 수정해야함.
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("registerFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
-			return "/user/registerForm.jsp";
+			return "/user/join.jsp";
 		}
     }
 }
