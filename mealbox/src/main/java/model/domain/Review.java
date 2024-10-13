@@ -2,19 +2,24 @@
 package com.example;
 
 public class Review {
+    private static int reviewCounter = 0; // 자동 증가할 reviewId 카운터
+    private int reviewId;
     private String productId;
     private String nickname;
     private String profile;
     private String date;
-    private int rating;
+    private Rating rating;
     private String text;
     private String product;
     private String reviewImg;
 
-    public Review() {} // 기본 생성자
+    public Review() { // 기본 생성자
+        this.reviewId = idCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
+    }
 
     // 생성자
     public Review(String productId, String nickname, String profile, String date, int rating, String text, String product, String reviewImg) {
+        this.reviewId = idCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
         this.nickname = nickname;
         this.profile = profile;
@@ -26,6 +31,8 @@ public class Review {
     }
 
     // Getter와 Setter
+    public int getReviewId() { return reviewId; }  // 리뷰 ID Getter
+
     public String getProductId() { return productId; }
     public void setProductId(String productId) { this.productId = productId; }
 
@@ -38,8 +45,8 @@ public class Review {
     public String getDate() { return date; }
     public void setDate(String date) { this.date = date; }
 
-    public int getRating() { return rating; }
-    public void setRating(int rating) { this.rating = rating; }
+    public Rating getRating() { return rating; }
+    public void setRating(Rating rating) { this.rating = rating; }
 
     public String getText() { return text; }
     public void setText(String text) { this.text = text; }
