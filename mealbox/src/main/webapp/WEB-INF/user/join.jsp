@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <!--join.css-->
-    <link rel="stylesheet" type="text/css" href="../css/join.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/join.css"/>
     <!--join.js-->
     <script src="../js/join.js"></script>
     <!--html include-->

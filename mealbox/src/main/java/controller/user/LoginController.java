@@ -21,15 +21,19 @@ public class LoginController implements Controller {
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
+           
+            //일반회원 로그인 시
+            return "redirect:/products";	
             
-            return "redirect:/user/list";			
+            //admin 로그인 시
+            //return "redirect: /admin/products";
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력
 			 */
             request.setAttribute("loginFailed", true);
 			request.setAttribute("exception", e);
-            return "/user/loginForm.jsp";			
+            return "/user/login.jsp";			
 		}	
     }
 }
