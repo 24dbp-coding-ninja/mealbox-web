@@ -44,13 +44,14 @@ public class RequestMapping {
         
         
         // 여기서부터 코드닌자 코드 추가
-        //영선-로그인, 회원가입
+        //영선-로그인, 회원가입, adminUserPage
         mappings.put("/user/login/form", new ForwardController("/user/login.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/join/form", new ForwardController("/user/join.jsp"));
         mappings.put("/user/join", new CreateUserController());
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
+        mappings.put("/user/listUser", new ListUserController());
         //고은
         mappings.put("/purchase/cart", new CartController());
         

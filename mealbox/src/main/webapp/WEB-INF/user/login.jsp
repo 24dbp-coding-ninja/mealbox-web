@@ -1,12 +1,12 @@
-<!-- «“¿œ) jsøÕ include-html ∞Ê∑Œ ºˆ¡§-->
+<!-- Ìï†Ïùº) jsÏôÄ include-html Í≤ΩÎ°ú ÏàòÏ†ï-->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--∆˘∆Æ-->
+	<!--Ìè∞Ìä∏-->
 	<link rel="preconnect" href="https://rsms.me/" />
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	<!--login.css-->
@@ -16,31 +16,31 @@
 	<!--html include-->
 	<script src="../js/includeHTML.js"></script>
 	<script src="../js/sidebar.js"></script>
-	<!-- «“¿œ) User3 loginForm ¬¸∞Ì«œø© script ≥÷±‚ -->
-	<title>∑Œ±◊¿Œ</title>
+	<!-- Ìï†Ïùº) User3 loginForm Ï∞∏Í≥†ÌïòÏó¨ script ÎÑ£Í∏∞ -->
+	<title>Î°úÍ∑∏Ïù∏</title>
 </head>
 <body>
 	<nav include-html="../html/nav.html"></nav>
     <script>includeHTML();</script>
 
-    <!--«“¿œ)submit«œ∏È form¿∫ jsp∆ƒ¿œ∑Œ ≥—∞‹¡ˆ∞Ì jsp∆ƒ¿œø°º≠ join_success.html∑Œ redirect«œµµ∑œ ±∏«ˆ«œ±‚-->
-    <!--πÆ¡¶¡°)post∑Œ «œ∏È visual studio codeø°º≠ Ω««‡¿Ã ¿ﬂ æ»µ . ±◊≥… ≈©∑“¿∏∑Œ ø≠æ˙¿ª ∂ß¥¬ post∑Œ «ÿµµ µø¿€«‘.-->
+    <!--Ìï†Ïùº)submitÌïòÎ©¥ formÏùÄ jspÌååÏùºÎ°ú ÎÑòÍ≤®ÏßÄÍ≥† jspÌååÏùºÏóêÏÑú join_success.htmlÎ°ú redirectÌïòÎèÑÎ°ù Íµ¨ÌòÑÌïòÍ∏∞-->
+    <!--Î¨∏Ï†úÏ†ê)postÎ°ú ÌïòÎ©¥ visual studio codeÏóêÏÑú Ïã§ÌñâÏù¥ Ïûò ÏïàÎê®. Í∑∏ÎÉ• ÌÅ¨Î°¨ÏúºÎ°ú Ïó¥ÏóàÏùÑ ÎïåÎäî postÎ°ú Ìï¥ÎèÑ ÎèôÏûëÌï®.-->
     <form id="container" action="../html/main.html" method="get">
-        <!--∑Œ±◊¿Œ «Ï¥ı ∫Œ∫–-->
+        <!--Î°úÍ∑∏Ïù∏ Ìó§Îçî Î∂ÄÎ∂Ñ-->
         <header>
-            <h1 id="login_title" align="center">∑Œ±◊¿Œ</h1>
+            <h1 id="login_title" align="center">Î°úÍ∑∏Ïù∏</h1>
             <hr>
         </header>
-        <!--∑Œ±◊¿Œ ∏ﬁ¿Œ ∫Œ∫–-->
+        <!--Î°úÍ∑∏Ïù∏ Î©îÏù∏ Î∂ÄÎ∂Ñ-->
         <main>
-            <input type="text" id="id" placeholder="æ∆¿Ãµ∏¶ ¿‘∑¬«ÿ¡÷ººø‰"/>
-            <input type="password" id="password" placeholder="∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰"/>
+            <input type="text" id="id" placeholder="ÏïÑÏù¥ÎîîÎ•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî"/>
+            <input type="password" id="password" placeholder="ÎπÑÎ∞ÄÎ≤àÌò∏Î•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî"/>
         </main>
         <div id="login_buttons">
-            <!--«“¿œ)πˆ∆∞ ∏µ≈©¥¬ ≥™¡ﬂø° js∆ƒ¿œø°º≠ «‘ºˆ»≠«ÿ∞°¡ˆ∞Ì ø¨∞·«œø© ∞°µ∂º∫ ≥Ù¿Ã±‚-->
-            <!--πˆ∆∞ ≈¬±◊ø° type¿ª ∏ÌΩ√«œ¥¬ ¿Ã¿Ø: button≈¬±◊¿« ±‚∫ª∞™¿Ã submit¿Ã±‚ ∂ßπÆø°-->
-            <input type="submit" id="button_login" value="∑Œ±◊¿Œ" onclick="login()">
-            <button type="button" id="button_join" onclick="userCreate('<c:url value='/user/register'/>')">»∏ø¯∞°¿‘</button>
+            <!--Ìï†Ïùº)Î≤ÑÌäº ÎßÅÌÅ¨Îäî ÎÇòÏ§ëÏóê jsÌååÏùºÏóêÏÑú Ìï®ÏàòÌôîÌï¥Í∞ÄÏßÄÍ≥† Ïó∞Í≤∞ÌïòÏó¨ Í∞ÄÎèÖÏÑ± ÎÜíÏù¥Í∏∞-->
+            <!--Î≤ÑÌäº ÌÉúÍ∑∏Ïóê typeÏùÑ Î™ÖÏãúÌïòÎäî Ïù¥Ïú†: buttonÌÉúÍ∑∏Ïùò Í∏∞Î≥∏Í∞íÏù¥ submitÏù¥Í∏∞ ÎïåÎ¨∏Ïóê-->
+            <input type="submit" id="button_login" value="Î°úÍ∑∏Ïù∏" onclick="login()">
+            <button type="button" id="button_join" onclick="userCreate('<c:url value='/user/register'/>')">ÌöåÏõêÍ∞ÄÏûÖ</button>
         </div>
     </form>
 </body>

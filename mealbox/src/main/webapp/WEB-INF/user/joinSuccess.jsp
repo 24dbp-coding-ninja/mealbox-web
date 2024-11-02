@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--ÆùÆ®-->
+<!--í°íŠ¸-->
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--joinSuccess.css-->
@@ -13,37 +13,37 @@
 <!--html include-->
 <script src="../js/includeHTML.js"></script>
 <script src="../js/sidebar.js"></script>
-<title>È¸¿ø°¡ÀÔ ¿Ï·á</title>
+<title>íšŒì›ê°€ìž… ì™„ë£Œ</title>
 </head>
 <body>
     <nav include-html="../html/nav.html"></nav>
     <script>includeHTML();</script>
 
     <div id="container">
-        <!--È¸¿ø°¡ÀÔ Çì´õ ºÎºÐ-->
+        <!--íšŒì›ê°€ìž… í—¤ë” ë¶€ë¶„-->
         <header>
-            <h1 id="join_title" align="center">È¸¿ø°¡ÀÔ</h1>
+            <h1 id="join_title" align="center">íšŒì›ê°€ìž…</h1>
             <div id="progress">
                 <hr>
-                <span id="progress_inputInfo">Á¤º¸ÀÔ·Â</span> 
+                <span id="progress_inputInfo">ì •ë³´ìž…ë ¥</span> 
                 <div id="progress_sign">
                     <img src="../images/arrow.png">
                 </div>
-                <span id="progress_complete">°¡ÀÔ¿Ï·á</span>
+                <span id="progress_complete">ê°€ìž…ì™„ë£Œ</span>
                 <hr>
             </div>
         </header>
 
-        <!--È¸¿ø°¡ÀÔ ¸ÞÀÎ ºÎºÐ-->
+        <!--íšŒì›ê°€ìž… ë©”ì¸ ë¶€ë¶„-->
         <main id="joinSuccess_main">
-           <div>È¸¿ø°¡ÀÔ ¿Ï·á</div>
-           <div>È«±æµ¿´ÔÀÇ<br>
-            È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.</div>
+           <div>íšŒì›ê°€ìž… ì™„ë£Œ</div>
+           <div>í™ê¸¸ë™ë‹˜ì˜<br>
+            íšŒì›ê°€ìž…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.</div>
         </main>
         <div id="joinSuccess_buttons">
-            <!--ÇÒÀÏ)¹öÆ° ¸µÅ©´Â ³ªÁß¿¡ jsÆÄÀÏ¿¡¼­ ÇÔ¼öÈ­ÇØ°¡Áö°í ¿¬°áÇÏ¿© °¡µ¶¼º ³ôÀÌ±â-->
-            <button class="style_button" onclick="location.href='../html/login.html'">·Î±×ÀÎ</button>
-            <button class="style_button" onclick="location.href='../html/main.html'">¸ÞÀÎÀ¸·Î</button>
+            <!--í• ì¼)ë²„íŠ¼ ë§í¬ëŠ” ë‚˜ì¤‘ì— jsíŒŒì¼ì—ì„œ í•¨ìˆ˜í™”í•´ê°€ì§€ê³  ì—°ê²°í•˜ì—¬ ê°€ë…ì„± ë†’ì´ê¸°-->
+            <button class="style_button" onclick="location.href='../html/login.html'">ë¡œê·¸ì¸</button>
+            <button class="style_button" onclick="location.href='../html/main.html'">ë©”ì¸ìœ¼ë¡œ</button>
         </div>
     </div>
 </body>
