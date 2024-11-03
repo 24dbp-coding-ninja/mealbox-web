@@ -51,6 +51,7 @@ public class RequestMapping {
         mappings.put("/user/join/form", new ForwardController("/user/join.jsp"));
         mappings.put("/user/join", new CreateUserController());
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
+        mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
         //고은
         mappings.put("/purchase/cart", new CartController());
