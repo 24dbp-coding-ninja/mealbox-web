@@ -38,17 +38,18 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<servlet>
 	
 	<!-- 장바구니 서블릿 매핑 -->
-    <servlet-name>cartController</servlet-name>
-    <servlet-class>controller.purchase.CartController</servlet-class>
+    <servlet>
+	    <servlet-name>cartController</servlet-name>
+	    <servlet-class>controller.purchase.CartController</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 	    <servlet-name>cartController</servlet-name>
-	    <url-pattern>/mealbox/purchase/cart</url-pattern>
+	    <url-pattern>/cart</url-pattern>
 	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

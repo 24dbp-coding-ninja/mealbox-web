@@ -1,22 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--폰트-->
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <!--join.css-->
-    <link rel="stylesheet" type="text/css" href="../css/join.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/join.css"/>
     <!--join.js-->
     <script src="../js/join.js"></script>
     <!--html include-->
     <script src="../js/includeHTML.js"></script>
     <script src="../js/sidebar.js"></script>
-    <title>회원가입</title>
+<title>회원가입</title>
 </head>
 <body>
-    <nav include-html="../html/nav.html"></nav>
+	<nav include-html="../html/nav.html"></nav>
     <script>includeHTML();</script>
 
     <!--할일)submit하면 form은 jsp파일로 넘겨지고 jsp파일에서 join_success.html로 redirect하도록 구현하기-->
@@ -58,11 +60,11 @@
                 <input type="text" id="name" required>
                 <div class="text" id="text_name">이름은 필수입력 항목입니다.</div>
                 <div id="phone">
-                    <input type="number" id="phone_part1" maxlength="3" required>
+                    <input type="text" id="phone_part1" maxlength="3" required>
                     <span>-</span>
-                    <input type="number" id="phone_part2" maxlength="4" required>
+                    <input type="text" id="phone_part2" maxlength="4" required>
                     <span>-</span>
-                    <input type="number" id="phone_part3" maxlength="4" required>
+                    <input type="text" id="phone_part3" maxlength="4" required>
                 </div>
                 <div class="text" id="text_phone">전화번호는 필수입력 항목입니다.</div>
                 <div id="email">

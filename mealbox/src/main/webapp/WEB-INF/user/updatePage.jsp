@@ -1,22 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--폰트-->
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <!--join.css-->
-    <link rel="stylesheet" type="text/css" href="../css/join.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/updatePage.css"/>
     <!--join.js-->
     <script src="../js/join.js"></script>
     <!--html include-->
     <script src="../js/includeHTML.js"></script>
     <script src="../js/sidebar.js"></script>
-    <title>회원가입</title>
+<title>내 정보 수정</title>
 </head>
 <body>
-    <nav include-html="../html/nav.html"></nav>
+	<nav include-html="../html/nav.html"></nav>
     <script>includeHTML();</script>
 
     <!--할일)submit하면 form은 jsp파일로 넘겨지고 jsp파일에서 join_success.html로 redirect하도록 구현하기-->
@@ -24,16 +26,8 @@
     <form id="container" action="../html/joinSuccess.html" method="get">
         <!--회원가입 헤더 부분-->
         <header>
-            <h1 id="join_title" align="center">회원가입</h1>
-            <div id="progress">
-                <hr>
-                <span id="progress_inputInfo">정보입력</span> 
-                <div id="progress_sign">
-                    <img src="../images/arrow.png">
-                </div>
-                <span id="progress_complete">가입완료</span>
-                <hr>
-            </div>
+            <h1 id="join_title" align="center">내 정보 수정</h1>
+            <hr>
         </header>
 
         <!--회원가입 메인 부분-->
@@ -49,7 +43,7 @@
             </div>
             <div id="join_input">
                 <!--할일)제한조건 구현하기-->
-                <input type="text" id="id" required>
+                <input type="text" id="id" value="hihihihihi">
                 <div class="text" id="text_id">이미 존재하는 아이디입니다.</div>
                 <input type="password" id="password" required>
                 <div class="text" id="text_password">특수문자, 소문자, 숫자를 포함하며 8자 이상이어야 합니다.</div>
@@ -58,11 +52,11 @@
                 <input type="text" id="name" required>
                 <div class="text" id="text_name">이름은 필수입력 항목입니다.</div>
                 <div id="phone">
-                    <input type="number" id="phone_part1" maxlength="3" required>
+                    <input type="text" id="phone_part1" maxlength="3" required>
                     <span>-</span>
-                    <input type="number" id="phone_part2" maxlength="4" required>
+                    <input type="text" id="phone_part2" maxlength="4" required>
                     <span>-</span>
-                    <input type="number" id="phone_part3" maxlength="4" required>
+                    <input type="text" id="phone_part3" maxlength="4" required>
                 </div>
                 <div class="text" id="text_phone">전화번호는 필수입력 항목입니다.</div>
                 <div id="email">
@@ -79,8 +73,8 @@
         <div id="buttons">
             <!--할일)버튼 링크는 나중에 js파일에서 함수화해가지고 연결하여 가독성 높이기-->
             <!--버튼 태그에 type을 명시하는 이유: button태그의 기본값이 submit이기 때문에-->
-            <button type="button" class="style_button" id="before" onclick="history.back();">이전</button>
-            <input type="submit" class="style_button" id="after" value="다음" onclick="check()">
+            <button type="button" class="style_button" id="before" onclick="history.back();">취소</button>
+            <input type="submit" class="style_button" id="after" value="저장">
         </div>
     </form>
 </body>

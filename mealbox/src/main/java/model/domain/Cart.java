@@ -1,5 +1,6 @@
 package model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
@@ -9,7 +10,9 @@ public class Cart {
 	private int totalPrice;
 	
 	// 기본 생성자
-	public Cart() { }		
+	public Cart() {
+		this.cartItems = new ArrayList<>();
+	}		
 		
 	// setter
 	public void setCartId(int cartId) {this.cartId = cartId;}
