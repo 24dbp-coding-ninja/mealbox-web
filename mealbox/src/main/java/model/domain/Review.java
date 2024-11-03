@@ -1,5 +1,5 @@
 // Review.java (자바빈즈 클래스)
-package com.example;
+package model.domain;
 
 public class Review {
     private static int reviewCounter = 0; // 자동 증가할 reviewId 카운터
@@ -14,17 +14,17 @@ public class Review {
     private String reviewImg;
 
     public Review() { // 기본 생성자
-        this.reviewId = idCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
+        this.reviewId = reviewCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
     }
 
     // 생성자
-    public Review(String productId, String nickname, String profile, String date, int rating, String text, String product, String reviewImg) {
-        this.reviewId = idCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
+    public Review(String productId, String nickname, String profile, String date, String stars, double score, String text, String product, String reviewImg) {
+        this.reviewId = reviewCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
         this.nickname = nickname;
         this.profile = profile;
         this.date = date;
-        this.rating = rating;
+        this.rating = new Rating(stars, score); // Rating 객체 생성
         this.text = text;
         this.product = product;
         this.reviewImg = reviewImg;

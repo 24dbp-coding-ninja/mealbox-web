@@ -1,4 +1,6 @@
 // Rating.java (상품 평점 정보를 담는 자바빈즈)
+package model.domain;
+
 public class Rating implements java.io.Serializable {
     private String stars;
     private double score;

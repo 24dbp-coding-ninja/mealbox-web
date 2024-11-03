@@ -1,9 +1,11 @@
-package com.example;
+package model.dao;
 
+import model.domain.Review;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewManager {
+	private ReviewDAO reviewDAO;
     private List<Review> reviews;
 
     public ReviewManager() {
@@ -15,19 +17,49 @@ public class ReviewManager {
         reviews.add(review);
     }
 
+    // 리뷰 생성 메서드 추가
+    public boolean createReview(Review review) { 
+    	return reviewDAO.create(review);
+    }
+
     // reviewId로 리뷰 조회 메서드
     public Review getReviewById(int reviewId) {
         for (Review review : reviews) {
             if (review.getReviewId() == reviewId) {
-                return review; // 해당 reviewId를 가진 리뷰 반환
+                return review;
             }
         }
-        return null; // 리뷰가 없으면 null 반환
+        return null;
     }
 
-    // 모든 리뷰 조회 메서드 (선택적)
+    // 특정 상품의 리뷰 조회 메서드
+    public List<Review> findReviewsByProduct(int productId) { 
+    	return reviewDAO.findReviewsByProduct(productId); 
+    }
+    
+    public List<Review> findReviewsByMyPage(int reviewId) { 
+    	return reviewDAO.findReviewsByMyPage(reviewId); 
+    }
+
+    // 모든 리뷰 조회 메서드
     public List<Review> getAllReviews() {
         return reviews;
+    }
+
+    public boolean updateReview(Review review) { 
+    	return reviewDAO.update(review);
+    }
+    
+    // 리뷰 삭제 메서드 추가
+//    public boolean deleteReviewById(int reviewId) {
+//        Review review = getReviewById(reviewId);
+//        if (review != null) {
+//            return reviews.remove(review);
+//        }
+//        return false;
+//    }
+    public boolean deleteReview(int reviewId) { 
+    	return reviewDAO.delete(reviewId);
     }
 
     // 평균 점수 계산 메서드
@@ -35,15 +67,12 @@ public class ReviewManager {
         int totalReviews = 0;
         double totalScore = 0.0;
 
-        // 특정 상품에 해당하는 리뷰들만 평점 합산
         for (Review review : reviews) {
             if (review.getProductId().equals(productId)) {
-                totalScore += review.getRating().getScore(); // Rating 객체에서 평점 가져옴
+                totalScore += review.getRating().getScore();
                 totalReviews++;
             }
         }
-
-        // 평균 평점 계산
         return totalReviews > 0 ? totalScore / totalReviews : 0.0;
     }
 }

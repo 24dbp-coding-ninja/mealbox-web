@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import controller.user.*;
 import controller.comm.*;
 import controller.purchase.*;
+import controller.review.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -43,6 +44,11 @@ public class RequestMapping {
         mappings.put("/community/create", new CreateCommunityController());
         mappings.put("/community/update", new UpdateCommunityController());
         
+        // 리뷰 관련 매핑 추가
+        mappings.put("/review/items", new ReadReviewController());
+        mappings.put("/review/create", new CreateReviewController());
+        mappings.put("/review/update", new UpdateReviewController());
+        mappings.put("/review/delete", new DeleteReviewController());
         
         // 여기서부터 코드닌자 코드 추가
         mappings.put("/purchase/cart", new CartController());
