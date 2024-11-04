@@ -53,8 +53,14 @@ public class RequestMapping {
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
         mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
+<<<<<<< Updated upstream
         //고은
         mappings.put("/purchase/cart", new CartController());
+=======
+        //고은-주문내역, 장바구니
+        mappings.put("/cart/cartList",new ForwardController("/cart/cartPage.jsp"));
+        mappings.put("/purchase/purchaseList", new ForwardController("/purchase/orderListPage.jsp"));
+>>>>>>> Stashed changes
         
         logger.info("Initialized Request Mapping!");
     }
