@@ -1,9 +1,3 @@
-
-<%--
-기능: orderListPage jsp
-작성자: 장고은
-마지막 수정일: 2024-11-04
- --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
