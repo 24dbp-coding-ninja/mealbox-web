@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*join.html에 적용되는 css파일*/
+/*updatePage.html에 적용되는 css파일*/
 /***초기화***/
 *{
 	padding: 0px;
@@ -29,7 +29,7 @@ nav{
     position:absolute;
     left: 50%;
     transform: translate(-50%, 50px);
-    width: auto;
+    
     height: auto;
     /*background-color: yellow;*/
 }
@@ -49,40 +49,8 @@ header{
     line-height: 76px;
     /*border: 1px solid pink;*/
 }
-#progress{
-    width: 990px;
-    height: auto;
-    text-align: center;
-    /*border: 1px solid black;*/
-}
-hr, #progress_sign, #progress_inputInfo, #progress_complete{
-    display: inline-block;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    /*border: 1px solid yellowgreen;*/
-}
 hr{
-    width:189px;
     border: 1px solid black;
-}
-#progress_sign{
-    width: 10.42px;
-    height: 34px;
-    line-height: 34px;
-}
-#progress_sign > img{
-    width: 10.42px;
-    height: 20.83px;
-}
-#progress_inputInfo, #progress_complete{
-    width: 150px;
-    height: 34px;
-    line-height: 34px;
-    margin: 0px 24px;
-}
-#progress_complete{
-    color: #929292;
 }
 /***메인 부분***/
 #join_main{

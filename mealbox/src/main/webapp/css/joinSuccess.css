@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*join.html에 적용되는 css파일*/
+/*joinSuccess.html에 적용되는 css파일*/
 /***초기화***/
 *{
 	padding: 0px;
@@ -16,7 +16,6 @@
 }
 body{
     width: 100%;
-    /*background-color: antiquewhite;*/
 }
 /***네비 부분***/
 nav{
@@ -27,7 +26,7 @@ nav{
 /***컨테이너 부분***/
 #container{
     position:absolute;
-    left: 50%;
+    left:50%;
     transform: translate(-50%, 50px);
     width: auto;
     height: auto;
@@ -81,94 +80,38 @@ hr{
     line-height: 34px;
     margin: 0px 24px;
 }
-#progress_complete{
+#progress_inputInfo{
     color: #929292;
 }
 /***메인 부분***/
-#join_main{
-    /*position: absolute;
-    transform: translate(600px, 255px);*/
-    transform: translateX(134px);
-    width: 720px;
-    height: auto;
-    /*border: 1px solid pink;*/
+#joinSuccess_main{
+    text-align: center;
+    /*border:1px solid black;*/
 }
-#join_label, #join_input, #join_checkID{
-    display:inline-block;
-    vertical-align: top;
-}
-#join_label{
-    transform: translateY(12px);
-    width: 140px;
-    height: auto;
-    text-align:left;
-    font-size: 16px;
-    font-weight: bold;
-    /*border: 1px solid black;*/
-}
-#join_label > div {
+#joinSuccess_main > div:nth-child(1) {
     width: auto;
     height: auto;
-    margin: 0px 0px 60px 0px;
-    /*border: 1px solid green;*/
+    margin: 50px;
+    padding: 5px;
+    font-size: 32px;
+    font-weight: medium;
+    /*background-color: pink;*/
 }
-#join_input{
-    width: 420px;
+#joinSuccess_main > div:nth-child(2){
+    width: auto;
     height: auto;
-    margin: 0px 20px;
-    /*border: 1px solid black;*/
-}
-#id, #password, #check_password, #name, #address{
-    width: 420px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-#phone, #email{
-    display: flex;
-    text-align: center;
-    line-height: 40px;
-}
-#phone_part1, #phone_part2, #phone_part3{
-    width: 100px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-#phone > span{
-    width: 22px;
-    height: 40px;
-    margin: 0px 20px;
-    font-size: 30px;
-    font-weight: bold;
-    /*border: 1px solid black;*/
-}
-#email_id, #email_domain{
-    width: 190px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-#email > span{
-    width: 28px;
-    height: 40px;
-    margin: 0px 20px;
-    font-size: 20px;
-    font-weight: bold;
-    /*border: 1px solid black;*/
-}
-#join_input > .text {
-    margin: 10px 0px;
-    font-size:15px;
-    color: white;/*초반에는 white로 설정. 나중에 입력을 빼먹었을 때, js이용하여 빨간색으로 바꾸는 용도*/
+    margin: 50px;
+    padding: 5px;
+    font-size: 24px;
+    font-weight: lighter;
+    /*background-color: yellow;*/
 }
 /***버튼 부분***/
-#buttons{
+#joinSuccess_buttons{
     text-align: center;
-    /*border: 1px solid black;*/
 }
-#buttons > button, #buttons > input{
-    margin: 0px 30px;
+#joinSuccess_buttons > button{
+    margin: 30px;
 }
 .style_button{
     width: 100px;

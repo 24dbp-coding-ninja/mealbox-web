@@ -1,3 +1,10 @@
+/*
+기능: CartItem
+작성자: 장고은
+마지막 수정일: 2024-10-09
+추가해야할 기능: 페이지 이동
+*/
+
 package model.domain;
 
 public class CartItem {
