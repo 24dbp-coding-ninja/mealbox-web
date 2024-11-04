@@ -53,7 +53,10 @@ public class RequestMapping {
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
         mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
-      
+        
+        // 고은 -myPage
+        mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));
+
         //고은-주문내역, 장바구니
         mappings.put("/cart/cartList",new ForwardController("/cart/cartPage.jsp"));
         mappings.put("/purchase/purchaseList", new ForwardController("/purchase/orderListPage.jsp"));
