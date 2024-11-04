@@ -55,6 +55,7 @@ public class RequestMapping {
         mappings.put("/user/listUser", new ListUserController());
         //고은
         mappings.put("/purchase/cart", new CartController());
+        mappings.put("/purchase/orderListPage", new ForwardController("/purchase/orderListPage.jsp"));
         
         logger.info("Initialized Request Mapping!");
     }
