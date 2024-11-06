@@ -31,7 +31,6 @@ public class ProductManager {
 		return null;
 	}
 	
-	
 	public int createProduct(Product product) {
 		// TODO : 구현 
 		return 0;
@@ -42,7 +41,7 @@ public class ProductManager {
 		return 0;
 	}
 	
-	public int removeProduct(Product product) {
+	public int removeProduct(String productId) {
 		// TODO : 구현 
 		return 0;
 	}

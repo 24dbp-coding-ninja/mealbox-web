@@ -12,9 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles/nav.css" />
-    <script language="JavaScript">
-    	/* 로그인 */
-    </script>
+    	<!-- /* 로그인 */ -->
   </head>
   <body>
     <!--메뉴아이콘-->
