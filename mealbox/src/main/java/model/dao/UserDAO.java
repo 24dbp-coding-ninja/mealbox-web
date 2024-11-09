@@ -17,77 +17,7 @@ public class UserDAO {
 	public UserDAO() {			
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
-		
-	/**
-	 * 사용자 관리 테이블에 새로운 사용자 생성.
-	 */
-	/*public int create(User user) throws SQLException {
-		String sql = "INSERT INTO MEAL_USER VALUES (?, ?, ?, ?, ?, ?)";		
-		Object[] param = new Object[] {user.getId(), user.getPassword(), 
-						user.getName(), user.getEmail(), user.getPhone(), 
-						user.getAddress() };				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
-		try {				
-			int result = jdbcUtil.executeUpdate();	// insert 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {		
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;			
-	}*/
-
-	/**
-	 * 기존의 사용자 정보를 수정.
-	 */
-	/*public int update(User user) throws SQLException {
-		String sql = "UPDATE MEAL_USER "
-					+ "SET password=?, name=?, email=?, phone=? address=?"
-					+ "WHERE userid=?";
-		Object[] param = new Object[] {user.getPassword(), user.getName(), 
-					user.getEmail(), user.getPhone(), user.getAddress(), 
-					user.getId()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
-			
-		try {				
-			int result = jdbcUtil.executeUpdate();	// update 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	}*/
-
-	/**
-	 * 사용자 ID에 해당하는 사용자를 삭제.
-	 */
-	/*public int remove(String userId) throws SQLException {
-		String sql = "DELETE FROM MEAL_USER WHERE userid=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 delete문과 매개 변수 설정
-
-		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		}
-		finally {
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;
-	}*/
-
+	//완료 코드
 	/**
 	 * 주어진 사용자 ID에 해당하는 사용자 정보를 데이터베이스에서 찾아 User 도메인 클래스에 
 	 * 저장하여 반환.
@@ -119,11 +49,84 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	//미완 코드
+	/**
+	 * 사용자 관리 테이블에 새로운 사용자 생성.
+	 */
+	public int create(User user) throws SQLException {
+		String sql = "INSERT INTO MEAL_USER VALUES (?, ?, ?, ?, ?, ?)";		
+		Object[] param = new Object[] {user.getId(), user.getPassword(), 
+						user.getName(), user.getEmail(), user.getPhone(), 
+						user.getAddress() };				
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
+						
+		try {				
+			int result = jdbcUtil.executeUpdate();	// insert 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {		
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;			
+	}
+
+	/**
+	 * 기존의 사용자 정보를 수정.
+	 */
+	public int update(User user) throws SQLException {
+		String sql = "UPDATE MEAL_USER "
+					+ "SET password=?, name=?, email=?, phone=? address=?"
+					+ "WHERE userid=?";
+		Object[] param = new Object[] {user.getPassword(), user.getName(), 
+					user.getEmail(), user.getPhone(), user.getAddress(), 
+					user.getId()};				
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
+			
+		try {				
+			int result = jdbcUtil.executeUpdate();	// update 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+
+	/**
+	 * 사용자 ID에 해당하는 사용자를 삭제.
+	 */
+	public int remove(String userId) throws SQLException {
+		String sql = "DELETE FROM MEAL_USER WHERE userid=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return 0;
+	}
+
+	
 
 	/**
 	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 	 */
-	/*public List<User> findUserList() throws SQLException {
+	public List<User> findUserList() throws SQLException {
         String sql = "SELECT userId, name, email, address" 
         		   + "FROM MEAL_USER"
         		   + "ORDER BY userId";
@@ -150,13 +153,13 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return null;
-	}*/
+	}
 	
 	/**
 	 * 전체 사용자 정보를 검색한 후 현재 페이지와 페이지당 출력할 사용자 수를 이용하여
 	 * 해당하는 사용자 정보만을 List에 저장하여 반환.
 	 */
-	/*public List<User> findUserList(int currentPage, int countPerPage) throws SQLException {
+	public List<User> findUserList(int currentPage, int countPerPage) throws SQLException {
 		String sql = "SELECT userId, name, email, NVL(commId, 0) AS commId, cName " 
 					+ "FROM USERINFO u LEFT OUTER JOIN Community c ON u.commId = c.cId "
 					+ "ORDER BY userId";
@@ -187,12 +190,12 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return null;
-	}*/
+	}
 
 	/**
 	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사 
 	 */
-	/*public boolean existingUser(String userId) throws SQLException {
+	public boolean existingUser(String userId) throws SQLException {
 		String sql = "SELECT count(*) FROM MEAL_USER WHERE userid=?";      
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
@@ -208,6 +211,6 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return false;
-	}*/
+	}
 
 }
