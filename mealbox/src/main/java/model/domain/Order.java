@@ -1,65 +1,138 @@
 /*
 기능: Order
 작성자: 장고은
-마지막 수정일: 2024-10-09
-추가해야할 기능: 페이지 이동
+마지막 수정일: 2024-11-10
 */
-
 package model.domain;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Date;
 
 public class Order {
 	private int orderId;
-	private String purchaser; //구매자 이름
+	private int userId;
+	private Date orderAt;
+	private String purchaser;
 	private String purPhone;
 	private String recipient;
 	private String recPhone;
 	private String deliveryAddress;
 	private int totalPrice;
-	private LocalDate deliveryDate;
-	private List<Cart> cart;
-	private boolean state; // 주문 상태
-	private List<OrderItem> orderItems;  // 주문 완료된 상품을 담는 리스트
+	private Date deliveryDate;
 	
-	// 기본 생성자
-	public Order() { }		
-		
-	// setter
-	public void setOrderId(int orderId) {this.orderId = orderId;}
-	public void setPurchaser(String purchaser) {this.purchaser = purchaser;}
-	public void setRecipient(String recipient) {this.recipient = recipient;}
-	public void setRecPhone(String recPhone) {this.recPhone = recPhone;}
-	public void setDeliveryAddress(String deliveryAddress) {this.deliveryAddress = deliveryAddress;}
-	public void setTotalPrice(int totalPrice) {this.totalPrice = totalPrice;}
-	public void setDeliveryDate(LocalDate deliveryDate) {this.deliveryDate = deliveryDate;}
-	public void setCart(List<Cart> cart) {this.cart = cart;}
-	public void setPurPhone(String purPhone) {this.purPhone = purPhone;}
-	public void setState(boolean state) {this.state = state;}
-	 public void setOrderItems(List<OrderItem> orderItems) { this.orderItems = orderItems; }
-	 
-	// getter
-	public int getOrderId() {return orderId;}
-	public String getPurchaser() {return purchaser;}
-	public String getRecipient() {return recipient;}
-	public String getRecPhone() {return recPhone;}
-	public String getDeliveryAddress() {return deliveryAddress;}
-	public int getTotalPrice() {return totalPrice;}
-	public LocalDate getDeliveryDate() {return deliveryDate;}
-	public List<Cart> getCart() {
-		// 장바구니가 null일 경우 빈 리스트를 반환하거나 null 처리
-        return cart != null ? cart : List.of();
-    }
-	public String getPurPhone() {return purPhone;}
-	public boolean getState() {return state;}
-    public List<OrderItem> getOrderItems() { return orderItems; }
-    
-	// 기본 배송일을 오늘 날짜로부터 2일 후로 설정하는 메서드
-    public void setDefaultDeliveryDate() {
-        if (this.deliveryDate == null) {
-            this.deliveryDate = LocalDate.now().plusDays(2);
-        }
-    }
+	public Order() {}
+	
+	public Order(int orderId, int userId, Date orderAt, String purchaser, String purPhone, String recipient, String recPhone, String deliveryAddress, int totalPrice, Date deliveryDate) {
+		this.orderId = orderId;
+		this.userId = userId;
+		this.orderAt = orderAt;
+		this.purchaser = purchaser;
+		this.purPhone = purPhone;
+		this.recipient = recipient;
+		this.recPhone = recPhone;
+		this.deliveryAddress = deliveryAddress;
+		this.totalPrice = totalPrice;
+		this.deliveryDate = deliveryDate;
+	}
+	
+	// 특정 사용자가 주문한 주문 정보를 구하기 위한 생성자
+	public Order(int orderId, Date orderAt, String purchaser, String purPhone, String recipient, String recPhone, String deliveryAddress, int totalPrice, Date deliveryDate) {
+		this.orderId = orderId;
+		this.orderAt = orderAt;
+		this.purchaser = purchaser;
+		this.purPhone = purPhone;
+		this.recipient = recipient;
+		this.recPhone = recPhone;
+		this.deliveryAddress = deliveryAddress;
+		this.totalPrice = totalPrice;
+		this.deliveryDate = deliveryDate;
+	}
 
+	// setter & getter
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getPurchaser() {
+		return purchaser;
+	}
+
+	public void setPurchaser(String purchaser) {
+		this.purchaser = purchaser;
+	}
+
+	public String getPurPhone() {
+		return purPhone;
+	}
+
+	public void setPurPhone(String purPhone) {
+		this.purPhone = purPhone;
+	}
+
+	public String getRecipient() {
+		return recipient;
+	}
+
+	public void setRecipient(String recipient) {
+		this.recipient = recipient;
+	}
+
+	public String getRecPhone() {
+		return recPhone;
+	}
+
+	public void setRecPhone(String recPhone) {
+		this.recPhone = recPhone;
+	}
+
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Date getOrderAt() {
+		return orderAt;
+	}
+
+	public void setOrderAt(Date orderAt) {
+		this.orderAt = orderAt;
+	}
+
+	public Date getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(Date deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", userId=" + userId + ", orderAt=\" + orderAt + \", purchaser=" + purchaser + ", purPhone="
+				+ purPhone + ", recipient=" + recipient + ", recPhone=" + recPhone + ", deliveryAddress="
+				+ deliveryAddress + ", totalPrice=" + totalPrice + ", deliveryDate="
+				+ deliveryDate + "]";
+	}
 }
