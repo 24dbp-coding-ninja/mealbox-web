@@ -1,7 +1,7 @@
 package model.domain;
 
 import java.util.List;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class User {
 	private String id;
@@ -13,7 +13,7 @@ public class User {
 	private List<Order> orderHistory; //주문 목록
 	
 	public User() {
-		orderHistory = new ArrayList<>();
+		
 	}
 	public User(String id, String password, String name, String phone, String email, String address) {
 		this.id = id;
@@ -22,7 +22,6 @@ public class User {
 		this.phone = phone;
 		this.email = email;
 		this.address = address;
-		orderHistory = new ArrayList<>();
 	}
 	
 	public String getId() {
@@ -61,13 +60,13 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public List<Order> getOrderHistory(){
-		return orderHistory;
-	}
-	public void setOrderHistory(List<Order> orderHistory) {
+	public List<Order> getOrderHistory(){ 
+		return orderHistory; 
+	} 
+	public void setOrderHistory(List<Order> orderHistory) { 
 		this.orderHistory = orderHistory;
 	}
-	
+	 
 	/*기능*/
 	//사용자 정보
 	public void printUserInfo() {
@@ -78,7 +77,7 @@ public class User {
 		str += "휴대폰: " + getPhone() + "\n";
 		str += "이메일: " + getEmail() + "\n";
 		str += "주소: " + getAddress() + "\n";
-		str += "주문내역" + "\n" + printOrderHistory() + "\n";//구매자 아이디든 이름이든 조인해야하는데 이걸 java로 구현해야하는건가? 아님 sql?
+		//str += "주문내역" + "\n" + printOrderHistory() + "\n";//구매자 아이디든 이름이든 조인해야하는데 이걸 java로 구현해야하는건가? 아님 sql?
 		System.out.print(str);
 	}
 	
@@ -93,17 +92,13 @@ public class User {
 		return id.equals(userid);
 	}
 	
-	//주문내역 출럭
-	public String printOrderHistory() {
-		String rslt ="";
-		for(Order order : orderHistory) {
-			for(OrderItem item : order.getOrderItems()) {
-				rslt += "구매목록\n";
-				rslt += "상품id: " + item.getOrderItemId() + "\n";
-				rslt += "수량: " + item.getQuantity() + "\n";
-				rslt += "가격: " + item.getPrice() + "\n";
-			}
-		}
-		return rslt;
-	}
+	
+	/*
+	 * //주문내역 출럭 public String printOrderHistory() { String rslt =""; for(Order
+	 * order : orderHistory) { for(OrderProduct item : order.getOrderItems()) { rslt
+	 * += "구매목록\n"; rslt += "상품id: " + item.getOrderItemId() + "\n"; rslt += "수량: "
+	 * + item.getQuantity() + "\n"; rslt += "가격: " + item.getPrice() + "\n"; } }
+	 * return rslt; }
+	 */
+	 
 }
