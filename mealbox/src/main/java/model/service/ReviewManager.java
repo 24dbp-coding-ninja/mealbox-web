@@ -15,7 +15,7 @@ public class ReviewManager {
     private static ReviewManager userMan = new ReviewManager();
 	private ReviewDAO reviewDAO;
 
-	private ReviewManager() {
+	public ReviewManager() {
 		try {
 			reviewDAO = new ReviewDAO();
 		} catch (Exception e) {

@@ -7,11 +7,8 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.comm.*;
-<<<<<<< HEAD
-import controller.purchase.*;
+//import controller.purchase.*;
 import controller.review.*;
-=======
->>>>>>> origin/main
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
