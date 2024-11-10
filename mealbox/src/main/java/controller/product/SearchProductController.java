@@ -8,7 +8,6 @@ import model.domain.Product;
 import model.service.ProductManager;
 
 class SearchProductController implements Controller{
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String keyword = request.getParameter("orderBy");
