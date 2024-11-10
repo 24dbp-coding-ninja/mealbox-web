@@ -4,6 +4,7 @@
 마지막 수정일: 2024-10-30
 추가해야할 기능: nav바 함수 구현 및 확인 / category 받아와서 forEach 내에 링크, 내용 구현 / search, cart, join, login 주소 연결
  --%>
+ <%-- 
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <!DOCTYPE html>
@@ -66,3 +67,4 @@
     </aside>
   </body>
  </html>
+ --%>
