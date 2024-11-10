@@ -30,6 +30,11 @@ public class Review {
         this.product = product;
         this.reviewImg = reviewImg;
     }
+    public Review(String productId, String nickname) {
+        this.reviewId = reviewCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
+        this.productId = productId;
+    }
+
 
     // Getter와 Setter
     public int getReviewId() { return reviewId; }  // 리뷰 ID Getter

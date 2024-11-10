@@ -1,16 +1,34 @@
-package model.dao;
+package model.service;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import model.dao.CommunityDAO;
+import model.dao.ReviewDAO;
+import model.domain.Community;
+import model.domain.User;
 import model.domain.Review;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewManager {
+    private static ReviewManager userMan = new ReviewManager();
 	private ReviewDAO reviewDAO;
+
+	private ReviewManager() {
+		try {
+			reviewDAO = new ReviewDAO();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+	}
+
+	// private ReviewDAO reviewDAO;
     private List<Review> reviews;
 
-    public ReviewManager() {
-        reviews = new ArrayList<>();
-    }
+//    public ReviewManager() {
+//        reviews = new ArrayList<>();
+//    }
 
     // 리뷰 추가 메서드
     public void addReview(Review review) {

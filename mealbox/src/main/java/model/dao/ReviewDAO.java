@@ -3,8 +3,50 @@ package model.dao;
 import model.domain.Review;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class ReviewDAO {
+	private JDBCUtil jdbcUtil = null;
+	
+	public ReviewDAO() {			
+		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
+	}
+
+	public Review findReview(String reviewId) throws SQLException {
+		
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT reviewId, productId ");
+		query.append("FROM MEAL_REVIEW ");
+		query.append("WHERE reviewId=?"); //이거 나중에 userid로 바꿔야함. 현재 userid와 username이 db에서 엉켜있음.            
+		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {reviewId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {						// 학생 정보 발견
+				Review review = new Review(		// User 객체를 생성하여 학생 정보를 저장
+//					reviewId,
+					rs.getString("reviewId"),
+					rs.getString("productId"));
+//					rs.getString("getNickname"),
+//					rs.getString("getProfile"),
+//					rs.getString("getDate"),
+//					rs.getString("getRating"),
+//					rs.getString("getText"),
+//					rs.getString("getProduct"),
+//					rs.getString("getReviewImg"),
+				return review;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return null;
+	}
+
+	// 미완성
 	private List<Review> reviewList = new ArrayList<>();
 	private List<Review> reviews = new ArrayList<>();
 	
