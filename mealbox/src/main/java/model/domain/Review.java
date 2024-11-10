@@ -8,7 +8,7 @@ public class Review {
     private String nickname;
     private String profile;
     private String date;
-    private Rating rating;
+    private double rating;
     private String text;
     private String product;
     private String reviewImg;
@@ -18,13 +18,14 @@ public class Review {
     }
 
     // 생성자
-    public Review(String productId, String nickname, String profile, String date, String stars, double score, String text, String product, String reviewImg) {
+    public Review(String productId, String nickname, String profile, String date, double rating, String text, String product, String reviewImg) {
         this.reviewId = reviewCounter++; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
         this.nickname = nickname;
         this.profile = profile;
         this.date = date;
-        this.rating = new Rating(stars, score); // Rating 객체 생성
+        this.rating = rating;
+        //this.rating = new Rating(stars, score); // Rating 객체 생성
         this.text = text;
         this.product = product;
         this.reviewImg = reviewImg;
@@ -45,8 +46,8 @@ public class Review {
     public String getDate() { return date; }
     public void setDate(String date) { this.date = date; }
 
-    public Rating getRating() { return rating; }
-    public void setRating(Rating rating) { this.rating = rating; }
+    public double getRating() { return rating; }
+    public void setRating(double rating) { this.rating = rating; }
 
     public String getText() { return text; }
     public void setText(String text) { this.text = text; }

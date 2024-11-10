@@ -24,9 +24,9 @@ public class ReadReviewController implements Controller {
         if ("latest".equals(sortStandard)) {
             reviews.sort(Comparator.comparing(Review::getDate).reversed());
         } else if ("highRate".equals(sortStandard)) {
-            reviews.sort(Comparator.comparing((Review r) -> r.getRating().getScore()).reversed());
+            reviews.sort(Comparator.comparing((Review r) -> r.getRating()).reversed());
         } else if ("lowRate".equals(sortStandard)) {
-            reviews.sort(Comparator.comparing((Review r) -> r.getRating().getScore()));
+            reviews.sort(Comparator.comparing((Review r) -> r.getRating()));
         }
 
         request.setAttribute("reviews", reviews);

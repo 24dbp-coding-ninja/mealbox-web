@@ -69,7 +69,7 @@ public class ReviewManager {
 
         for (Review review : reviews) {
             if (review.getProductId().equals(productId)) {
-                totalScore += review.getRating().getScore();
+                totalScore += review.getRating();
                 totalReviews++;
             }
         }

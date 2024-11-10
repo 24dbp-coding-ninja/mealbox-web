@@ -23,8 +23,7 @@ public class UpdateReviewController implements Controller {
             review.setNickname(request.getParameter("nickname"));
             review.setProfile(request.getParameter("profile"));
             review.setDate(request.getParameter("date"));
-            review.getRating().setStars(request.getParameter("stars"));
-            review.getRating().setScore(Double.parseDouble(request.getParameter("rating")));
+            review.setRating(Double.parseDouble(request.getParameter("rating")));
             review.setText(request.getParameter("text"));
             review.setProduct(request.getParameter("product"));
             review.setReviewImg(request.getParameter("reviewImg"));

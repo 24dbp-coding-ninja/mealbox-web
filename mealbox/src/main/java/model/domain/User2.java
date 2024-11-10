@@ -72,9 +72,9 @@ public class User2 {
 		return this.password.equals(password);
 	}
 	
-	public boolean isSameUser(User user) {
-		return id.equals(user.id);
-	}
+//	public boolean isSameUser(User user) {
+//		return id.equals(user.id);
+//	}
 	
 	/*여기서부터 코드 미완 --> Order class를 봐야할 듯*/
 	//public void addOrder(Order order) {

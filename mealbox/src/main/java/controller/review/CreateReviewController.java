@@ -19,13 +19,12 @@ public class CreateReviewController implements Controller {
         String nickname = request.getParameter("nickname");
         String profile = request.getParameter("profile");
         String date = request.getParameter("date");
-        String stars = request.getParameter("stars");
         double rating = Double.parseDouble(request.getParameter("rating"));
         String text = request.getParameter("text");
         String product = request.getParameter("product");
         String reviewImg = request.getParameter("reviewImg");
 
-        Review newReview = new Review(productId, nickname, profile, date, stars, rating, text, product, reviewImg);
+        Review newReview = new Review(productId, nickname, profile, date, rating, text, product, reviewImg);
         boolean createResult = reviewManager.createReview(newReview);
 
         if (createResult) {

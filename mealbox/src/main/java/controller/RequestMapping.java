@@ -44,7 +44,7 @@ public class RequestMapping {
       //  mappings.put("/community/update", new UpdateCommunityController());
         
         // 리뷰 관련 매핑 추가
-        mappings.put("/review/items", new ReadReviewController());
+        mappings.put("/review/items", new ForwardController("/review/reviewForm.jsp"));
         mappings.put("/review/create", new CreateReviewController());
         mappings.put("/review/update", new UpdateReviewController());
         mappings.put("/review/delete", new DeleteReviewController());
