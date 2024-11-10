@@ -88,11 +88,11 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>dbp</groupId>
 			<artifactId>Lab3-JDBC</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
   </dependencies>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
