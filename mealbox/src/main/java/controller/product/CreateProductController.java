@@ -20,11 +20,11 @@ public class CreateProductController implements Controller {
 					request.getParameter("newThumb"),
 					request.getParameter("newDesc"),
 					Integer.parseInt(request.getParameter("newPrice")),
+					Integer.parseInt(request.getParameter("newStock")),
 					0,
 					0.0,
-					Integer.parseInt(request.getParameter("newStock")),
-					request.getParameter("newPeopleCategory"),
-					request.getParameter("newFoodTypeCategory")
+					Integer.parseInt(request.getParameter("newPeopleCategory")),
+					Integer.parseInt(request.getParameter("newFoodTypeCategory"))
 		);
 		
 //		try {

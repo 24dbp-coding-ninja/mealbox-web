@@ -1,10 +1,3 @@
-/*
-기능: Product
-작성자: 신윤
-마지막 수정일: 2024-10-05
-추가해야할 기능: 페이지 이동
-*/
-
 package model.domain;
 
 public class Product {
@@ -16,8 +9,8 @@ public class Product {
 	private int totalReview;
 	private double averageReview;
 	private int stock;
-	private String categoryPerson;
-	private String categoryType;
+	private int categoryPerson;
+	private int categoryType;
 	
 
 //	public Product(int id, String name, String thumb, String description, int price, int totalReview, double averageReview, int stock, String categoryPerson, String categoryType) {
@@ -33,7 +26,8 @@ public class Product {
 //		this.categoryType = categoryType;
 //	}
 
-	public Product(String name, String thumb, String description, int price, int totalReview, double averageReview, int stock, String categoryPerson, String categoryType) {
+	public Product(int id, String name, String thumb, String description, int price, int totalReview, double averageReview, int stock, int categoryPerson, int categoryType) {
+		this.id = id;
 		this.name = name;
 		this.thumb = thumb;
 		this.description = description;
@@ -45,7 +39,7 @@ public class Product {
 		this.categoryType = categoryType;
 	}
 	
-	public Product(int id, String name, String thumb, String description, int price, int stock, String categoryPerson, String categoryType) {
+	public Product(int id, String name, String thumb, String description, int price, int stock, int categoryPerson, int categoryType) {
 		this.id = id;
 		this.name = name;
 		this.thumb = thumb;
@@ -56,7 +50,18 @@ public class Product {
 		this.categoryType = categoryType;
 	}
 
-
+	public Product(String name, String thumb, String description, int price, int stock, int totalReview, double averageReview, int categoryPerson, int categoryType) {
+		this.name = name;
+		this.thumb = thumb;
+		this.description = description;
+		this.price = price;
+		this.totalReview = totalReview;
+		this.averageReview = averageReview;
+		this.stock = stock;
+		this.categoryPerson = categoryPerson;
+		this.categoryType = categoryType;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -85,11 +90,11 @@ public class Product {
 		return stock;
 	}
 
-	public String getCategoryPerson() {
+	public int getCategoryPerson() {
 		return categoryPerson;
 	}
 
-	public String getCategoryType() {
+	public int getCategoryType() {
 		return categoryType;
 	}
 
