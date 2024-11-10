@@ -2,9 +2,10 @@ package controller.product;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import controller.Controller;
-import model.domain.Product;
 import model.service.ProductManager;
+import model.domain.Product;
 
 public class UpdateProductController implements Controller {
 
@@ -23,8 +24,9 @@ public class UpdateProductController implements Controller {
 					request.getParameter("desc"),
 					Integer.parseInt(request.getParameter("price")),
 					Integer.parseInt(request.getParameter("stock")),
-					Integer.parseInt(request.getParameter("peopleCategory")),
-					Integer.parseInt(request.getParameter("foodTypeCategory"))
+					request.getParameter("peopleCategory"),
+					request.getParameter("foodTypeCategory")
+					
 		);
 		
 //		try {
