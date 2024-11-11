@@ -1,41 +1,184 @@
-DROP TABLE UserInfo CASCADE CONSTRAINTS;
-DROP TABLE Community CASCADE CONSTRAINTS;
-DROP SEQUENCE commId_seq;
+DROP SEQUENCE Sequence_lineNo;
 
-CREATE TABLE UserInfo ( 
-	userId      VARCHAR2(12)	PRIMARY KEY, 
-	password	VARCHAR2(12)	NOT NULL,
-	name		VARCHAR2(20)	NOT NULL,
-	email		VARCHAR2(50),	
- 	phone		VARCHAR2(20),
- 	commId		NUMBER(4)
+CREATE SEQUENCE Sequence_lineNo
+	INCREMENT BY 10
+	START WITH 1000;
+
+DROP SEQUENCE Sequence_orderId;
+
+CREATE SEQUENCE Sequence_orderId
+	INCREMENT BY 10
+	START WITH 1000;
+
+DROP SEQUENCE Sequence_productId;
+
+CREATE SEQUENCE Sequence_productId
+	INCREMENT BY 10
+	START WITH 1000;
+
+DROP SEQUENCE Sequence_reviewId;
+
+CREATE SEQUENCE Sequence_reviewId
+	INCREMENT BY 10
+	START WITH 1000;
+
+DROP TABLE MEAL_ORDER_PRODUCT CASCADE CONSTRAINTS PURGE;
+
+DROP TABLE MEAL_ORDER CASCADE CONSTRAINTS PURGE;
+
+DROP TABLE MEAL_CART_PRODUCT CASCADE CONSTRAINTS PURGE;
+
+DROP TABLE MEAL_REVIEW CASCADE CONSTRAINTS PURGE;
+
+DROP TABLE MEAL_PRODUCT CASCADE CONSTRAINTS PURGE;
+
+DROP TABLE MEAL_USER CASCADE CONSTRAINTS PURGE;
+
+CREATE TABLE MEAL_ORDER
+(
+	orderId              NUMBER(10)  DEFAULT Sequence_orderId.NEXTVAL  NOT NULL ,
+	orderAt              DATE  DEFAULT SYSDATE  NOT NULL ,
+	purchaser            VARCHAR2(20)  NOT NULL ,
+	purPhone             VARCHAR2(13)  NOT NULL ,
+	recipient            VARCHAR2(20)  NOT NULL ,
+	recPhone             VARCHAR2(13)  NOT NULL ,
+	deliveryAddress      VARCHAR2(60)  NOT NULL ,
+	totalPrice           NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_1041850835 CHECK (totalPrice >= 0),
+	deliveryDate         DATE  DEFAULT SYSDATE+2  NOT NULL ,
+	userId               VARCHAR2(20)  NOT NULL 
 );
 
-CREATE TABLE Community ( 
-	cId     	NUMBER(4)		PRIMARY KEY, 
-	cName		VARCHAR2(20)	NOT NULL,
-	descr		VARCHAR2(50),
-	startDate	Date,
-	chairId		VARCHAR2(12)	
+CREATE UNIQUE INDEX XPKORDER ON MEAL_ORDER
+(orderId   ASC);
+
+ALTER TABLE MEAL_ORDER
+	ADD CONSTRAINT  XPKORDER PRIMARY KEY (orderId);
+
+CREATE TABLE MEAL_PRODUCT
+(
+	productId            NUMBER(10)  DEFAULT Sequence_productId.NEXTVAL  NOT NULL ,
+	productName          VARCHAR2(20)  NOT NULL ,
+	productImage         VARCHAR2(100)  NOT NULL ,
+	description          VARCHAR2(300)  NOT NULL ,
+	price                NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_1348644530 CHECK (price >= 0),
+	stock                NUMBER(3)  DEFAULT 300  NOT NULL  CONSTRAINT  Validation_Rule_Stock_1483257789 CHECK (stock BETWEEN 0 AND 250),
+	totalReview          NUMBER(20)  DEFAULT 0  NOT NULL ,
+	averageReviewScore   FLOAT  DEFAULT 0.0  NOT NULL ,
+	personTypeCategory   NUMBER(1)  NOT NULL ,
+	foodTypeCategory     NUMBER(1)  NOT NULL ,
+	productCreatedAt     DATE  DEFAULT SYSDATE  NOT NULL ,
+	productUpdatedAt     DATE  DEFAULT SYSDATE  NOT NULL 
 );
 
-ALTER TABLE UserInfo ADD FOREIGN KEY (commId) REFERENCES Community (cId);
-ALTER TABLE Community ADD FOREIGN KEY (chairId) REFERENCES UserInfo (userId);
+CREATE UNIQUE INDEX XPKPRODUCT ON MEAL_PRODUCT
+(productId   ASC);
 
-CREATE SEQUENCE commId_seq
-	START WITH 10
-	INCREMENT BY 10; 
-	
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Cinema Paradiso', '영화를 사랑하는 사람들의 모임', SYSDATE, null);
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'A.R.M.Y', 'BTS 팬클럽', SYSDATE, null);
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'Aero Bike', '산악자전거 동호회', SYSDATE, null);
-INSERT INTO Community VALUES (commId_seq.NEXTVAL, 'ILoveDBP', 'Database Programming Study Group', SYSDATE, null);
+ALTER TABLE MEAL_PRODUCT
+	ADD CONSTRAINT  XPKPRODUCT PRIMARY KEY (productId);
 
-INSERT INTO UserInfo VALUES ('admin', 'admin', '시스템 관리자', 'admin@dongduk.ac.kr', '02-940-9999', null);
-INSERT INTO UserInfo VALUES ('movieMan', 'movie', '이영화', 'young99@gmail.com', '010-1234-5678', 10);
-INSERT INTO UserInfo VALUES ('mina', 'mina123', '김미나', 'mnkim@naver.com', '010-6677-2233', 40);
-INSERT INTO UserInfo VALUES ('rizzi', 'rizzi123', 'James Rizzi', 'james@gmail.com', '520-342-5566', 30);
-INSERT INTO UserInfo VALUES ('barnes', 'barnes123', 'Julian Barnes', 'barnes@hotmail.com', '778-443-1532', 10);
+CREATE TABLE MEAL_ORDER_PRODUCT
+(
+	orderId              NUMBER(10)  NOT NULL ,
+	productId            NUMBER(10)  NOT NULL ,
+	quantity             NUMBER(3)  DEFAULT 1  NOT NULL  CONSTRAINT  Validation_Rule_Quantity_2104370978 CHECK (quantity BETWEEN 1 AND 300),
+	orderItemPrice       NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_822570969 CHECK (orderItemPrice >= 0),
+	lineNo               NUMBER(10)  DEFAULT Sequence_lineNo.NEXTVAL  NOT NULL 
+);
 
-UPDATE Community SET chairId = 'movieMan' WHERE cid = 10;
-COMMIT;
+CREATE UNIQUE INDEX XPKORDER_PRODUCT ON MEAL_ORDER_PRODUCT
+(orderId   ASC,lineNo   ASC);
+
+ALTER TABLE MEAL_ORDER_PRODUCT
+	ADD CONSTRAINT  XPKORDER_PRODUCT PRIMARY KEY (orderId,lineNo);
+
+CREATE TABLE MEAL_USER
+(
+	userId               VARCHAR2(20)  NOT NULL ,	
+	password             VARCHAR2(40)  NOT NULL ,
+	name                 VARCHAR2(20)  NOT NULL ,
+	phone                VARCHAR2(13)  NOT NULL ,
+	email                VARCHAR2(40)  NOT NULL ,
+	address              VARCHAR2(60)  NOT NULL ,
+	role                 NUMBER(2)  NOT NULL ,
+	createdAt            DATE  DEFAULT SYSDATE  NOT NULL ,
+	updatedAt            DATE  DEFAULT SYSDATE  NOT NULL 
+);
+
+/*CREATE UNIQUE INDEX XPKUSER ON MEAL_USER
+(userId   ASC);*/
+
+ALTER TABLE MEAL_USER
+	ADD CONSTRAINT  XPKUSER PRIMARY KEY (userId);
+
+CREATE TABLE MEAL_CART_PRODUCT
+(
+	productId            NUMBER(10)  NOT NULL ,
+	quantity             NUMBER(3)  DEFAULT 1  NOT NULL  CONSTRAINT  Validation_Rule_Quantity_2005108216 CHECK (quantity BETWEEN 1 AND 300),
+	cartItemPrice        NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_2047314235 CHECK (cartItemPrice >= 0),
+	userId               VARCHAR2(20)  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKCART_PRODUCT ON MEAL_CART_PRODUCT
+(userId ASC, productId   ASC);
+
+ALTER TABLE MEAL_CART_PRODUCT
+	ADD CONSTRAINT  XPKCART_PRODUCT PRIMARY KEY (userId, productId);
+
+CREATE TABLE MEAL_REVIEW
+(
+	reviewId             NUMBER(10)  DEFAULT Sequence_reviewId.NEXTVAL  NOT NULL ,
+	productId            NUMBER(10)  NOT NULL ,
+	reviewCreatedAt      DATE  DEFAULT SYSDATE  NOT NULL ,
+	reviewUpdatedAt      DATE  DEFAULT SYSDATE  NOT NULL ,
+	reviewText           VARCHAR2(300)  NOT NULL ,
+	rating               FLOAT  DEFAULT 0.0  NOT NULL  CONSTRAINT  Validation_Rule_Rating_1649626707 CHECK (rating BETWEEN 0.0 AND 5.0),
+	userId               VARCHAR2(20)  NOT NULL 
+);
+
+CREATE UNIQUE INDEX XPKREVIEW ON MEAL_REVIEW
+(reviewId   ASC);
+
+ALTER TABLE MEAL_REVIEW
+	ADD CONSTRAINT  XPKREVIEW PRIMARY KEY (reviewId);
+
+ALTER TABLE MEAL_ORDER
+	ADD (
+CONSTRAINT R_6 FOREIGN KEY (userId) REFERENCES MEAL_USER (userId));
+
+ALTER TABLE MEAL_ORDER_PRODUCT
+	ADD (
+CONSTRAINT R_24 FOREIGN KEY (orderId) REFERENCES MEAL_ORDER (orderId));
+
+ALTER TABLE MEAL_ORDER_PRODUCT
+	ADD (
+CONSTRAINT R_25 FOREIGN KEY (productId) REFERENCES MEAL_PRODUCT (productId));
+
+ALTER TABLE MEAL_CART_PRODUCT
+	ADD (
+CONSTRAINT R_22 FOREIGN KEY (productId) REFERENCES MEAL_PRODUCT (productId));
+
+ALTER TABLE MEAL_CART_PRODUCT
+	ADD (
+CONSTRAINT R_26 FOREIGN KEY (userId) REFERENCES MEAL_USER (userId));
+
+ALTER TABLE MEAL_REVIEW
+	ADD (
+CONSTRAINT R_10 FOREIGN KEY (productId) REFERENCES MEAL_PRODUCT (productId));
+
+ALTER TABLE MEAL_REVIEW
+	ADD (
+CONSTRAINT R_7 FOREIGN KEY (userId) REFERENCES MEAL_USER (userId));
+
+DROP PROCEDURE Stored_Procedure_436;
+
+CREATE  PROCEDURE Stored_Procedure_436
+
+--   (<argument name> <in out nocopy> <argument datatype> <default value>)
+AS
+BEGIN
+   -- 프로시저의 실제 로직을 추가하거나, 빈 프로시저로 둡니다.
+   NULL; -- 프로시저가 비어있음을 명시합니다.
+END;
+/
+
+
