@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
-import model.dao.ReviewManager; // ReviewManager 클래스를 import
+import model.service.ReviewManager; // ReviewManager 클래스를 import
 import model.domain.Review; // Review 클래스를 import
 
 public class ReviewServlet extends HttpServlet {

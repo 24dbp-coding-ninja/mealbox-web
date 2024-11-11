@@ -3,7 +3,7 @@ package controller.review;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
-import model.dao.ReviewManager;
+import model.service.ReviewManager;
 
 public class DeleteReviewController implements Controller {
     private ReviewManager reviewManager;

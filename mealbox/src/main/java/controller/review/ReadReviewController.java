@@ -1,6 +1,6 @@
 package controller.review;
 
-import model.dao.ReviewManager;
+import model.service.ReviewManager;
 import model.domain.Review;
 import javax.servlet.*;
 import javax.servlet.http.*;
