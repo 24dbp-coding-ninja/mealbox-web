@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
+import controller.product.*;
 import controller.comm.*;
 //import controller.purchase.*;
 import controller.review.*;
@@ -59,6 +60,10 @@ public class RequestMapping {
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
         mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
+        
+        // 윤지-main 및 admin
+        mappings.put("/main", new ListProductController());
+        mappings.put("/admin", new ReadProductController());
         
         // 고은 -myPage
         mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));
