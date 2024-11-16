@@ -27,7 +27,7 @@ public class UserDAO {
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT password, name, email, phone, address ");
 		query.append("FROM MEAL_USER ");
-		query.append("WHERE name=?"); //이거 나중에 userid로 바꿔야함. 현재 userid와 username이 db에서 엉켜있음.            
+		query.append("WHERE userid=?");          
 		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {

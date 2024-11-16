@@ -6,16 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
-import controller.cartProduct.AddCartProductController;
-import controller.cartProduct.CalculateTotalCartPriceController;
-import controller.cartProduct.RemoveCartProductController;
-import controller.cartProduct.UpdateCartProductController;
-import controller.cartProduct.ViewCartController;
+import controller.cartProduct.*;
 import controller.comm.*;
-import controller.order.CreateOrderController;
-import controller.order.UpdateOrderController;
-import controller.orderProduct.CreateOrderProductController;
-import controller.orderProduct.UpdateOrderProductController;
+import controller.order.*;
+import controller.orderProduct.*;=
+import controller.product.*;
+import controller.comm.*;
+import controller.review.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -50,6 +47,11 @@ public class RequestMapping {
       //  mappings.put("/community/create", new CreateCommunityController());
       //  mappings.put("/community/update", new UpdateCommunityController());
         
+        // 리뷰 관련 매핑 추가
+        mappings.put("/review/items", new ForwardController("/review/reviewForm.jsp"));
+        mappings.put("/review/create", new CreateReviewController());
+        mappings.put("/review/update", new UpdateReviewController());
+        mappings.put("/review/delete", new DeleteReviewController());
         
         // 여기서부터 코드닌자 코드 추가
         //영선-로그인, 회원가입, adminUserPage
@@ -61,6 +63,10 @@ public class RequestMapping {
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
         mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
+        
+        // 윤지-main 및 admin
+        mappings.put("/main", new ListProductController());
+        mappings.put("/admin", new ReadProductController());
         
         // 고은 -myPage
         mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));

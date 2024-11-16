@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" type="text/css" href="css/admin.css" />
-    <script src="scripts/includeHTML.js"></script>
+    <!-- <script src="scripts/includeHTML.js"></script>
     <script src="./scripts/sidebar.js"></script> -->
     <title>상품 관리 어드민 페이지</title>
   </head>
@@ -39,6 +39,7 @@
           </span>
           <span>상품코드</span>
           <span>이미지</span>
+          <span>설명</span>
           <span>상품명</span>
           <span>판매가격</span>
           <span>재고</span>
@@ -54,6 +55,7 @@
             <div>
               <input type="file" id="newThumb" />
             </div>
+            <div><textarea id="newDescription" rows="3"></textarea></div>
             <div><input type="text" id="newName" /></div>
             <div><input type="text" id="newPrice" /></div>
             <div><input type="text" id="newStock" /></div>
@@ -86,6 +88,7 @@
             <div>
               <input type="file" id="thumb" />
             </div>
+            <div><textarea id="description" rows="3">${product.description}</textarea></div>
             <div><input type="text" id="name" value="${product.name}" /></div>
             <div><input type="text" id="price" value="${product.price}원" /></div>
             <div><input type="text" id="stock" value="${product.stock}" /></div>
@@ -93,10 +96,10 @@
             <div>${product.averageReview}</div>
             <div>
               <select name="foodTypeCategory">
-                <option value="1" <c:if test="${product.categoryType eq '양식'}">selected</c:if>>양식</option>
-                <option value="2" <c:if test="${product.categoryType eq '중식'}">selected</c:if>>중식</option>
-                <option value="3" <c:if test="${product.categoryType eq '분식'}">selected</c:if>>분식</option>
-                <option value="4" <c:if test="${product.categoryType eq '뭔식'}">selected</c:if>>뭔식</option>
+                <option value="1" <c:if test="${product.categoryType eq 1}">selected</c:if>>양식</option>
+                <option value="2" <c:if test="${product.categoryType eq 2}">selected</c:if>>중식</option>
+                <option value="3" <c:if test="${product.categoryType eq 3}">selected</c:if>>분식</option>
+                <option value="4" <c:if test="${product.categoryType eq 4}">selected</c:if>>뭔식</option>
               </select>
             </div>
             <div>

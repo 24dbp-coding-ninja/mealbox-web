@@ -15,7 +15,7 @@
 
   <properties>
    		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp.version>2.3.3</jsp.version>
 		<jstl.version>1.2</jstl.version>
@@ -88,12 +88,6 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
-			<groupId>dbp</groupId>
-			<artifactId>Lab3-JDBC</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>-->
-  </dependencies>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
