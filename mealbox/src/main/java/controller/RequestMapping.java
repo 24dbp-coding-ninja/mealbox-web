@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
+import controller.cartProduct.*;
+import controller.comm.*;
+import controller.order.*;
+import controller.orderProduct.*;=
 import controller.product.*;
 import controller.comm.*;
-//import controller.purchase.*;
 import controller.review.*;
 
 public class RequestMapping {
@@ -68,11 +71,22 @@ public class RequestMapping {
         // 고은 -myPage
         mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));
 
-        //고은-주문내역, 장바구니, 구매하기
+        // 고은-장바구니 관련 request URI 추가
+        mappings.put("/cart/add", new AddCartProductController());
+        mappings.put("/cart/update", new UpdateCartProductController());
+        mappings.put("/cart/remove", new RemoveCartProductController());
+        mappings.put("/cart/view", new ViewCartController());
+        mappings.put("/cart/totalPrice", new CalculateTotalCartPriceController());
         mappings.put("/cart/cartList",new ForwardController("/cart/cartPage.jsp"));
-        mappings.put("/purchase/purchase", new ForwardController("/purchase/purchasePage.jsp"));
+        
+        // 고은-주문 관련 request URI 추가
+        mappings.put("/order/create", new CreateOrderController()); // 주문하기 주문 정보 저장
+        mappings.put("/order/update", new UpdateOrderController()); // 주문 정보 수정
+        mappings.put("/orderProduct/update", new UpdateOrderProductController()); // 주문 상품 수정
+        mappings.put("/orderProduct/create", new CreateOrderProductController()); // 주문하기 주문 상품 저장
+        mappings.put("/purchase/purchase", new ForwardController("/purchase/purchasePage.jsp"));  // 주문하기
+        mappings.put("/purchase/purchaseUpdate", new ForwardController("/purchase/purchaseUpdatePage.jsp"));  // 주문하기
         mappings.put("/purchase/purchaseList", new ForwardController("/purchase/orderListPage.jsp"));
-
         
         logger.info("Initialized Request Mapping!");
     }

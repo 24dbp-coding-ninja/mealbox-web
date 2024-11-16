@@ -208,14 +208,13 @@ public class OrderDAO {
 	
 	/**
 	 * 특정 사용자가 주문한 주문 정보들을 검색하여 List에 저장 및 반환
-	 * 프로젝트에는 포함되지 않는 기능
 	 * 이후 추가될 수 있음
 	 */
 	public List<Order> findOrdersInUser(int userId) throws SQLException {
         String sql = "SELECT orderId, orderAt, purchaser, purPhone, recipient, recPhone, deliveryAddress, totalPrice, deliveryDate " 
       		   + "FROM MEAL_ORDER o LEFT OUTER JOIN MEAL_USER u ON o.userId = u.userId "
-      		   + "ORDER BY orderId "
-      		   + "WHERE userId = ?";                          
+      		   + "WHERE userId = ? "
+      		   + "ORDER BY orderId";                          
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {
@@ -242,5 +241,26 @@ public class OrderDAO {
 			jdbcUtil.close();		// resource 반환
 		}
 		return null;
+	}
+	
+	/**
+	 * 주어진 주문 ID에 해당하는 사용자가 존재하는지 검사 
+	 */
+	public boolean existingOrder(int orderId) throws SQLException {
+		String sql = "SELECT count(*) FROM MEAL_ORDER WHERE orderId=?";      
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {orderId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				return (count == 1 ? true : false);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return false;
 	}
 }
