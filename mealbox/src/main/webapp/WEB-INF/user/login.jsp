@@ -13,15 +13,11 @@
 	<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
 	<!--login.js-->
 	<script src="../js/login.js"></script>
-	<!--html include-->
-	<script src="../js/includeHTML.js"></script>
-	<script src="../js/sidebar.js"></script>
 	<!-- 할일) User3 loginForm 참고하여 script 넣기 -->
 	<title>로그인</title>
 </head>
 <body>
-	<nav include-html="../html/nav.html"></nav>
-    <script>includeHTML();</script>
+    <jsp:include page="../nav.jsp"/>
 
     <!--할일)submit하면 form은 jsp파일로 넘겨지고 jsp파일에서 join_success.html로 redirect하도록 구현하기-->
     <!--문제점)post로 하면 visual studio code에서 실행이 잘 안됨. 그냥 크롬으로 열었을 때는 post로 해도 동작함.-->

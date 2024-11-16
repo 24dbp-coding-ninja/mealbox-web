@@ -10,14 +10,10 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--joinSuccess.css-->
 <link rel="stylesheet" type="text/css" href="../../css/joinSuccess.css"/>
-<!--html include-->
-<script src="../js/includeHTML.js"></script>
-<script src="../js/sidebar.js"></script>
 <title>회원가입 완료</title>
 </head>
 <body>
-    <nav include-html="../html/nav.html"></nav>
-    <script>includeHTML();</script>
+	<jsp:include page="../nav.jsp"/>
 
     <div id="container">
         <!--회원가입 헤더 부분-->

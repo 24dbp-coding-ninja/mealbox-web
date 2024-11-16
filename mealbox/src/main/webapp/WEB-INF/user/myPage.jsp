@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/myPage.css" />
   </head>
   <body>
-    <div id="nav">nav</div>
+    <jsp:include page="../nav.jsp"/>
     <div id="container">
     	<div id="title">마이페이지</div>
     	<div id="line">
