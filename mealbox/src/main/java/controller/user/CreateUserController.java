@@ -22,16 +22,6 @@ public class CreateUserController implements Controller {
     	
     	UserManager manager = UserManager.getInstance();
 
-       	/*if (request.getMethod().equals("GET")) {	
-    		// GET request: 회원정보 등록 form 요청	
-    		log.debug("join Request");
-    		
-    		//List<Community> commList = manager.findCommunityList();	// 커뮤니티 리스트 검색
-			//request.setAttribute("commList", commList);	
-    		 
-			return "/user/join.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
-	    }*/
-
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
 			request.getParameter("id"),
@@ -45,13 +35,13 @@ public class CreateUserController implements Controller {
 
 		try {
 			manager.create(user);
-	        return "redirect:/user/joinSuccess.jsp";	// 성공 시 joinSuccess.jsp로 포워딩
+	        return "redirect:/user/joinSuccess/form";	// 성공 시 joinSuccess.jsp로 포워딩
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("createFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("user", user);
-			return "/user/join.jsp";
+			return "redirect:/user/join/form";
 		}
     }
 }
