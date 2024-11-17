@@ -1,6 +1,6 @@
 <!-- response.sendRedirect(request.getContextPath() + "/review/items"); -->
 
-<% response.sendRedirect(request.getContextPath() + "/user/login/form"); %>
+<% response.sendRedirect(request.getContextPath() + "/user/readUser"); %>
 <!-- 가장 맨 처음에 나오는 페이지이기 때문에 나중에 메인페이지로 바꿔줘야함. -->
 
 <!-- 시험용 -->
@@ -13,3 +13,4 @@
 <!-- response.sendRedirect(request.getContextPath() + "/purchase/purchaseList"); -->
 <%-- <% response.sendRedirect(request.getContextPath() + "/cart/cartList"); %> --%>
 <%-- <% response.sendRedirect(request.getContextPath() + "/user/readUser"); %> --%>
+<!-- response.sendRedirect(request.getContextPath() + "/user/updateUser/form"); -->

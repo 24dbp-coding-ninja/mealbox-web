@@ -30,14 +30,14 @@ public class RequestMapping {
         mappings.put("/user/view", new ViewUserController());
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
-//      mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
-//      mappings.put("/user/register", new RegisterUserController());
+//      //mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
+//      //mappings.put("/user/register", new RegisterUserController());
         //mappings.put("/user/register", new RegisterUserController());
 
         // 사용자 정보 수정 폼 요청과 수정 요청 처리 병합
-//      mappings.put("/user/update/form", new UpdateUserFormController());
-//      mappings.put("/user/update", new UpdateUserController());        
-        mappings.put("/user/update", new UpdateUserController());
+//      //mappings.put("/user/update/form", new UpdateUserFormController());
+//      //mappings.put("/user/update", new UpdateUserController());        
+        //mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/delete", new DeleteUserController());
         
         // 리뷰 관련 매핑 추가
@@ -54,7 +54,8 @@ public class RequestMapping {
         mappings.put("/user/join/form", new ForwardController("/user/join.jsp"));
         mappings.put("/user/join", new CreateUserController());
         mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
-        mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
+        mappings.put("/user/updateUser/form", new ForwardController("/user/updatePage.jsp"));
+        mappings.put("/user/updateUser", new UpdateUserController());
         mappings.put("/user/listUser", new ListUserController());
         
         // 윤지-main 및 admin, product Detail 페이지

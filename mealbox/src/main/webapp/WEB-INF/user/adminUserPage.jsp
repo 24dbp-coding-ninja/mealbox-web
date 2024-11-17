@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--join.css: css경로 변경하지 말 것-->
-<link rel="stylesheet" type="text/css" href="../css/adminUserPage.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUserPage.css"/>
 <title>회원관리페이지</title>
 </head>
 <body>

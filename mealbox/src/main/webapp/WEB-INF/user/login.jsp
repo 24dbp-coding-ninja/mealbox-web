@@ -10,7 +10,7 @@
 	<link rel="preconnect" href="https://rsms.me/" />
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	<!--login.css-->
-	<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
 	<script>
 	function login() {
 		if (form.userId.value == "") {

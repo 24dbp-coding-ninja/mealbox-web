@@ -22,8 +22,7 @@ public class LoginController implements Controller {
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, userId);
-           
-           
+            
             if(userId.equals("admin")) {
             	//admin 로그인 시
             	System.out.println("admin으로 로그인했습니다.");
@@ -31,6 +30,7 @@ public class LoginController implements Controller {
             }else {
             	 //일반회원 로그인 시
             	return "redirect:/main"; //오류 시, redirect:뒤에 띄어쓰기 되어있는지 확인!
+            	//return "redirect:/user/readUser"; //updateUser시험용
             }
             
 		} catch (Exception e) {

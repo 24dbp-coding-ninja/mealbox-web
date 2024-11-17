@@ -9,17 +9,14 @@
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <!--join.css-->
-    <link rel="stylesheet" type="text/css" href="../css/updatePage.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/updatePage.css"/>
     <!--join.js-->
     <script src="../js/join.js"></script>
 <title>내 정보 수정</title>
 </head>
 <body>
 	<jsp:include page="../nav.jsp"/>
-
-    <!--할일)submit하면 form은 jsp파일로 넘겨지고 jsp파일에서 join_success.html로 redirect하도록 구현하기-->
-    <!--문제점)post로 하면 visual studio code에서 실행이 잘 안됨. 그냥 크롬으로 열었을 때는 post로 해도 동작함.-->
-    <form id="container" action="../html/joinSuccess.html" method="get">
+    <form id="container" action="/mealbox/user/updateUser" method="POST">
         <!--회원가입 헤더 부분-->
         <header>
             <h1 id="join_title" align="center">내 정보 수정</h1>
@@ -38,37 +35,34 @@
                 <div><label for="address">주소</label></div>
             </div>
             <div id="join_input">
-                <!--할일)제한조건 구현하기-->
-                <input type="text" id="id" value="hihihihihi">
+                <input type="text" id="id" name="id" value="${user.id}">
                 <div class="text" id="text_id">이미 존재하는 아이디입니다.</div>
-                <input type="password" id="password" required>
+                <input type="password" id="password" name="password" value="${user.password}" required>
                 <div class="text" id="text_password">특수문자, 소문자, 숫자를 포함하며 8자 이상이어야 합니다.</div>
                 <input type="password" id="check_password" required>
                 <div class="text" id="text_checkPassword">비밀번호가 일치하지 않습니다.</div>
-                <input type="text" id="name" required>
+                <input type="text" id="name" name="name" value="${user.name}" required>
                 <div class="text" id="text_name">이름은 필수입력 항목입니다.</div>
                 <div id="phone">
-                    <input type="text" id="phone_part1" maxlength="3" required>
+                    <input type="text" id="phone_part1" name="phone_part1" value="${user.phone}" maxlength="3" required>
                     <span>-</span>
-                    <input type="text" id="phone_part2" maxlength="4" required>
+                    <input type="text" id="phone_part2" name="phone_part2" value="${user.phone}" maxlength="4" required>
                     <span>-</span>
-                    <input type="text" id="phone_part3" maxlength="4" required>
+                    <input type="text" id="phone_part3" name="phone_part3" value="${user.phone}" maxlength="4" required>
                 </div>
                 <div class="text" id="text_phone">전화번호는 필수입력 항목입니다.</div>
                 <div id="email">
-                    <input type="text" id="email_id">
+                    <input type="text" id="email_id" name="email_id" value="${user.email}">
                     <span>@</span>
-                    <input type="text" id="email_domain">
+                    <input type="text" id="email_domain" name="email_domain" value="${user.email}">
                 </div>
                 <div class="text"><font color="white">비어있습니다</font></div>
-                <input type="text" id="address">
+                <input type="text" id="address" name="address">
                 <div class="text"><font color="white">비어있습니다</font></div>
             </div>
             <div id="join_checkID"><button type="button" class="style_button" id="check_ID" onclick="checkValidId()">중복확인</button></div>
         </main>
         <div id="buttons">
-            <!--할일)버튼 링크는 나중에 js파일에서 함수화해가지고 연결하여 가독성 높이기-->
-            <!--버튼 태그에 type을 명시하는 이유: button태그의 기본값이 submit이기 때문에-->
             <button type="button" class="style_button" id="before" onclick="history.back();">취소</button>
             <input type="submit" class="style_button" id="after" value="저장">
         </div>
