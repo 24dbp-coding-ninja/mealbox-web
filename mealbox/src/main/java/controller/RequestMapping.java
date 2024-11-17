@@ -61,9 +61,10 @@ public class RequestMapping {
         mappings.put("/user/readUser", new ForwardController("/user/updatePage.jsp"));
         mappings.put("/user/listUser", new ListUserController());
         
-        // 윤지-main 및 admin
+        // 윤지-main 및 admin, product Detail 페이지
         mappings.put("/main", new ListProductController());
         mappings.put("/admin", new ReadProductController());
+        mappings.put("/product/detail", new ProductController());
         
         // 고은 -myPage
         mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));
