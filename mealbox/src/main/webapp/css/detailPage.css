@@ -1,0 +1,147 @@
+:root {
+	font-family: Inter, sans-serif;
+	font-feature-settings: "liga" 1, "calt" 1;
+}
+
+@supports (font-variation-settings: normal) {
+	:root {
+		font-family: InterVariable, sans-serif;
+	}
+}
+
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 80px;
+}
+
+.meal_img {
+	width: 30%;
+	margin-right: 3%;
+}
+
+#product_image {
+	width: 100%;
+}
+
+.details_container {
+	padding: 25px;
+}
+
+#product_name,
+#product_price {
+	font-size: 32px;
+}
+
+.rating,
+price {
+	font-size: larger;
+}
+
+#product_price,
+span {
+	font-weight: bold;
+}
+
+.quantity {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #F6F6F6;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.check_quantity {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.plusOrMinus {
+	display: flex;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	
+	button:hover {
+		cursor: pointer;	
+	}
+	
+	button:active {
+		background-color: lightgray;
+	}
+	
+	input:hover {
+		cursor: default;
+	}
+}
+
+.decrease, .increase {
+	width: 30px;
+	padding: 0 4px;
+	margin: 0 4px;
+	font-size: 16px;
+	border: none;
+	background-color: white;
+}
+
+#quantity {
+	width: 40px;
+	border: none;
+	font-size: 16px;
+	outline: none;
+}
+
+#how_much {
+	font-size: large;
+}
+
+.buy_yet {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.total_price {
+	display: flex;
+	justify-content: space-between;
+	margin-right: 8px;
+}
+
+.maybe_price {
+	width: 110px;
+	height: 20px;
+	font-size: medium;
+}
+
+.total_price {
+	text-align: end;
+	font-size: 28px;
+}
+
+.buy_yet {
+	gap: 8%;
+}
+
+.add_cart,
+.buy_now {
+	width: 257px;
+	height: 52.76px;
+	background-color: #BFB6A9;
+	color: white;
+	text-align: center;
+	font-size: large;
+
+	border-radius: 10px;
+	border: none;
+}
+
+hr {
+	width: 100%;
+	margin: 20px 0;
+}
