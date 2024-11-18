@@ -27,8 +27,7 @@ public class ProductManager {
 	}
 	
 	public List<Product> findProductList() {
-		// TODO : 구현 
-		return null;
+		return productDao.getAllProducts();
 	}
 	
 	public int createProduct(Product product) {

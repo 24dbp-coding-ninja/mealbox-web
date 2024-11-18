@@ -17,7 +17,7 @@
  		<title>Mealbox</title>
  	</head>
  	<body>
- 	<%-- <%@ include file="../nav.jsp" %> --%>
+ 	<%@ include file="../nav.jsp" %>
     <div id="mainContainer">
     <!-- 상품 정렬 방식 -->
       <ul id="orderContainer">

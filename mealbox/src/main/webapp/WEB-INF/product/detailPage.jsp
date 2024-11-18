@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/detailPage.css">
 </head>
 <body>
+ 	<%@ include file="../nav.jsp" %>
 	<div class="container meal">
 		<div class="meal_img">
 			<img id="product_image" src="<c:out value='${product.thumb}'/>"

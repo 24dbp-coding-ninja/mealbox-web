@@ -10,20 +10,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" type="text/css" href="css/admin.css" />
-    <!-- <script src="scripts/includeHTML.js"></script>
-    <script src="./scripts/sidebar.js"></script> -->
     <title>상품 관리 어드민 페이지</title>
   </head>
   <body>
-    <!-- <nav include-html="nav.html"></nav>
-    <script>
-      includeHTML();
-    </script> -->
-
+ 	<%@ include file="../nav.jsp" %>
     <div id="adminContainer">
       <h1>상품 관리</h1>
       <div id="selectedActionContainer">
