@@ -16,7 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../nav.jsp"/>
-    <form id="container" action="/mealbox/user/join" method="POST">
+    <form id="container" action="/mealbox/user/createUser" method="POST">
         <!--회원가입 헤더 부분-->
         <header>
             <h1 id="join_title" align="center">회원가입</h1>

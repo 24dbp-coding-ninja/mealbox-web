@@ -39,12 +39,12 @@
             <input type="text" id="id" name="userid" placeholder="아이디를 입력해주세요">
             <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요">
         </main>
-        <div id="login_buttons">
+        <div class="login_buttons">
         	<input type="submit" id="button_login" value="로그인" onClick="login()">
         </div>
     </form>
     <form method="GET" action="/mealbox/user/join/form">
-    	<div id="login_buttons">
+    	<div class="login_buttons">
     		<button type="submit" id="button_join">회원가입</button>
     	</div>
     </form>

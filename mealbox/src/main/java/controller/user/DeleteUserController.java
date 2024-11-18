@@ -16,7 +16,7 @@ public class DeleteUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		String deleteId = request.getParameter("userId");
+		/*String deleteId = request.getParameter("userId");
     	log.debug("Delete User : {}", deleteId);
 
 		UserManager manager = UserManager.getInstance();		
@@ -35,7 +35,7 @@ public class DeleteUserController implements Controller {
 				return "redirect:/user/logout";		// logout 처리
 		}
 		
-		/* 삭제가 불가능한 경우 */
+		// 삭제가 불가능한 경우 
 		User user = manager.findUser(deleteId);	// 사용자 정보 검색
 		request.setAttribute("user", user);						
 		request.setAttribute("deleteFailed", true);
@@ -43,6 +43,14 @@ public class DeleteUserController implements Controller {
 				   ? "시스템 관리자 정보는 삭제할 수 없습니다."		
 				   : "타인의 정보는 삭제할 수 없습니다.";													
 		request.setAttribute("exception", new IllegalStateException(msg));            
-		return "/user/view.jsp";		// 사용자 보기 화면으로 이동 (forwarding)	
+		return "/user/view.jsp";		// 사용자 보기 화면으로 이동 (forwarding)
+		*/
+    	
+    	UserManager manager = UserManager.getInstance();
+    	HttpSession session = request.getSession();
+    	String loginId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
+    	manager.remove(loginId);
+    	
+    	return "redirect:/main";
 	}
 }

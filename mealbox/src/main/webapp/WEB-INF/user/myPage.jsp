@@ -30,6 +30,9 @@
 			<form action="/mealbox/user/updateUser" method="GET">
 				<button type="submit">내 정보 수정하기</button>
 			</form>
+			<form action="/mealbox/user/deleteUser" method="GET">
+				<button type="submit">탈퇴하기</button>
+			</form>
     	</div>
     </div>
   </body>

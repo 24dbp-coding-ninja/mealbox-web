@@ -38,7 +38,7 @@ public class RequestMapping {
 //      //mappings.put("/user/update/form", new UpdateUserFormController());
 //      //mappings.put("/user/update", new UpdateUserController());        
         //mappings.put("/user/update", new UpdateUserController());
-        mappings.put("/user/delete", new DeleteUserController());
+        //mappings.put("/user/delete", new DeleteUserController());
         
         // 리뷰 관련 매핑 추가
         mappings.put("/review/items", new ForwardController("/review/reviewForm.jsp"));
@@ -52,10 +52,9 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/join/form", new ForwardController("/user/join.jsp"));
-        mappings.put("/user/join", new CreateUserController());
-        mappings.put("/user/joinSuccess/form", new ForwardController("/user/joinSuccess.jsp"));
-        mappings.put("/user/updateUser/form", new ForwardController("/user/updatePage.jsp"));
+        mappings.put("/user/createUser", new CreateUserController());
         mappings.put("/user/updateUser", new UpdateUserController());
+        mappings.put("/user/deleteUser", new DeleteUserController());
         mappings.put("/user/listUser", new ListUserController());
         
         // 윤지-main 및 admin, product Detail 페이지
