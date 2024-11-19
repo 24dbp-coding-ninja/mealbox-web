@@ -9,15 +9,11 @@
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--joinSuccess.css-->
-<link rel="stylesheet" type="text/css" href="../../css/joinSuccess.css"/>
-<!--html include-->
-<script src="../js/includeHTML.js"></script>
-<script src="../js/sidebar.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/joinSuccess.css"/>
 <title>회원가입 완료</title>
 </head>
 <body>
-    <nav include-html="../html/nav.html"></nav>
-    <script>includeHTML();</script>
+	<jsp:include page="../nav.jsp"/>
 
     <div id="container">
         <!--회원가입 헤더 부분-->
@@ -41,9 +37,12 @@
             회원가입이 완료되었습니다.</div>
         </main>
         <div id="joinSuccess_buttons">
-            <!--할일)버튼 링크는 나중에 js파일에서 함수화해가지고 연결하여 가독성 높이기-->
-            <button class="style_button" onclick="location.href='../html/login.html'">로그인</button>
-            <button class="style_button" onclick="location.href='../html/main.html'">메인으로</button>
+            <form action="/mealbox/user/login/form" method="GET">
+                <button class="style_button">로그인</button>
+            </form>
+            <form action="/mealbox/main" method="GET">
+            	<button class="style_button">메인으로</button>
+            </form>
         </div>
     </div>
 </body>

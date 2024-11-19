@@ -114,6 +114,7 @@ hr{
     margin: 30px;
 }
 .style_button{
+	display:inline;
     width: 100px;
     height: 40px;
     font-size: 15px;

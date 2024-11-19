@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*joinSuccess.html에 적용되는 css파일*/
 /***초기화***/
 *{
@@ -109,10 +110,15 @@ hr{
 #joinSuccess_buttons{
     text-align: center;
 }
+.button_form{
+    display:inline-block;
+    margin: 0 10px;
+}
 #joinSuccess_buttons > button{
     margin: 30px;
 }
 .style_button{
+    display:block;
     width: 100px;
     height: 40px;
     font-size: 15px;

@@ -11,10 +11,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myPage</title>
-	<link rel="stylesheet" href="../css/myPage.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" />
   </head>
   <body>
-    <div id="nav">nav</div>
+    <jsp:include page="../nav.jsp"/>
     <div id="container">
     	<div id="title">마이페이지</div>
     	<div id="line">
@@ -27,8 +27,11 @@
 			<form action="/mealbox/purchase/purchaseList" method="GET">
 				<button type="submit">주문목록 바로가기</button>
 			</form>
-			<form action="/mealbox/user/update" method="GET">
+			<form action="/mealbox/user/updateUser" method="GET">
 				<button type="submit">내 정보 수정하기</button>
+			</form>
+			<form action="/mealbox/user/deleteUser" method="GET">
+				<button type="submit">탈퇴하기</button>
 			</form>
     	</div>
     </div>

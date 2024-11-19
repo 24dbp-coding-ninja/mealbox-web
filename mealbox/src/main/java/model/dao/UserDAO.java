@@ -27,7 +27,7 @@ public class UserDAO {
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT password, name, email, phone, address ");
 		query.append("FROM MEAL_USER ");
-		query.append("WHERE name=?"); //이거 나중에 userid로 바꿔야함. 현재 userid와 username이 db에서 엉켜있음.            
+		query.append("WHERE userid=?");          
 		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 
 		try {
@@ -37,8 +37,8 @@ public class UserDAO {
 					userId,
 					rs.getString("password"),
 					rs.getString("name"),
-					rs.getString("email"),
 					rs.getString("phone"),
+					rs.getString("email"),
 					rs.getString("address"));
 				return user;
 			}
@@ -50,14 +50,13 @@ public class UserDAO {
 		return null;
 	}
 	
-	//미완 코드
 	/**
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO MEAL_USER VALUES (?, ?, ?, ?, ?, ?)";		
+		String sql = "INSERT INTO MEAL_USER (userid, password, name, phone, email, address, role, createdat, updatedat) VALUES (?, ?, ?, ?, ?, ?, 0, SYSDATE, SYSDATE)";		
 		Object[] param = new Object[] {user.getId(), user.getPassword(), 
-						user.getName(), user.getEmail(), user.getPhone(), 
+						user.getName(),  user.getPhone(), user.getEmail(), 
 						user.getAddress() };				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 						
@@ -79,10 +78,10 @@ public class UserDAO {
 	 */
 	public int update(User user) throws SQLException {
 		String sql = "UPDATE MEAL_USER "
-					+ "SET password=?, name=?, email=?, phone=? address=?"
+					+ "SET password=?, name=?, phone=?, email=?, address=?, updatedat=SYSDATE "
 					+ "WHERE userid=?";
 		Object[] param = new Object[] {user.getPassword(), user.getName(), 
-					user.getEmail(), user.getPhone(), user.getAddress(), 
+					user.getPhone(), user.getEmail(),  user.getAddress(),
 					user.getId()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			
@@ -122,13 +121,12 @@ public class UserDAO {
 	}
 
 	
-
 	/**
 	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 	 */
 	public List<User> findUserList() throws SQLException {
-        String sql = "SELECT userId, name, email, address" 
-        		   + "FROM MEAL_USER"
+        String sql = "SELECT userId, password, name, phone, address, email " 
+        		   + "FROM MEAL_USER "
         		   + "ORDER BY userId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
@@ -138,10 +136,10 @@ public class UserDAO {
 			while (rs.next()) {
 				User user = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
 					rs.getString("userId"),
-					null,
+					rs.getString("password"),
 					rs.getString("name"),
+					rs.getString("phone"), 
 					rs.getString("email"),
-					null,
 					rs.getString("address"));
 				userList.add(user);				// List에 User 객체 저장
 			}		

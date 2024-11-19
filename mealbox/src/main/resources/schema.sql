@@ -22,12 +22,6 @@ CREATE SEQUENCE Sequence_reviewId
 	INCREMENT BY 10
 	START WITH 1000;
 
-DROP SEQUENCE Sequence_userId;
-
-CREATE SEQUENCE Sequence_userId
-	INCREMENT BY 10
-	START WITH 1000;
-
 DROP TABLE MEAL_ORDER_PRODUCT CASCADE CONSTRAINTS PURGE;
 
 DROP TABLE MEAL_ORDER CASCADE CONSTRAINTS PURGE;
@@ -51,7 +45,7 @@ CREATE TABLE MEAL_ORDER
 	deliveryAddress      VARCHAR2(60)  NOT NULL ,
 	totalPrice           NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_1041850835 CHECK (totalPrice >= 0),
 	deliveryDate         DATE  DEFAULT SYSDATE+2  NOT NULL ,
-	userId               NUMBER(10)  NOT NULL 
+	userId               VARCHAR2(20)  NOT NULL 
 );
 
 CREATE UNIQUE INDEX XPKORDER ON MEAL_ORDER
@@ -99,19 +93,19 @@ ALTER TABLE MEAL_ORDER_PRODUCT
 
 CREATE TABLE MEAL_USER
 (
-	name                 VARCHAR2(20)  NOT NULL ,
+	userId               VARCHAR2(20)  NOT NULL ,	
 	password             VARCHAR2(40)  NOT NULL ,
+	name                 VARCHAR2(20)  NOT NULL ,
 	phone                VARCHAR2(13)  NOT NULL ,
 	email                VARCHAR2(40)  NOT NULL ,
 	address              VARCHAR2(60)  NOT NULL ,
 	role                 NUMBER(2)  NOT NULL ,
-	userId               NUMBER(10)  DEFAULT Sequence_userId.NEXTVAL  NOT NULL ,
 	createdAt            DATE  DEFAULT SYSDATE  NOT NULL ,
 	updatedAt            DATE  DEFAULT SYSDATE  NOT NULL 
 );
 
-CREATE UNIQUE INDEX XPKUSER ON MEAL_USER
-(userId   ASC);
+/*CREATE UNIQUE INDEX XPKUSER ON MEAL_USER
+(userId   ASC);*/
 
 ALTER TABLE MEAL_USER
 	ADD CONSTRAINT  XPKUSER PRIMARY KEY (userId);
@@ -121,14 +115,14 @@ CREATE TABLE MEAL_CART_PRODUCT
 	productId            NUMBER(10)  NOT NULL ,
 	quantity             NUMBER(3)  DEFAULT 1  NOT NULL  CONSTRAINT  Validation_Rule_Quantity_2005108216 CHECK (quantity BETWEEN 1 AND 300),
 	cartItemPrice        NUMBER(20)  DEFAULT 0  NOT NULL  CONSTRAINT  Validation_Rule_Price_2047314235 CHECK (cartItemPrice >= 0),
-	userId               NUMBER(10)  NOT NULL 
+	userId               VARCHAR2(20)  NOT NULL 
 );
 
 CREATE UNIQUE INDEX XPKCART_PRODUCT ON MEAL_CART_PRODUCT
-(userId   ASC,productId   ASC);
+(userId ASC, productId   ASC);
 
 ALTER TABLE MEAL_CART_PRODUCT
-	ADD CONSTRAINT  XPKCART_PRODUCT PRIMARY KEY (userId,productId);
+	ADD CONSTRAINT  XPKCART_PRODUCT PRIMARY KEY (userId, productId);
 
 CREATE TABLE MEAL_REVIEW
 (
@@ -138,7 +132,7 @@ CREATE TABLE MEAL_REVIEW
 	reviewUpdatedAt      DATE  DEFAULT SYSDATE  NOT NULL ,
 	reviewText           VARCHAR2(300)  NOT NULL ,
 	rating               FLOAT  DEFAULT 0.0  NOT NULL  CONSTRAINT  Validation_Rule_Rating_1649626707 CHECK (rating BETWEEN 0.0 AND 5.0),
-	userId               NUMBER(10)  NOT NULL 
+	userId               VARCHAR2(20)  NOT NULL 
 );
 
 CREATE UNIQUE INDEX XPKREVIEW ON MEAL_REVIEW

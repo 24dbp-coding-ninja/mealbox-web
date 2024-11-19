@@ -9,15 +9,11 @@
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--join.css: css경로 변경하지 말 것-->
-<link rel="stylesheet" type="text/css" href="../css/adminUserPage.css"/>
-<!--html include-->
-<script src="../js/includeHTML.js"></script>
-<script src="../js/sidebar.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUserPage.css"/>
 <title>회원관리페이지</title>
 </head>
 <body>
-	<nav include-html="../html/nav.html"></nav>
-	<script>includeHTML();</script>
+	<jsp:include page="../nav.jsp"/>
     <div id = "container">
         <!--adminUserPage header부분-->
         <header>

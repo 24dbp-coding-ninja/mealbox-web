@@ -172,4 +172,27 @@ public class OrderProductDAO {
 		}
 		return null;
 	}
+	
+	/**
+	 * 특정 주문에 포함된 상품들의 총 금액 계산
+	 */
+	public int calculateTotalPrice(int orderId) throws SQLException {
+	    String sql = "SELECT SUM(quantity * orderItemPrice) AS totalPrice " +
+	                 "FROM MEAL_ORDER_PRODUCT " +
+	                 "WHERE orderId = ?";
+
+	    jdbcUtil.setSqlAndParameters(sql, new Object[]{orderId});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+	        if (rs.next()) {
+	            return rs.getInt("totalPrice"); // 총 금액 반환
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.close(); // 리소스 반환
+	    }
+	    return 0; // 예외 발생 시 0 반환
+	}
 }

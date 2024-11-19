@@ -120,4 +120,25 @@ public class CartProductDAO {
 		}
 		return null;
 	}
+	
+	/**
+	 * 특정 사용자의 장바구니 총 금액 계산
+	 */
+	public int calculateTotalCartPrice(int userId) throws SQLException {
+	    String sql = "SELECT SUM(quantity * cartItemPrice) AS totalPrice " 
+	               + "FROM MEAL_CART_PRODUCT WHERE userId = ?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt("totalPrice"); // 총 금액 반환
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.close(); // resource 반환
+	    }
+	    return 0; // 금액이 없으면 0 반환
+	}
 }

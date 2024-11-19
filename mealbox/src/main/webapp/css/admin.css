@@ -35,14 +35,14 @@ body {
 }
 
 #hr {
-  width: 90%;
+  width: 95%;
   border-bottom: 1px solid black;
-  padding: 4px;
+  padding: 6px;
 }
 
 #formContainer {
-  width: 90%;
-  margin: 12px 0;
+  width: 95%;
+  margin: 14px 0 32px 0;
   border-top: 1px solid black;
   border-right: 1px solid black;
 }
@@ -55,10 +55,15 @@ body {
   font-size: 16px;
 
   span {
-    width: 10%;
+    width: 11%;
     padding: 28px 0;
     text-align: center;
     border-left: 1px solid black;
+  }
+  
+  
+  span:first-child, span:nth-child(2), span:nth-child(8), span:nth-child(9) {
+	  width: 7%;
   }
 }
 
@@ -71,12 +76,13 @@ body {
 
   div {
     height: 100%;
-    width: 10%;
-    padding: 28px 0;
+    width: 11%;
+    padding: 20px 0;
     text-align: center;
     border-left: 1px solid black;
 
     input,
+    textarea,
     select,
     option {
       width: 88%;
@@ -84,10 +90,21 @@ body {
     }
   }
   
-  div:nth-child(2) {
+  div:first-child, div:nth-child(2), div:nth-child(8), div:nth-child(9)  {
+	  width: 7%;
+	  
 	  input {
 		  border: 0px;
 		  text-align: center;
+	  }
+  }
+  
+  div:nth-child(4) {
+	  height: 100%;
+	  padding: 4px 0;
+	  
+	  textarea {
+		  height: 100%;
 	  }
   }
 }
