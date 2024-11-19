@@ -20,7 +20,6 @@ public class ReviewDAO {
 		query.append("FROM MEAL_REVIEW ");
 		query.append("WHERE reviewId=?"); //이거 나중에 userid로 바꿔야함. 현재 userid와 username이 db에서 엉켜있음.            
 		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {reviewId});	// JDBCUtil에 query문과 매개 변수 설정
-
 		
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
@@ -95,7 +94,7 @@ public class ReviewDAO {
     	Review existingReview = findById(review.getReviewId()); 
     	if (existingReview != null) { 
     		existingReview.setRating(review.getRating()); 
-    		existingReview.setText(review.getText()); 
+    		existingReview.setReviewText(review.getReviewText()); 
     		existingReview.setReviewImg(review.getReviewImg()); 
     		return true;
     	} 
