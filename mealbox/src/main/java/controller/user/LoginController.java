@@ -26,8 +26,8 @@ public class LoginController implements Controller {
             if(userId.equals("admin")) {
             	//admin 로그인 시
             	System.out.println("admin으로 로그인했습니다.");
-                //return "redirect:/admin";
-                return "redirect:/user/listUser"; //listUser시험용
+                return "redirect:/admin";
+                //return "redirect:/user/listUser"; //listUser시험용
             }else {
             	 //일반회원 로그인 시
             	return "redirect:/product"; //오류 시, redirect:뒤에 띄어쓰기 되어있는지 확인!

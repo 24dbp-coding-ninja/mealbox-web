@@ -62,13 +62,13 @@ public class DeleteUserController implements Controller {
 	    			manager.remove(deleteId);
 	    		}
     		}
-    		return "redirect:/product";
+    		return "redirect:/user/listUser";
     	}else {
     	//loginId = 일반회원인 경우
     		String deleteId = loginId;
     		log.debug("Delete User : {}", deleteId);
     		manager.remove(deleteId);
-    		return "redirect:/user/listUser";
+    		return "redirect:/product";
     	}
 	}
 }
