@@ -18,10 +18,10 @@ public class ReviewServlet extends HttpServlet {
         reviewManager = new ReviewManager();
         
         // 초기 데이터 추가 (예시)
-        reviewManager.addReview(new Review("gobdoritang", "a", "2024-09-25", 4.0, "진짜 너무 너무 맛있어요!", "../img/gobdoritang.png"));
-        // 추가적인 리뷰들...
-        reviewManager.addReview(new Review("gobdoritang", "b", "2024-09-24", 5.0, "좋은 맛이었어요! 하지만 조금 비쌌어요.", "../img/gobdoritang.png"));
-        reviewManager.addReview(new Review("gobdoritang", "c", "2024-09-23", 3.0, "괜찮은 맛, 하지만 기대에 미치지 못했어요.", "../img/gobdoritang.png"));
+//        reviewManager.addReview(new Review("gobdoritang", "a", "2024-09-25", 4.0, "진짜 너무 너무 맛있어요!", "../img/gobdoritang.png"));
+//        // 추가적인 리뷰들...
+//        reviewManager.addReview(new Review("gobdoritang", "b", "2024-09-24", 5.0, "좋은 맛이었어요! 하지만 조금 비쌌어요.", "../img/gobdoritang.png"));
+//        reviewManager.addReview(new Review("gobdoritang", "c", "2024-09-23", 3.0, "괜찮은 맛, 하지만 기대에 미치지 못했어요.", "../img/gobdoritang.png"));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ReviewServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("reviews.jsp");
         dispatcher.forward(request, response);
 
-        String productId = request.getParameter("productId"); // 클라이언트에서 상품 ID 받기
+        int productId = Integer.parseInt(request.getParameter("productId")); // 클라이언트에서 상품 ID 받기
         double averageScore = reviewManager.calculateAverageScore(productId); // 상품에 대한 평균 평점 계산
         
         // JSON 형태로 평균 평점 응답
@@ -70,12 +70,12 @@ public class ReviewServlet extends HttpServlet {
         String reviewImg = request.getParameter("reviewImg");
 
         // 새로운 리뷰 생성
-        Review newReview = new Review(productId, nickname, date, rating, reviewText, reviewImg);
-        
-        // 리뷰 매니저에 리뷰 추가
-        reviewManager.addReview(newReview);
-
-        // 리뷰 목록 페이지로 리다이렉트
-        response.sendRedirect("ReviewServlet");
+//        Review newReview = new Review(productId, nickname, date, rating, reviewText, reviewImg);
+//        
+//        // 리뷰 매니저에 리뷰 추가
+//        reviewManager.addReview(newReview);
+//
+//        // 리뷰 목록 페이지로 리다이렉트
+//        response.sendRedirect("ReviewServlet");
     }
 }

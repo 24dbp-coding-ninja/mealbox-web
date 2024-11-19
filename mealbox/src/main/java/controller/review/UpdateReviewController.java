@@ -19,7 +19,7 @@ public class UpdateReviewController implements Controller {
         Review review = reviewManager.getReviewById(reviewId);
 
         if (review != null) {
-            review.setProductId(request.getParameter("productId"));
+            review.setProductId(Integer.parseInt(request.getParameter("productId")));
             review.setNickname(request.getParameter("nickname"));
             review.setDate(request.getParameter("date"));
             review.setRating(Double.parseDouble(request.getParameter("rating")));

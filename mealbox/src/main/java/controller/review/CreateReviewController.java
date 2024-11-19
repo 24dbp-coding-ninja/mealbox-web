@@ -15,7 +15,7 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String productId = request.getParameter("productId");
+        int productId = Integer.parseInt(request.getParameter("productId"));
         String nickname = request.getParameter("nickname");
         String profile = request.getParameter("profile");
         String date = request.getParameter("date");
