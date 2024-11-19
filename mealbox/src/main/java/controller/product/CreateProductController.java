@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import model.service.ProductManager;
 import model.domain.Product;
-//import model.service.ExistingProductException;
 
 public class CreateProductController implements Controller {
 	@Override
@@ -24,16 +23,12 @@ public class CreateProductController implements Controller {
 					Integer.parseInt(request.getParameter("newPeopleCategory")),
 					Integer.parseInt(request.getParameter("newFoodTypeCategory"))
 		);
+	
+		System.out.println(product.getId());
+        System.out.println(product.getName());
 
-//		try {
-			manager.createProduct(product);
+//			manager.createProduct(product);
 			return "redirect:/admin.jsp";
-//		} catch (ExistingProductException e) {
-//			request.setAttribute("createFailed", true);
-//			request.setAttribute("exception", e);
-//			request.setAttribute("product", product);
-//			return "/admin.jsp";
-//		}
 	}
 	
 }

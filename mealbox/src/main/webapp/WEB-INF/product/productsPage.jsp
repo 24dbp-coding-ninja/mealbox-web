@@ -1,8 +1,7 @@
 <%--
 기능: 메인 페이지 jsp
 작성자: 신윤지
-마지막 수정일: 2024-11-05
-추가해야할 기능: 
+마지막 수정일: 2024-11-19
  --%>
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -17,7 +16,7 @@
  		<title>Mealbox</title>
  	</head>
  	<body>
- 	<%-- <%@ include file="../nav.jsp" %> --%>
+ 	<%@ include file="../nav.jsp" %>
     <div id="mainContainer">
     <!-- 상품 정렬 방식 -->
       <ul id="orderContainer">
@@ -29,14 +28,18 @@
       <!-- 상품 리스트 -->
       <div id="cardContainer">
  		<c:forEach var="product" items="${productList}">
- 			<div id="card">
-        		<img id="cardImg" src="${product.thumb}" />
-        		<div id="cardText">
-					<div id="cardName">${product.name}</div>
-          			<div id="cardPrice">${product.price}원</div>
-          			<div id="cardDesc">${product.description}</div>
-        		</div>
-      		</div>
+ 			<a href="<c:url value='/product/detail' >
+ 				<c:param name='id' value='${product.id}' />
+ 			</c:url>" >
+ 				<div id="card">
+        			<img id="cardImg" src="${product.thumb}" />
+        			<div id="cardText">
+						<div id="cardName">${product.name}</div>
+	          			<div id="cardPrice">${product.price}원</div>
+          				<div id="cardDesc">${product.description}</div>
+        			</div>
+      			</div>
+      		</a>
  		</c:forEach>
 	 	</div>
  	</div>

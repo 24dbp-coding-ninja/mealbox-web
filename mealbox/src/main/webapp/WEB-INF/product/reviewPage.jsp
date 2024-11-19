@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>리뷰 페이지</title>
-        <link rel="stylesheet" href="../../css/review/reviewPage.css">
+        <link rel="stylesheet" href="/mealbox/css/review/reviewPage.css">
     </head>
     <body>
         <h2>상품 리뷰</h2>

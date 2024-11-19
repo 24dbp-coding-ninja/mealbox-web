@@ -13,16 +13,7 @@ public class ProductDAO {
 		jdbcUtil = new JDBCUtil();
 	}
 
-	private static String query = "SELECT productId, " +
-									"productName, " +
-									"productImage, " +
-									"description, " +
-									"price, " +
-									"totalReview, " +
-									"averageReviewScore, " +
-									"stock, " +
-									"personTypeCategory, " +
-									"foodTypeCategory";
+	private static String query = "SELECT productId, productName, productImage, description, price, totalReview, averageReviewScore, stock, personTypeCategory, foodTypeCategory ";
 
 	public int create(Product product) {	
 		int result = 0;
@@ -121,14 +112,14 @@ public class ProductDAO {
 	}
 
 	public List<Product> getAllProducts() {
-		String allQuery = query + "FROM MEAL_PRODUCT ORDER BY productId ASC "; 
+		String allQuery = query + "FROM MEAL_PRODUCT ORDER BY productId ASC"; 
 		jdbcUtil.setSqlAndParameters(allQuery, null);
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<Product> list = new ArrayList<Product>();
 
-			if(rs.next()) {
+			while(rs.next()) {
 				Product prd = new Product(
 						rs.getInt("productId"),
 						rs.getString("productName"),

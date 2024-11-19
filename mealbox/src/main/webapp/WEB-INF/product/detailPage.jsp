@@ -1,18 +1,25 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%--
+기능: 상품 디테일 페이지 jsp
+작성자: 신윤지
+마지막 수정일: 2024-11-19
+ --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>상품 상세 페이지</title>
-<link rel="preconnect" href="https://rsms.me/" />
+	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-<link rel="stylesheet" type="text/css" href="../css/detailPage.css">
+<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
+	<title>상품 상세 페이지</title>
 </head>
 <body>
+ 	<%@ include file="../nav.jsp" %>
 	<div class="container meal">
 		<div class="meal_img">
-			<img id="product_image" src="<c:out value='${product.thumb}'/>"
+			<img id="product_image" src="../<c:out value='${product.thumb}'/>"
 				alt="<c:out value='${product.name}'/>">
 		</div>
 		<div class="details_container">
