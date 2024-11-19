@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +9,17 @@
 <!--폰트-->
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-<!--join.css: css경로 변경하지 말 것-->
+<!--adminUserPage.css: css경로 변경하지 말 것-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUserPage.css"/>
 <title>회원관리페이지</title>
 </head>
 <body>
 	<jsp:include page="../nav.jsp"/>
-    <div id = "container">
+    <form id = "container" action="/mealbox/user/deleteUser" method="POST">
         <!--adminUserPage header부분-->
         <header>
             <div>회원관리</div>
-            <button>선택삭제</button>
+            <button type="submit">선택삭제</button>
         </header>
         <main id = "adminUserPageMain">
             <table>
@@ -34,56 +35,22 @@
                     <th>주문건수</th>
                     <th>등록리뷰수</th> 
                 </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>1</td>
-                    <td>hihihihihi</td>
-                    <td>hellohello</td>
-                    <td>김솜솜</td>
-                    <td>000-0000-0000</td>
-                    <td>서울시 땡땡구 땡땡로 99땡길9 999동 999호</td>
-                    <td>hihihihi@naver.com</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>2</td>
-                    <td>222</td>
-                    <td>비번2</td>
-                    <td>신솜솜</td>
-                    <td>000-0000-0000</td>
-                    <td>15</td>
-                    <td>4@5</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>3</td>
-                    <td>333</td>
-                    <td>비번3</td>
-                    <td>장솜솜</td>
-                    <td>000-0000-0000</td>
-                    <td>10</td>
-                    <td>@3</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox"/></td>
-                    <td>4</td>
-                    <td>444</td>
-                    <td>비번4</td>
-                    <td>홍솜솜</td>
-                    <td>000-0000-0000</td>
-                    <td>0</td>
-                    <td>@0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
+				<c:forEach var="user" items="${userList}" varStatus="status">
+					<tr>
+						<td><input type="checkbox" name="userId" value="${user.id}"/></td>
+						<td>${status.index + 1}</td>
+						<td>${user.id}</td>
+						<td>${user.password}</td>
+						<td>${user.name}</td>
+						<td>${user.phone}</td>
+						<td>${user.address}</td>
+						<td>${user.email}</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+				</c:forEach>
             </table>
         </main>
-    </div>
+    </form>
 </body>
 </html>

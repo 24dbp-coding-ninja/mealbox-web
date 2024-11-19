@@ -49,8 +49,26 @@ public class DeleteUserController implements Controller {
     	UserManager manager = UserManager.getInstance();
     	HttpSession session = request.getSession();
     	String loginId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
-    	manager.remove(loginId);
     	
-    	return "redirect:/main";
+    	//loginId = admin인 경우
+    	if(loginId.equals("admin")) {
+    		String[] deleteIds = request.getParameterValues("userId");
+    		if(deleteIds == null) {
+    			System.out.println("선택된 사용자가 없습니다.");
+    		}else {
+	    		for(String deleteId : deleteIds) {
+	    		 	System.out.println(deleteId);
+	    			log.debug("Delete User(Admin) : {}", deleteId);
+	    			manager.remove(deleteId);
+	    		}
+    		}
+    		return "redirect:/product";
+    	}else {
+    	//loginId = 일반회원인 경우
+    		String deleteId = loginId;
+    		log.debug("Delete User : {}", deleteId);
+    		manager.remove(deleteId);
+    		return "redirect:/user/listUser";
+    	}
 	}
 }

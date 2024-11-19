@@ -14,3 +14,4 @@
 <%-- <% response.sendRedirect(request.getContextPath() + "/cart/cartList"); %> --%>
 <%-- <% response.sendRedirect(request.getContextPath() + "/user/readUser"); %> --%>
 <!-- response.sendRedirect(request.getContextPath() + "/user/updateUser/form"); -->
+<!-- response.sendRedirect(request.getContextPath() + "/user/listUser"); -->

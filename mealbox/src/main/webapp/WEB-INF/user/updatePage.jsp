@@ -57,7 +57,7 @@
                     <input type="text" id="email_domain" name="email_domain" value="${user.email}">
                 </div>
                 <div class="text"><font color="white">비어있습니다</font></div>
-                <input type="text" id="address" name="address">
+                <input type="text" id="address" name="address" value="${user.address}">
                 <div class="text"><font color="white">비어있습니다</font></div>
             </div>
             <div id="join_checkID"><button type="button" class="style_button" id="check_ID" onclick="checkValidId()">중복확인</button></div>
