@@ -28,7 +28,7 @@ nav {
   width: 30px;
   height: 25px;
   border: 0px;
-  background-image: url("../images/menu.png");
+  background-image: url("/mealbox/images/menu.png");
   background-color: rgba(1, 1, 1, 0);
 
   &:hover {
@@ -36,10 +36,15 @@ nav {
   }
 }
 
+#navContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1% 8px 0 2%;
+}
+
 #navInNav {
-  display: inline;
   border: none;
-  text-align: right;
 }
 
 #search,

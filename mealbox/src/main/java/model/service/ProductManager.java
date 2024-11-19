@@ -22,8 +22,7 @@ public class ProductManager {
 	}
 	
 	public Product getDetail(int id) {
-		// TODO : 구현 
-		return null;
+		return productDao.getDetail(id);
 	}
 	
 	public List<Product> findProductList() {
@@ -31,8 +30,7 @@ public class ProductManager {
 	}
 	
 	public int createProduct(Product product) {
-		// TODO : 구현 
-		return 0;
+		return productDao.create(product);
 	}
 	
 	public int updateProduct(Product product) {

@@ -27,15 +27,8 @@ public class UpdateProductController implements Controller {
 					Integer.parseInt(request.getParameter("foodTypeCategory"))
 		);
 
-//		try {
 			manager.updateProduct(product);
 			return "redirect:/admin.jsp";
-//		} catch (ExistingProductException e) {
-//			request.setAttribute("createFailed", true);
-//			request.setAttribute("exception", e);
-//			request.setAttribute("product", product);
-//			return "/admin.jsp";
-//		}
 	}
 	
 }

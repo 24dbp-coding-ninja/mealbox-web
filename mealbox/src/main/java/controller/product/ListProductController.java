@@ -12,8 +12,6 @@ public class ListProductController implements Controller {
 		 List<Product> productList = manager.findProductList();
 
 		request.setAttribute("productList", productList);
-		System.out.println(productList);
-
-		return "/product/mainPage.jsp";
+		return "/product/productsPage.jsp";
 	}
 }
