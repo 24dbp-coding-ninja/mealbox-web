@@ -18,10 +18,10 @@ public class ReviewServlet extends HttpServlet {
         reviewManager = new ReviewManager();
         
         // 초기 데이터 추가 (예시)
-        reviewManager.addReview(new Review("gobdoritang", "a", "../img/gobdoritang.png", "2024-09-25", 4.0, "진짜 너무 너무 맛있어요!", "맛있딜리, 색색브리 (7개)", "../img/gobdoritang.png"));
+        reviewManager.addReview(new Review("gobdoritang", "a", "2024-09-25", 4.0, "진짜 너무 너무 맛있어요!", "../img/gobdoritang.png"));
         // 추가적인 리뷰들...
-        reviewManager.addReview(new Review("gobdoritang", "b", "../img/gobdoritang.png", "2024-09-24", 5.0, "좋은 맛이었어요! 하지만 조금 비쌌어요.", "맛있딜리, 초코브리 (5개)", "../img/gobdoritang.png"));
-        reviewManager.addReview(new Review("gobdoritang", "c", "../img/gobdoritang.png", "2024-09-23", 3.0, "괜찮은 맛, 하지만 기대에 미치지 못했어요.", "맛있딜리, 과일브리 (6개)", "../img/gobdoritang.png"));
+        reviewManager.addReview(new Review("gobdoritang", "b", "2024-09-24", 5.0, "좋은 맛이었어요! 하지만 조금 비쌌어요.", "../img/gobdoritang.png"));
+        reviewManager.addReview(new Review("gobdoritang", "c", "2024-09-23", 3.0, "괜찮은 맛, 하지만 기대에 미치지 못했어요.", "../img/gobdoritang.png"));
     }
 
     @Override
@@ -63,16 +63,14 @@ public class ReviewServlet extends HttpServlet {
         // 리뷰 데이터 받기
         String productId = request.getParameter("productId");
         String nickname = request.getParameter("nickname");
-        String profile = request.getParameter("profile");
         String date = request.getParameter("date");
         String stars = request.getParameter("stars"); // 별점 텍스트로 받기
         int rating = Integer.parseInt(request.getParameter("rating"));
-        String text = request.getParameter("text");
-        String product = request.getParameter("product");
+        String reviewText = request.getParameter("reviewText");
         String reviewImg = request.getParameter("reviewImg");
 
         // 새로운 리뷰 생성
-        Review newReview = new Review(productId, nickname, profile, date, rating, text, product, reviewImg);
+        Review newReview = new Review(productId, nickname, date, rating, reviewText, reviewImg);
         
         // 리뷰 매니저에 리뷰 추가
         reviewManager.addReview(newReview);
