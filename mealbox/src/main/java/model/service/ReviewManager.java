@@ -81,12 +81,12 @@ public class ReviewManager {
     }
 
     // 평균 점수 계산 메서드
-    public double calculateAverageScore(String productId) {
+    public double calculateAverageScore(int productId) {
         int totalReviews = 0;
         double totalScore = 0.0;
 
         for (Review review : reviews) {
-            if (review.getProductId().equals(productId)) {
+            if (review.getProductId() == productId) {
                 totalScore += review.getRating();
                 totalReviews++;
             }

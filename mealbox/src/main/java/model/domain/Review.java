@@ -4,7 +4,7 @@ package model.domain;
 public class Review {
     //private static int reviewCounter = 0; // 자동 증가할 reviewId 카운터
     private int reviewId;
-    private String productId;
+    private int productId;
     private String nickname;
     private String date;
     private double rating;
@@ -16,7 +16,7 @@ public class Review {
     }
 
     // 생성자
-    public Review(String productId, String nickname, String date, double rating, String reviewText, String reviewImg) {
+    public Review(int productId, String nickname, String date, double rating, String reviewText, String reviewImg) {
         this.reviewId = reviewId; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
         this.nickname = nickname;
@@ -26,17 +26,18 @@ public class Review {
         this.reviewText = reviewText;
         this.reviewImg = reviewImg;
     }
-    public Review(String productId, String nickname) {
+    public Review(int reviewId, int productId, String reviewText) {
         this.reviewId = reviewId; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
+        this.reviewText = reviewText;
     }
 
 
     // Getter와 Setter
     public int getReviewId() { return reviewId; }  // 리뷰 ID Getter
 
-    public String getProductId() { return productId; }
-    public void setProductId(String productId) { this.productId = productId; }
+    public int getProductId() { return productId; }
+    public void setProductId(int productId) { this.productId = productId; }
 
     public String getNickname() { return nickname; }
     public void setNickname(String nickname) { this.nickname = nickname; }

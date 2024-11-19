@@ -18,13 +18,14 @@ public class reviewTest {
 		
 		try {
 	        System.out.print("아이디를 입력하시오: ");
-	        String reviewId = sc.next();
+	        int reviewId = 1000;// sc.next();
 	        System.out.println();
 	        Review review = reviewDao.findReview(reviewId);
 	        if(review != null) {
 	            System.out.println("review 정보");
 	            System.out.println(review.getReviewId());
 	            System.out.println(review.getProductId());
+	            System.out.println(review.getReviewText());
 	        } else {
 	            System.out.println("리뷰가 없습니다.");
 	        }
@@ -33,9 +34,7 @@ public class reviewTest {
 	        e.printStackTrace();
 	    } finally {
 	        sc.close();  // Scanner 리소스 반환
-	    }
-		
+	    }		
 		//테스트 완료
-
 	}
 }
