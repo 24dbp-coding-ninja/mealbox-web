@@ -210,11 +210,11 @@ public class OrderDAO {
 	 * 특정 사용자가 주문한 주문 정보들을 검색하여 List에 저장 및 반환
 	 * 이후 추가될 수 있음
 	 */
-	public List<Order> findOrdersInUser(int userId) throws SQLException {
-        String sql = "SELECT orderId, orderAt, purchaser, purPhone, recipient, recPhone, deliveryAddress, totalPrice, deliveryDate " 
+	public List<Order> findOrdersInUser(String userId) throws SQLException {
+        String sql = "SELECT o.orderId, o.orderAt, o.purchaser, o.purPhone, o.recipient, o.recPhone, o.deliveryAddress, o.totalPrice, o.deliveryDate " 
       		   + "FROM MEAL_ORDER o LEFT OUTER JOIN MEAL_USER u ON o.userId = u.userId "
-      		   + "WHERE userId = ? "
-      		   + "ORDER BY orderId";                          
+      		   + "WHERE u.userId = ? "
+      		   + "ORDER BY o.orderId";                          
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {

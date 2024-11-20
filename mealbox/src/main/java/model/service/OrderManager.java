@@ -27,7 +27,7 @@ public class OrderManager {
     /**
      * 특정 사용자의 주문 목록 조회
      */
-    public List<Order> findOrdersInUser(int userId) throws SQLException {
+    public List<Order> findOrdersInUser(String userId) throws SQLException {
         return orderDAO.findOrdersInUser(userId);
     }
 

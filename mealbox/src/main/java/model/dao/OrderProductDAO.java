@@ -148,8 +148,8 @@ public class OrderProductDAO {
 	public List<OrderProduct> findOrderProductInOrder(int orderId) throws SQLException {
         String sql = "SELECT lineNo, productId, quantity, orderItemPrice " 
       		   + "FROM MEAL_ORDER_PRODUCT "
-      		   + "ORDER BY lineNo "
-      		   + "WHERE orderId = ?";                          
+      		   + "WHERE orderId = ? "
+      		   + "ORDER BY lineNo";                        
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {orderId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {

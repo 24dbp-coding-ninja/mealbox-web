@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/purchasePage.css" />
   </head>
   <body>
-    <div id="nav">nav</div>
+	<jsp:include page="../nav.jsp"/>
     <div id="container">
     	<div id="title">구매하기</div>
     	<div id="line">

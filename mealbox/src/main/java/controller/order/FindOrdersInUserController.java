@@ -17,7 +17,7 @@ public class FindOrdersInUserController implements Controller {
 
         try {
             // 사용자 ID 추출
-            int userId = Integer.parseInt(request.getParameter("userId"));
+            String userId = request.getParameter("userId");
 
             // 사용자의 주문 목록 조회
             List<Order> orderList = orderMan.findOrdersInUser(userId);

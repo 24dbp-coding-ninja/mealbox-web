@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="../css/cartPage.css" />
   </head>
   <body>
-    <div id="nav">nav</div>
+	<jsp:include page="../nav.jsp"/>
     <div id="container">
     	<div id="title">장바구니 </div>
     	<div id="line">

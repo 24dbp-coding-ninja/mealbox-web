@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../css/cart.css" />
   </head>
   <body>
-    <div id="nav">nav</div>
+	<jsp:include page="../nav.jsp"/>
     <div id="cart">
       <h2 align="center">장바구니</h2>
       <div id="itemList" align="center">
