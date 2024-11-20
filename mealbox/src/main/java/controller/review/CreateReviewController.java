@@ -33,7 +33,7 @@ public class CreateReviewController implements Controller {
         boolean createResult = reviewManager.createReview(newReview);
 
         if (createResult) {
-            return "redirect:/purchase/orderListPage";
+            return "redirect:/purchase/purchaseList";
         } else {
             request.setAttribute("createResult", createResult);
             return "/review/reviewForm.jsp";
