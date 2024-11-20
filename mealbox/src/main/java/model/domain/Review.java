@@ -16,7 +16,7 @@ public class Review {
     }
 
     // 생성자
-    public Review(int productId, String nickname, String date, double rating, String reviewText, String reviewImg) {
+    public Review(int reviewId, int productId, String nickname, String date, double rating, String reviewText, String reviewImg) {
         this.reviewId = reviewId; // 리뷰 생성 시 자동으로 reviewId 할당
         this.productId = productId;
         this.nickname = nickname;

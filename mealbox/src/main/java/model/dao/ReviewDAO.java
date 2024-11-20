@@ -15,7 +15,7 @@ public class ReviewDAO {
 
 	public Review findReview(int reviewId) throws SQLException {		
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT reviewId, productId, reviewText ");
+		query.append("SELECT reviewid, productid, userid, date, rating, reviewtext, reviewimg ");
 		query.append("FROM MEAL_REVIEW ");
 		query.append("WHERE reviewId=?");  
 		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {reviewId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -24,16 +24,13 @@ public class ReviewDAO {
 			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
 			if (rs.next()) {						// review 정보 발견
 				Review review = new Review(		// review 객체를 생성하여 리뷰 정보를 저장
-//					reviewId,
-					rs.getInt("reviewId"),
-					rs.getInt("productId"),
-//					rs.getString("getNickname"),
-//					rs.getString("getProfile"),
-//					rs.getString("getDate"),
-//					rs.getString("getRating"),
-					rs.getString("reviewText"));
-//					rs.getString("getProduct"),
-//					rs.getString("getReviewImg"),
+					rs.getInt("reviewid"),
+					rs.getInt("productid"),
+					rs.getString("userid"),
+					rs.getString("date"),
+					rs.getDouble("rating"),
+					rs.getString("reviewtext"),
+					rs.getString("reviewimg"));
 				return review;
 			}
 		} catch (Exception ex) {
@@ -51,8 +48,23 @@ public class ReviewDAO {
     // 리뷰 생성
     public boolean create(Review review) {
         // 데이터베이스에 리뷰를 추가하는 로직
-    	return reviews.add(review);
-        //return true;
+    	StringBuffer query = new StringBuffer();
+		query.append("INSERT INTO MEAL_REVIEW (productId, nickname, reviewCreateDat rating, reviewText, reviewImg) VALUE (?, ?, SYSDATE, ?, ?,  ?)");
+		Object[] newReview = new Object[] {review.getProductId(), review.getNickname(), review.getRating(), review.getReviewText(), review.getReviewImg()};
+		jdbcUtil.setSqlAndParameters(query.toString(), newReview);
+		
+		try {				
+			int result = jdbcUtil.executeUpdate();	// insert 문 실행
+			return true;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {		
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}	
+		
+        return false;
     }
 
     public List<Review> findReviewsByProduct(int productId) { // 제품 ID를 기준으로 리뷰 검색 로직 
