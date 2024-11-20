@@ -11,8 +11,27 @@
 	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="preconnect" href="https://rsms.me/" />
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+	<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
+	<script>
+		function increaseQuantity() {
+			var price = Number((document.getElementById("how_much").innerHTML).slice(0, -1));
+			
+			document.getElementById("quantity").value = Number(document.getElementById("quantity").value)+1;
+			document.getElementById("total_price").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
+		}
+		
+		function decreaseQuantity() {
+			var price = Number((document.getElementById("how_much").innerHTML).slice(0, -1));
+			
+			if(document.getElementById("quantity").value==="1") {
+				alert("1 이하의 수량은 주문하실 수 없습니다.");
+				return;
+			}
+			document.getElementById("quantity").value = Number(document.getElementById("quantity").value)-1;
+			document.getElementById("total_price").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
+		}
+	</script>
 	<title>상품 상세 페이지</title>
 </head>
 <body>
@@ -44,9 +63,9 @@
 				<hr>
 				<div class="check_quantity">
 					<div class="plusOrMinus">
-						<button class="decrease">-</button>
+						<button class="decrease" onClick="decreaseQuantity()">-</button>
 						<input type="number" id="quantity" value="1" min="1" readonly>
-						<button class="increase">+</button>
+						<button class="increase" onClick="increaseQuantity()">+</button>
 					</div>
 					<span id="how_much">${product.price}원</span>
 				</div>

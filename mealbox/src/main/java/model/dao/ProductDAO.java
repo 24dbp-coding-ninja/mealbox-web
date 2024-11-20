@@ -146,15 +146,15 @@ public class ProductDAO {
 
 
 	public List<Product> searchProductByName(String name) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE productName LIKE `%?%` "; 
-		Object[] param = new Object[] {name};
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE productName LIKE ?";
+		Object[] param = new Object[] {"%" + name + "%"};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<Product> list = new ArrayList<Product>();
 
-			if(rs.next()) {
+			while(rs.next()) {
 				Product prd = new Product(
 						rs.getInt("productId"),
 						rs.getString("productName"),
@@ -179,9 +179,9 @@ public class ProductDAO {
 		return null;
 	}
 
-	public List<Product> searchByCategoryPerson(String person) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE personTypeCategory = ? "; 
-		Object[] param = new Object[] {person};
+	public List<Product> searchProductByCategory(String categoryType, String categoryValue, String orderBy) {
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE ? = ? " + "?"; 
+		Object[] param = new Object[] {categoryType, categoryValue, getOrderByClause(orderBy)};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
 		try {
@@ -214,7 +214,7 @@ public class ProductDAO {
 	}
 
 	public List<Product> searchByCategoryType(String type) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE foodTypeCategory = type "; 
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE foodTypeCategory = ? "; 
 		Object[] param = new Object[] {type};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
@@ -248,8 +248,38 @@ public class ProductDAO {
 	}
 
 	public List<Product> orderBy(String type) {
-		//
+		switch(type) {
+		// 최신등록순
+		case "1":
+		    
+		    break;
+		
+		// 낮은가격순
+		case "2":
+		    break;
+		    
+		// 높은가격순
+		case "3":
+		    break;
+            
+		// 평점높은순
+        case "4":
+            break;
+		}
+	    
+	    
 		return null;
+	}
+	
+
+	private String getOrderByClause(String orderBy) {
+		switch(orderBy) {
+			case "newest": return " ORDER BY productCreatedAt DESC";
+			case "lowPrice": return " ORDER BY price ASC";
+			case "highPrice": return " ORDER BY price DESC";
+			case "highRating": return " ORDER BY averageReviewScore DESC";
+			default: return "";
+		}
 	}
 
 
