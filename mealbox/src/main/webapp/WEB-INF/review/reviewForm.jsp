@@ -34,18 +34,18 @@
 	                    </c:forEach>
 	                </div>
 	               	<p align="left" style="margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
-	               	<input id="writeReview" name="writeReview" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요.">
+	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요.">
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-left: 25px;"><strong>평점</strong></p> 
-	                        <input id="writeRating" name="writeRating">
+	                        <input id="writeRating" name="rating">
 		                </div>
 	                    <div id="pics">
 	                        <p align="left" style="margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
 	                        <span id="pic">
-	                            <button type="button" id="pic1" name="pic1">+</button>
-	                            <button type="button" id="pic2" name="pic2">+</button>
-	                            <button type="button" id="pic3" name="pic3">+</button>
+	                            <button type="button" id="pic1" name="reviewImg">+</button>
+	                            <button type="button" id="pic2" name="reviewImg2">+</button>
+	                            <button type="button" id="pic3" name="reviewImg3">+</button>
 	                        </span>
 	                    </div>
 	                </div>

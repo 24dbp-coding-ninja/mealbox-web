@@ -31,9 +31,9 @@ public class ReviewManager {
 //    }
 
     // 리뷰 추가 메서드
-    public void addReview(Review review) {
-        reviews.add(review);
-    }
+//    public void addReview(Review review) {
+//        reviews.add(review);
+//    }
 
     // 리뷰 생성 메서드 추가
     public boolean createReview(Review review) { 

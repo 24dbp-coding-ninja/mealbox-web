@@ -15,7 +15,7 @@ public class ReviewDAO {
 
 	public Review findReview(int reviewId) throws SQLException {		
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT reviewid, productid, userid, date, rating, reviewtext, reviewimg ");
+		query.append("SELECT * ");
 		query.append("FROM MEAL_REVIEW ");
 		query.append("WHERE reviewId=?");  
 		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {reviewId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -27,8 +27,8 @@ public class ReviewDAO {
 					rs.getInt("reviewid"),
 					rs.getInt("productid"),
 					rs.getString("userid"),
-					rs.getString("date"),
-					rs.getDouble("rating"),
+					rs.getString("reviewcreatedat"),
+					rs.getFloat("rating"),
 					rs.getString("reviewtext"),
 					rs.getString("reviewimg"));
 				return review;
@@ -49,7 +49,7 @@ public class ReviewDAO {
     public boolean create(Review review) {
         // 데이터베이스에 리뷰를 추가하는 로직
     	StringBuffer query = new StringBuffer();
-		query.append("INSERT INTO MEAL_REVIEW (productId, nickname, reviewCreateDat rating, reviewText, reviewImg) VALUE (?, ?, SYSDATE, ?, ?,  ?)");
+		query.append("INSERT INTO MEAL_REVIEW (productId, userid, reviewCreateDat, rating, reviewText, reviewImg) VALUES (?, ?, SYSDATE, ?, ?, ?)");
 		Object[] newReview = new Object[] {review.getProductId(), review.getNickname(), review.getRating(), review.getReviewText(), review.getReviewImg()};
 		jdbcUtil.setSqlAndParameters(query.toString(), newReview);
 		

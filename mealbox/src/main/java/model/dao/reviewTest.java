@@ -13,9 +13,10 @@ public class reviewTest {
 	private static ReviewDAO reviewDao = new ReviewDAO();
 	
 	public static void main(String[] args) {
-		System.out.println("Review Test용 코드입니다.");
+		System.out.println("Review 읽기 Test용 코드입니다.");
 		Scanner sc = new Scanner(System.in);
 		
+		/*
 		try {
 	        System.out.print("아이디를 입력하시오: ");
 	        int reviewId = sc.nextInt();
@@ -25,9 +26,10 @@ public class reviewTest {
 	            System.out.println("review 정보");
 	            System.out.println(review.getReviewId());
 	            System.out.println(review.getProductId());
+	            System.out.println(review.getNickname());
 	            System.out.println(review.getDate());
-	            System.out.println(review.getReviewText());
 	            System.out.println(review.getRating());
+	            System.out.println(review.getReviewText());
 	            System.out.println(review.getReviewImg());
 	        } else {
 	            System.out.println("리뷰가 없습니다.");
@@ -38,6 +40,21 @@ public class reviewTest {
 	    } finally {
 	        sc.close();  // Scanner 리소스 반환
 	    }		
-		//테스트 완료
+		//읽기 테스트 완료
+		 */
+		
+		System.out.println("\nreview 생성 Test용 코드입니다.");
+        Review review = new Review();
+        review.setProductId(1010);
+        review.setNickname("id3");
+        review.setRating(3.5);
+        review.setReviewText("만들기 어렵당!");
+        review.setReviewImg("review3.jpg");
+        
+        boolean result = reviewDao.create(review);
+        if(result) {
+           System.out.println("생성되었습니다.");
+        }	
+		//생성 테스트 완료
 	}
 }
