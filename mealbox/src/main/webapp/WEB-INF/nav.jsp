@@ -14,21 +14,24 @@
 <link rel="stylesheet" type="text/css" href="/mealbox/css/nav.css" />
 <script>
 	<!-- 사이드 바 오픈 관련 코드 -->
+	// 페이지 처음 로딩 시 
 	window.onload = function() {
+		// 인원별 아코디언 하단 부분 숨김 처리
 		document.getElementById("peopleSelection").style.display = "none";
 
+		// 햄버거 메뉴 클릭 시 사이드바 보이게끔 처리
 		document.getElementById("menuOpen").addEventListener("click",
 				function() {
 					document.getElementById("sidebar").style.display = "block";
 				});
+		// 사이드바 닫히는 버튼 클릭 시 사이드바 숨김 처리
 		document.getElementById("menuClose").addEventListener("click",
 				function() {
 					document.getElementById("sidebar").style.display = "none";
 				});
 
-		document
-				.getElementById("peopleSelectionOpen")
-				.addEventListener(
+		// 인원별 아코디언 클릭 시
+		document.getElementById("peopleSelectionOpen").addEventListener(
 						"click",
 						function() {
 							var open = document
@@ -44,7 +47,20 @@
 								selection.style.display = "none";
 							}
 						});
+		
+
+		// 검색 버튼 클릭 시
+		document.getElementById("search_icon").addEventListener("click", function() {
+			console.log("ke: " + searchForm.keyword.value);
+			if(searchForm.keyword.value == "") {
+				alert("검색어를 입력해주세요.");
+				return;
+			} 
+			
+			searchForm.submit();
+		});
 	};
+	
 	<!-- /* 로그인 */ -->
 </script>
 </head>
@@ -56,9 +72,11 @@
 		<div id="navInNav">
 		<!--검색-->
 		<div id="search">
-			<input type="text" id="search_text" placeholder="검색어" />
-			<!--검색아이콘-->
-			<img id="search_icon" src="/mealbox/images/search.png" align="center" />
+			<form name="searchForm" method="POST" action="<c:url value='/product' />">
+				<input type="text" id="search_text" name="keyword" placeholder="검색어" />
+				<!--검색아이콘-->
+				<img id="search_icon" src="/mealbox/images/search.png" align="center" />
+			</form>
 		</div>
 		<!--장바구니-->
 		<div id="basket">

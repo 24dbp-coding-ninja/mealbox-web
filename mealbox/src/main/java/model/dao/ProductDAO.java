@@ -146,15 +146,15 @@ public class ProductDAO {
 
 
 	public List<Product> searchProductByName(String name) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE productName LIKE `%?%` "; 
-		Object[] param = new Object[] {name};
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE productName LIKE ?";
+		Object[] param = new Object[] {"%" + name + "%"};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 			List<Product> list = new ArrayList<Product>();
 
-			if(rs.next()) {
+			while(rs.next()) {
 				Product prd = new Product(
 						rs.getInt("productId"),
 						rs.getString("productName"),
@@ -214,7 +214,7 @@ public class ProductDAO {
 	}
 
 	public List<Product> searchByCategoryType(String type) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE foodTypeCategory = type "; 
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE foodTypeCategory = ? "; 
 		Object[] param = new Object[] {type};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
@@ -248,7 +248,26 @@ public class ProductDAO {
 	}
 
 	public List<Product> orderBy(String type) {
-		//
+		switch(type) {
+		// 최신등록순
+		case "1":
+		    
+		    break;
+		
+		// 낮은가격순
+		case "2":
+		    break;
+		    
+		// 높은가격순
+		case "3":
+		    break;
+            
+		// 평점높은순
+        case "4":
+            break;
+		}
+	    
+	    
 		return null;
 	}
 

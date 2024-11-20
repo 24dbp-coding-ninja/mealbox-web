@@ -44,8 +44,7 @@ public class ProductManager {
 	}
 	
 	public List<Product> searchProduct(String keyword) {
-		// TODO : 구현 
-		return null;
+		return productDao.searchProductByName(keyword);
 	}
 
 	public List<Product> searchProductByCategoryType(String categoryType) {
