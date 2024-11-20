@@ -26,10 +26,12 @@ public class Review {
         this.reviewText = reviewText;
         this.reviewImg = reviewImg;
     }
-    public Review(int reviewId, int productId, String reviewText) {
-        this.reviewId = reviewId; // 리뷰 생성 시 자동으로 reviewId 할당
+    public Review(int productId, String nickname, double rating, String reviewText, String reviewImg) {
         this.productId = productId;
+        this.nickname = nickname;
+        this.rating = rating;
         this.reviewText = reviewText;
+        this.reviewImg = reviewImg;
     }
 
 
