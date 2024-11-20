@@ -2,7 +2,6 @@
 package model.domain;
 
 public class Review {
-    //private static int reviewCounter = 0; // 자동 증가할 reviewId 카운터
     private int reviewId;
     private int productId;
     private String nickname;

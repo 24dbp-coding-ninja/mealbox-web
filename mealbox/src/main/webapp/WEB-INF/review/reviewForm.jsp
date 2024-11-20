@@ -8,7 +8,7 @@
     </head>
     <body>    
         <jsp:include page="../nav.jsp"/>
-        <form id="container" action="/mealbox/review/createReview" method="POST">
+        <form id="container" action="/mealbox/review/create" method="POST">
 	        <h2 align="center">리뷰 작성</h2>
 	        <hr/>
 	        <div id="reviewWrapper">

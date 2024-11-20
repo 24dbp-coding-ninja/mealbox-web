@@ -20,6 +20,7 @@ background-color: yellow;
 	margin-left: 50px;
 	margin-right: 50px;
 	margin-bottom: 50px;
+	margin-top: 10px;
 }
 
 #formWrapper {
@@ -104,9 +105,9 @@ background-color: yellow;
 #show{
 	display: flex;
 	flex-direction: row;
+	margin-top: 10px;
 }
 #rate {
-	
 	width:200px;
 	height:200px;
 }
