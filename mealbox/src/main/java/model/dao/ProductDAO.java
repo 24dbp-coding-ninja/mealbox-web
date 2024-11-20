@@ -179,9 +179,9 @@ public class ProductDAO {
 		return null;
 	}
 
-	public List<Product> searchByCategoryPerson(String person) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE personTypeCategory = ? "; 
-		Object[] param = new Object[] {person};
+	public List<Product> searchProductByCategory(String categoryType, String categoryValue, String orderBy) {
+		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE ? = ? " + "?"; 
+		Object[] param = new Object[] {categoryType, categoryValue, getOrderByClause(orderBy)};
 		jdbcUtil.setSqlAndParameters(searchQuery, param);
 
 		try {
@@ -269,6 +269,17 @@ public class ProductDAO {
 	    
 	    
 		return null;
+	}
+	
+
+	private String getOrderByClause(String orderBy) {
+		switch(orderBy) {
+			case "newest": return " ORDER BY productCreatedAt DESC";
+			case "lowPrice": return " ORDER BY price ASC";
+			case "highPrice": return " ORDER BY price DESC";
+			case "highRating": return " ORDER BY averageReviewScore DESC";
+			default: return "";
+		}
 	}
 
 

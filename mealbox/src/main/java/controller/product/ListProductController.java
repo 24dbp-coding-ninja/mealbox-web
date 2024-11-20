@@ -19,9 +19,23 @@ public class ListProductController implements Controller {
 		    return "/product/productsPage.jsp";
 		}
 
-		// method가 POST인 경우 검색
-		List<Product> productList = manager.searchProduct(request.getParameter("keyword"));
-        request.setAttribute("productList", productList);
+		// method가 POST인 경우 검색 및 카테고리 선택
+		List<Product> productList;
+		String categoryType = request.getParameter("categoryType");
+		String categoryValue = request.getParameter("categoryValue");
+		String orderBy = request.getParameter("orderBy");
+		
+		if (orderBy == null) {
+			orderBy = "";
+		}
+		
+		if(categoryType != null && categoryValue != null) {
+			productList = manager.searchProduct(categoryType, categoryValue, orderBy);
+		} else {
+			productList = manager.searchProduct(null, null, orderBy);
+		}
+		
+		request.setAttribute("productList", productList);
 		return "/product/productsPage.jsp";
 	}
 }

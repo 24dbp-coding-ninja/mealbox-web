@@ -43,23 +43,8 @@ public class ProductManager {
 		return 0;
 	}
 	
-	public List<Product> searchProduct(String keyword) {
-		return productDao.searchProductByName(keyword);
-	}
-
-	public List<Product> searchProductByCategoryType(String categoryType) {
-		// TODO : 구현 
-		return null;
-	}
-
-	public List<Product> searchProductByCategoryPerson(String personType) {
-		// TODO : 구현 
-		return null;
-	}
-
-	public List<Product> orderBy(String order) {
-		// TODO : 구현 
-		return null;
+	public List<Product> searchProduct(String categoryType, String categoryValue, String orderBy) {
+		return productDao.searchProductByCategory(categoryType, categoryValue, orderBy);
 	}
 	
 //	 public int getPurchaseTotalPrice(productDetail) {
