@@ -14,12 +14,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* 네비게이션 바 */
-#nav {
-  width: 100vw;
-  height: 52px;
-  background-color: yellow;
-}
 
 #container{
 	display: flex;
