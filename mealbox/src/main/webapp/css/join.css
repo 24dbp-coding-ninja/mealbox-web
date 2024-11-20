@@ -18,12 +18,6 @@ body{
     width: 100%;
     /*background-color: antiquewhite;*/
 }
-/***네비 부분***/
-nav{
-    border-bottom:1px solid black;
-    width: 100%;
-    height: 52px;
-}
 /***컨테이너 부분***/
 #container{
     position:absolute;
