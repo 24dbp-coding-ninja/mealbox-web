@@ -15,23 +15,22 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
         int productId = Integer.parseInt(request.getParameter("productId"));
         String nickname = request.getParameter("nickname");
-        String profile = request.getParameter("profile");
         String date = request.getParameter("date");
         double rating = Double.parseDouble(request.getParameter("rating"));
         String reviewText = request.getParameter("reviewText");
-        String product = request.getParameter("product");
         String reviewImg = request.getParameter("reviewImg");
 
-        Review newReview = new Review(productId, nickname, date, rating, reviewText, reviewImg);
+        Review newReview = new Review(reviewId, productId, nickname, date, rating, reviewText, reviewImg);
         boolean createResult = reviewManager.createReview(newReview);
 
         if (createResult) {
             return "redirect:/purchase/orderListPage";
         } else {
             request.setAttribute("createResult", createResult);
-            return "forward:/review/reviewItems.jsp";
+            return "/review/reviewForm.jsp";
         }
     }
 }
