@@ -144,11 +144,33 @@ public class ProductDAO {
 		return null;
 	}
 
-
-	public List<Product> searchProductByName(String name) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE productName LIKE ?";
-		Object[] param = new Object[] {"%" + name + "%"};
-		jdbcUtil.setSqlAndParameters(searchQuery, param);
+	public List<Product> searchProduct(String categoryType, String categoryValue, String orderBy) {
+		String searchQuery = query + "FROM MEAL_PRODUCT "; 
+		List<Object> params = new ArrayList<>();
+		
+		
+		if(categoryType != null && categoryValue != null) {
+		    switch(categoryType) {
+		    case "type":
+                searchQuery = searchQuery.concat("WHERE foodTypeCategory = ?");
+                System.out.println("in case clause : " + categoryValue);
+                params.add(categoryValue);
+                break;
+                
+		    case "person":
+                searchQuery = searchQuery.concat("WHERE personTypeCategory = ?");
+		        params.add(categoryValue);
+                break;
+		    
+		    case "search":
+		        searchQuery = searchQuery.concat("WHERE productName LIKE ?");
+		        params.add("%" + categoryValue + "%");
+                break;
+		    }
+		}
+		
+		searchQuery = searchQuery.concat(getOrderByClause(orderBy));
+		jdbcUtil.setSqlAndParameters(searchQuery, params.toArray());
 
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
@@ -179,105 +201,12 @@ public class ProductDAO {
 		return null;
 	}
 
-	public List<Product> searchProductByCategory(String categoryType, String categoryValue, String orderBy) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE ? = ? " + "?"; 
-		Object[] param = new Object[] {categoryType, categoryValue, getOrderByClause(orderBy)};
-		jdbcUtil.setSqlAndParameters(searchQuery, param);
-
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			List<Product> list = new ArrayList<Product>();
-
-			if(rs.next()) {
-				Product prd = new Product(
-						rs.getInt("productId"),
-						rs.getString("productName"),
-						rs.getString("productImage"),
-						rs.getString("description"),
-						rs.getInt("price"),
-						rs.getInt("totalReview"),
-						rs.getDouble("averageReviewScore"),
-						rs.getInt("stock"),
-						rs.getInt("personTypeCategory"),
-						rs.getInt("foodTypeCategory")
-						);
-				list.add(prd);
-			}
-			return list;
-		} catch(Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
-
-	public List<Product> searchByCategoryType(String type) {
-		String searchQuery = query + "FROM MEAL_PRODUCT " + "WHERE foodTypeCategory = ? "; 
-		Object[] param = new Object[] {type};
-		jdbcUtil.setSqlAndParameters(searchQuery, param);
-
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();
-			List<Product> list = new ArrayList<Product>();
-
-			if(rs.next()) {
-				Product prd = new Product(
-						rs.getInt("productId"),
-						rs.getString("productName"),
-						rs.getString("productImage"),
-						rs.getString("description"),
-						rs.getInt("price"),
-						rs.getInt("totalReview"),
-						rs.getDouble("averageReviewScore"),
-						rs.getInt("stock"),
-						rs.getInt("personTypeCategory"),
-						rs.getInt("foodTypeCategory")
-						);
-				list.add(prd);
-			}
-			return list;
-		} catch(Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();
-		}
-		return null;
-	}
-
-	public List<Product> orderBy(String type) {
-		switch(type) {
-		// 최신등록순
-		case "1":
-		    
-		    break;
-		
-		// 낮은가격순
-		case "2":
-		    break;
-		    
-		// 높은가격순
-		case "3":
-		    break;
-            
-		// 평점높은순
-        case "4":
-            break;
-		}
-	    
-	    
-		return null;
-	}
-	
-
 	private String getOrderByClause(String orderBy) {
 		switch(orderBy) {
-			case "newest": return " ORDER BY productCreatedAt DESC";
-			case "lowPrice": return " ORDER BY price ASC";
-			case "highPrice": return " ORDER BY price DESC";
-			case "highRating": return " ORDER BY averageReviewScore DESC";
+			case "newest": return "ORDER BY productCreatedAt DESC";
+			case "lowPrice": return "ORDER BY price ASC";
+			case "highPrice": return "ORDER BY price DESC";
+			case "highRating": return "ORDER BY averageReviewScore DESC";
 			default: return "";
 		}
 	}
