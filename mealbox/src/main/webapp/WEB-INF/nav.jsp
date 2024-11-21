@@ -56,11 +56,11 @@
 				alert("검색어를 입력해주세요.");
 				return;
 			} 
-			
-			searchForm.submit();
+
+	        window.location.href = '/product?categoryType=search&categoryValue=' + searchForm.keyword.value;
 		});
+		
 	};
-	
 	<!-- /* 로그인 */ -->
 </script>
 </head>
@@ -95,18 +95,41 @@
 		<section class="closeSection">
 			<img id="menuClose" src="/mealbox/images/sidebar_close.png" />
 		</section>
-		<section class="selection">한식</section>
-		<section class="selection">양식</section>
-		<section class="selection">분식</section>
-		<section class="selection">중식</section>
-
+	    <section class="selection">
+    	    <a href="<c:url value='/product'><c:param name='categoryType' value='food'/><c:param name='categoryValue' value='1'/></c:url>">
+        	    한식
+        	</a>
+    	</section>
+    	<section class="selection">
+        	<a href="<c:url value='/product'><c:param name='categoryType' value='food'/><c:param name='categoryValue' value='2'/></c:url>">
+            	양식
+        	</a>
+    	</section>
+    	<section class="selection">
+        	<a href="<c:url value='/product'><c:param name='categoryType' value='food'/><c:param name='categoryValue' value='3'/></c:url>">
+            	중식
+        	</a>
+    	</section>
+	    <section class="selection">
+    	    <a href="<c:url value='/product'><c:param name='categoryType' value='food'/><c:param name='categoryValue' value='4'/></c:url>">
+        	    분식
+        	</a>
+    	</section>
+    	
 		<section class="selection">
-			인원별 <input type="button" id="peopleSelectionOpen"
-				onClick="onClickPeopleSelection()" />
+			인원별 <input type="button" id="peopleSelectionOpen"/>
 		</section>
 		<section id="peopleSelection">
-			<div id="smallerSelection">1~2인분</div>
-			<div id="biggerSelection">3~4인분</div>
+			<div id="smallerSelection">
+				<a href="<c:url value='/product'><c:param name='categoryType' value='person'/><c:param name='categoryValue' value='1'/></c:url>">
+    	            1~2인분
+        	    </a>
+            </div>
+			<div id="biggerSelection">
+            	<a href="<c:url value='/product'><c:param name='categoryType' value='person'/><c:param name='categoryValue' value='3-4'/></c:url>">
+                	3~4인분
+            	</a>
+            </div>
 		</section>
 	</aside>
 </body>

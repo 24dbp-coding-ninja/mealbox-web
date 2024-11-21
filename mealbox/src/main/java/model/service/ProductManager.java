@@ -44,7 +44,7 @@ public class ProductManager {
 	}
 	
 	public List<Product> searchProduct(String categoryType, String categoryValue, String orderBy) {
-		return productDao.searchProductByCategory(categoryType, categoryValue, orderBy);
+		return productDao.searchProduct(categoryType, categoryValue, orderBy);
 	}
 	
 //	 public int getPurchaseTotalPrice(productDetail) {
