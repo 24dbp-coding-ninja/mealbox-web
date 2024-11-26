@@ -24,10 +24,10 @@ public class FindOrdersInUserController implements Controller {
 
         try {
             // 사용자 ID 추출
-			//HttpSession session = request.getSession();
-			//String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
-        	String userId = "ninja1";
-			System.out.println("Logged-in User ID: " + userId);
+			HttpSession session = request.getSession();
+			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
+        	//String userId = "ninja1";
+			//System.out.println("Logged-in User ID: " + userId);
 			
 			 // 주문 목록 조회
 	        List<Order> orderList = orderMan.findOrdersInUser(userId);
