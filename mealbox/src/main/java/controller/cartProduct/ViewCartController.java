@@ -39,19 +39,32 @@ public class ViewCartController implements Controller {
                 productDetail.put("productDetail", product);
                 combinedProductDetails.add(productDetail);
             }
-
-         // 데이터 확인 (디버깅)
-            System.out.println("Combined Product Details: " + combinedProductDetails.size());
-            for (Map<String, Object> detail : combinedProductDetails) {
-                System.out.println(detail);
-            }
             
             int totalPrice = cartProductMan.calculateTotalCartPrice(userId);
             
+            // 세션에 장바구니 상품 정보 저장
+            session.setAttribute("cartProducts", combinedProductDetails);
+            session.setAttribute("cartTotalPrice", totalPrice);
+            
+            // 요청에 데이터 전달
             request.setAttribute("totalPrice", totalPrice);
             request.setAttribute("combinedProductDetails", combinedProductDetails);
             
-            return "/cart/cartPage.jsp"; 
+            String page = "";
+            if(request.getParameter("page") == null) {
+            	page = (String) session.getAttribute("page");
+            } else {
+            	page = request.getParameter("page");
+            	session.setAttribute("page", page);
+            }
+            
+            if("cartPage".equals(page)) {
+                return "/cart/cartPage.jsp"; 
+            } else if("purchasePage".equals(page)) {
+                return "/purchase/purchasePage.jsp";
+            } else {
+                return "/cart/cartProductListPage.jsp"; 
+            }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("message", "오류 발생: " + e.getMessage());

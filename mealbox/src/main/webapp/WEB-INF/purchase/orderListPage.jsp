@@ -28,13 +28,11 @@
 		            <p>총 금액: ${order.totalPrice}원</p> 
 		        </div>
 		        <div>
-		            <!-- 주문 상품 목록 -->
-			        <c:if test="${not empty orderProductMap[order.orderId]}">	
-		                <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST">
-                			<input type="hidden" name="orderId" value="${order.orderId}" />
-                            <button class="btn" type="submit">주문 상세 정보 보기</button>
-                        </form>
-			        </c:if>
+		            <!-- 주문 상품 목록 -->	
+	               <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST">
+            			<input type="hidden" name="orderId" value="${order.orderId}" />
+                        <button class="btn" type="submit">주문 상세 정보 보기</button>
+                    </form>
 			    </div>
 		    </div>
 		</c:forEach>

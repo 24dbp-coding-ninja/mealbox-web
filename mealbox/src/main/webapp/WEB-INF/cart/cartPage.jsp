@@ -40,6 +40,7 @@
 				               	<input type="hidden" name="quantity" value="${detail.cartProduct.quantity}" />
 				               	<input type="hidden" name="cartItemPrice" value="${detail.cartProduct.cartItemPrice}" />
 				               	<input type="hidden" name="updateValue" value="decrease" />
+				               	<input type="hidden" name="page" value="cartPage" />
              					<button class="btnQ" type="submit" name="action" value="decrease">-</button>
 		                    </form>
 					        <p>${detail.cartProduct.quantity}</p>
@@ -49,6 +50,7 @@
 				               	<input type="hidden" name="quantity" value="${detail.cartProduct.quantity}" />
 				               	<input type="hidden" name="cartItemPrice" value="${detail.cartProduct.cartItemPrice}" />
 				               	<input type="hidden" name="updateValue" value="increase" />
+				               	<input type="hidden" name="page" value="cartPage" />
              					<button class="btnQ" type="submit" name="action" value="increase">+</button>
 		                    </form>
 	                    </div>
@@ -57,6 +59,7 @@
 	               		<form action="${pageContext.request.contextPath}/cart/remove" method="GET">
 	               			<input type="hidden" name="userId" value="${detail.cartProduct.userId}" />
 			               	<input type="hidden" name="productId" value="${detail.cartProduct.productId}" />
+			               	<input type="hidden" name="page" value="cartPage" />
 		                	<button type="submit" class="close-btn">X</button>
 	                    </form>
 				        <p><strong>총가격 </strong> ${detail.cartProduct.cartItemPrice}원</p>
@@ -73,35 +76,11 @@
 	        <p id="money">${totalPrice}원</p>
         </div>
         <div id="btn">
-	       <form>
-	          <button type="button">구매하기</button>
+	       <form action="${pageContext.request.contextPath}/cart/view" method="POST">
+	   			<input type="hidden" name="page" value="purchasePage" />
+	          	<button type="submit">구매하기</button>
 	        </form>
 	    </div>
     </div>
   </body>
 </html>
-
-
-<!--<div class="item">
-	<div class="itemInfo1">
-        	<img src="../images/cartItem.png" alt="상품 이미지" />
-       </div>
-       <div class="itemInfo2">
-         <p>상품명</p>
-         <form>
-             <span>상품수량 </span> 
-             <span class="btnContainer">
-             <button class="btnQ" type="button" name="action" value="decrease">-</button>
-             <span class="btnSpan">1</span>
-             <button class="btnQ" type="button" name="action" value="increase">+</button>
-             </span>
-        	  </form>
-       </div>
-       <div class="itemInfo3">
-      	  삭제 버튼: 해당 상품 ID를 서버에 전달하여 삭제
-         <form>
-           <button type="button" class="close-btn">X</button>
-         </form>
-         <p>총가격 13,000원</p>
-       </div>
-</div>  -->

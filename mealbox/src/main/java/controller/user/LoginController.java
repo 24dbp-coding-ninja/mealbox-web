@@ -32,6 +32,7 @@ public class LoginController implements Controller {
             	 //일반회원 로그인 시
             	//return "redirect:/product"; //오류 시, redirect:뒤에 띄어쓰기 되어있는지 확인!
             	return "redirect:/user/readUser"; //readUser시험용
+            	//session.setAttribute("page", "cartPage"); //cartProduct시험용
             	//return "redirect:/cart/view"; //cartProduct시험용
             }
             

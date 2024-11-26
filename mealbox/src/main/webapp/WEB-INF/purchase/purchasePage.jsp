@@ -14,16 +14,19 @@
 	<link rel="stylesheet" href="../css/purchasePage.css" />
   </head>
   <body>
+  	<% 
+        // 서버에서 HttpSession에 값 저장
+        session.setAttribute("redirectPage", "purchasePage");
+    %>
 	<jsp:include page="../nav.jsp"/>
     <div id="container">
     	<div id="title">구매하기</div>
     	<div id="line">
     		<hr>	
     	</div>
-    	<div id="contentContainer">
-    		<div id="formContainer">
-		        <form action="/order/create" method="POST">
-		            <input type="hidden" name="userId" value="${userId}">
+       	<form action="${pageContext.request.contextPath}/order/create" method="POST">
+    		<div id="contentContainer">
+	    		<div id="formContainer">
 		            <div id="form1">
 		                <h3>주문자</h3>
 		                <hr>
@@ -72,50 +75,45 @@
 		                    </tr>
 		                </table>
 		            </div>
-		            <div>
-		            	<br>
-		            	<br>
-		                <button type="submit">배송 정보 저장하기</button>
-		            </div>
-		        </form>
-		    </div>
-    		<div id="cartContainer">
-			    <form action="/orderProduct/create" method="POST">
-			        <div id="listContainer">
-			            <p>주문상품</p>
-			            <hr>
-			            <!-- 상품 리스트 반복 -->
-			            <c:forEach var="item" items="${cartItems}">
-			                <div class="item">
-			                    <input type="hidden" name="orderId" value="${orderId}" />
-			                    <input type="hidden" name="lineNo" value="${item.lineNo}" />
-			                    <input type="hidden" name="productId" value="${item.productId}" />
-			                    <input type="hidden" name="quantity" value="${item.quantity}" />
-			                    <input type="hidden" name="orderItemPrice" value="${item.price}" />
-			                    
-			                    <div class="itemInfo1">
-			                        <img src="${item.imageUrl}" alt="상품 이미지" />
-			                    </div>
-			                    <div class="itemInfo2">
-			                        <p>상품명: ${item.productName}</p>
-			                        <p>수량: ${item.quantity}</p>
-			                    </div>
-			                    <div class="itemInfo3">
-			                        <p>가격: ${item.price}원</p>
-			                    </div>
-			                </div>
-			            </c:forEach>
-			        </div>
-			        <div id="totalMoney">
-			            <p>결제예정금액</p>
-			            <p id="money">${totalPrice}원</p>
+			    </div>
+	    		<div id="cartContainer">
+		        	<div id="listContainer">
+		            	<p>주문상품</p>
+		    			<hr>
+		    			<c:forEach var="detail" items="${sessionScope.cartProducts}">
+					    	<div class="item">
+						    	<div class="itemInfo1">
+						    		<img alt="상품사진" src="">
+						    	</div>
+						    	<div class="itemInfo2">
+						    		<div class="itemInfo2-name">
+							        	<p><strong>상품명:</strong> ${detail.productDetail.name}</p>
+							        </div>
+							        <div class="itemInfo2-quantity">
+							        	<p><strong>수량:</strong> ${detail.cartProduct.quantity}</p>
+				                    </div>
+						        </div>
+						        <div class="itemInfo3">
+							        <p><strong>총가격 </strong> ${detail.cartProduct.cartItemPrice}원</p>
+						        </div>
+					    	</div>
+						</c:forEach>
+					
+					    <c:if test="${empty sessionScope.cartProducts}">
+					        <p>장바구니에 담긴 상품이 없습니다.</p>
+					    </c:if>
+			    	</div>
+			    	<div id="totalMoney">
+				        <p>결제예정금액</p>
+				        <p id="money">${sessionScope.cartTotalPrice}원</p>
 			        </div>
 			        <div id="btn">
-			            <button type="submit">구매하기</button>
-			        </div>
-			    </form>
-			</div>
-    	</div>
+	            		<input type="hidden" name="totalPrice" value="${sessionScope.cartTotalPrice}" />
+		          		<button type="submit">구매하기</button>
+				    </div>
+				</div>
+    		</div>
+		</form>
     </div>
   </body>
 </html>
