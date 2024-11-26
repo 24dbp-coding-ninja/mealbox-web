@@ -44,17 +44,17 @@
                 <input type="text" id="name" name="name" value="${user.name}" required>
                 <div class="text" id="text_name">이름은 필수입력 항목입니다.</div>
                 <div id="phone">
-                    <input type="text" id="phone_part1" name="phone_part1" value="${user.phone}" maxlength="3" required>
+                    <input type="text" id="phone_part1" name="phone_part1" value="${phoneParts[0]}" maxlength="3" required>
                     <span>-</span>
-                    <input type="text" id="phone_part2" name="phone_part2" value="${user.phone}" maxlength="4" required>
+                    <input type="text" id="phone_part2" name="phone_part2" value="${phoneParts[1]}" maxlength="4" required>
                     <span>-</span>
-                    <input type="text" id="phone_part3" name="phone_part3" value="${user.phone}" maxlength="4" required>
+                    <input type="text" id="phone_part3" name="phone_part3" value="${phoneParts[2]}" maxlength="4" required>
                 </div>
                 <div class="text" id="text_phone">전화번호는 필수입력 항목입니다.</div>
                 <div id="email">
-                    <input type="text" id="email_id" name="email_id" value="${user.email}">
+                    <input type="text" id="email_id" name="email_id" value="${emailParts[0]}">
                     <span>@</span>
-                    <input type="text" id="email_domain" name="email_domain" value="${user.email}">
+                    <input type="text" id="email_domain" name="email_domain" value="${emailParts[1]}">
                 </div>
                 <div class="text"><font color="white">비어있습니다</font></div>
                 <input type="text" id="address" name="address" value="${user.address}">
