@@ -52,7 +52,7 @@ public class CartProductDAO {
 		String sql = "UPDATE MEAL_CART_PRODUCT "
 					+ "SET quantity=?, cartItemPrice=? "
 					+ "WHERE userId=? AND productId=?";
-		Object[] param = new Object[] {cartProduct.getQuantity(), cartProduct.getCartItemPrice()};				
+		Object[] param = new Object[] {cartProduct.getQuantity(), cartProduct.getCartItemPrice(), cartProduct.getUserId(), cartProduct.getProductId()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			
 		try {				
@@ -72,7 +72,7 @@ public class CartProductDAO {
 	/**
 	 * 주어진 ID에 해당하는 장바구니 상품 정보를 삭제.
 	 */
-	public int remove(int userId, int productId) throws SQLException {
+	public int remove(String userId, int productId) throws SQLException {
 		String sql = "DELETE FROM MEAL_CART_PRODUCT WHERE userId=? AND productId=?";		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, productId});	// JDBCUtil에 delete문과 매개 변수 설정
 
@@ -94,11 +94,11 @@ public class CartProductDAO {
 	/**
 	 * 특정 사용자가 장바구니에 담은 상품 정보들을 검색하여 List에 저장 및 반환
 	 */
-	public List<CartProduct> findCartProductInUser(int userId) throws SQLException {
+	public List<CartProduct> findCartProductInUser(String userId) throws SQLException {
         String sql = "SELECT productId, quantity, cartItemPrice " 
       		   + "FROM MEAL_CART_PRODUCT "
-      		   + "ORDER BY productId "
-      		   + "WHERE userId = ?";                          
+      		   + "WHERE userId = ? "
+      		   + "ORDER BY productId";                          
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {
@@ -124,8 +124,8 @@ public class CartProductDAO {
 	/**
 	 * 특정 사용자의 장바구니 총 금액 계산
 	 */
-	public int calculateTotalCartPrice(int userId) throws SQLException {
-	    String sql = "SELECT SUM(quantity * cartItemPrice) AS totalPrice " 
+	public int calculateTotalCartPrice(String userId) throws SQLException {
+	    String sql = "SELECT SUM(cartItemPrice) AS totalPrice " 
 	               + "FROM MEAL_CART_PRODUCT WHERE userId = ?";
 	    jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 
