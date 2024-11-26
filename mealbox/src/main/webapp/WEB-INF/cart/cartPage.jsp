@@ -54,7 +54,7 @@
 	                    </div>
 			        </div>
 			        <div class="itemInfo3">
-	               		<form action="/cart/remove" method="GET">
+	               		<form action="${pageContext.request.contextPath}/cart/remove" method="GET">
 	               			<input type="hidden" name="userId" value="${detail.cartProduct.userId}" />
 			               	<input type="hidden" name="productId" value="${detail.cartProduct.productId}" />
 		                	<button type="submit" class="close-btn">X</button>

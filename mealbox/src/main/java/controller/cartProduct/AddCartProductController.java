@@ -20,9 +20,8 @@ public class AddCartProductController implements Controller {
 			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
-            int cartItemPrice = Integer.parseInt(request.getParameter("cartItemPrice")); // 계산 필요
 
-            CartProduct cartProduct = new CartProduct(userId, productId, quantity, cartItemPrice);
+            CartProduct cartProduct = new CartProduct(userId, productId, quantity, 0);
             int result = cartProductMan.addCartProduct(cartProduct);
 
          // 결과 출력
