@@ -40,7 +40,8 @@
             <form action="/mealbox/user/login/form" method="GET">
                 <button class="style_button">로그인</button>
             </form>
-            <form action="/mealbox/main" method="GET">
+            
+            <form action="/mealbox/product" method="GET">
             	<button class="style_button">메인으로</button>
             </form>
         </div>

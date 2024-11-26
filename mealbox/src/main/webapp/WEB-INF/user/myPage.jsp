@@ -27,7 +27,7 @@
 			<form action="/mealbox/purchase/purchaseList" method="POST">
 				<button type="submit">주문목록 바로가기</button>
 			</form>
-			<form action="/mealbox/user/updateUser" method="POST">
+			<form action="/mealbox/user/updateUser" method="GET"><!-- post로 하면 안됨. updateUserController에서 get인지 post인지 따라 다르게 코드를 작성함 -->
 				<button type="submit">내 정보 수정하기</button>
 			</form>
 			<form action="/mealbox/user/deleteUser" method="POST">

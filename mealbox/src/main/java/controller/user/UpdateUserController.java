@@ -49,6 +49,14 @@ public class UpdateUserController implements Controller {
 			User user = manager.findUser(loginId);
 			request.setAttribute("user", user);
 			
+			String phone = user.getPhone();
+			String[] phoneParts = phone.split("-");
+			request.setAttribute("phoneParts", phoneParts);
+			
+			String email = user.getEmail();
+			String[] emailParts = email.split("@");
+			request.setAttribute("emailParts", emailParts);
+			
 			return "/user/updatePage.jsp";
 	    }	
     	
