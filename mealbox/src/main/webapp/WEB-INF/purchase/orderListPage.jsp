@@ -19,26 +19,25 @@
       <div id="listContainer">
         <p>구매상품내역</p>
         <hr />
-        <c:forEach var="orderProduct" items="${orderList}">
-          <div class="item">
-            <form action="/orders/${orderProduct.orderId}/products/${orderProduct.lineNo}" method="post">
-              <div class="itemInfo1">
-                <img src="${orderProduct.imageUrl}" alt="상품 이미지" />
-              </div>
-              <div class="itemInfo2">
-                <p>상품명: ${orderProduct.productName}</p>
-                <p>상품수량: ${orderProduct.quantity}</p>
-                <p>총가격: ${orderProduct.orderItemPrice}원</p>
-              </div>
-              <div class="itemInfo3">
-                <!-- 리뷰작성 버튼 -->
-                <button type="submit" formaction="/reviews/write">리뷰작성</button>
-                <!-- 장바구니 추가 버튼 -->
-                <button type="submit" formaction="/cart/add">장바구니</button>
-              </div>
-            </form>
-          </div>
-        </c:forEach>
+        <c:forEach var="order" items="${orderList}">
+		    <div class="item">
+		        <!-- 주문 정보 -->
+		        <div class="orderInfo">
+		            <p>주문 번호: ${order.orderId}</p>
+		            <p>주문 날짜: ${order.orderAt}</p>
+		            <p>총 금액: ${order.totalPrice}원</p> 
+		        </div>
+		        <div>
+		            <!-- 주문 상품 목록 -->
+			        <c:if test="${not empty orderProductMap[order.orderId]}">	
+		                <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST">
+                			<input type="hidden" name="orderId" value="${order.orderId}" />
+                            <button class="btn" type="submit">주문 상세 정보 보기</button>
+                        </form>
+			        </c:if>
+			    </div>
+		    </div>
+		</c:forEach>
       </div>
     </div>
   </body>
