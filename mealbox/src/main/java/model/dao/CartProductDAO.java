@@ -52,7 +52,7 @@ public class CartProductDAO {
 		String sql = "UPDATE MEAL_CART_PRODUCT "
 					+ "SET quantity=?, cartItemPrice=? "
 					+ "WHERE userId=? AND productId=?";
-		Object[] param = new Object[] {cartProduct.getQuantity(), cartProduct.getCartItemPrice()};				
+		Object[] param = new Object[] {cartProduct.getQuantity(), cartProduct.getCartItemPrice(), cartProduct.getUserId(), cartProduct.getProductId()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil에 update문과 매개 변수 설정
 			
 		try {				
@@ -94,11 +94,11 @@ public class CartProductDAO {
 	/**
 	 * 특정 사용자가 장바구니에 담은 상품 정보들을 검색하여 List에 저장 및 반환
 	 */
-	public List<CartProduct> findCartProductInUser(int userId) throws SQLException {
+	public List<CartProduct> findCartProductInUser(String userId) throws SQLException {
         String sql = "SELECT productId, quantity, cartItemPrice " 
       		   + "FROM MEAL_CART_PRODUCT "
-      		   + "ORDER BY productId "
-      		   + "WHERE userId = ?";                          
+      		   + "WHERE userId = ? "
+      		   + "ORDER BY productId";                          
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
 		
 		try {

@@ -64,7 +64,6 @@ public class RequestMapping {
         mappings.put("/orderProduct/update", new UpdateOrderProductController()); // 주문 상품 수정
         mappings.put("/orderProduct/create", new CreateOrderProductController()); // 주문하기 주문 상품 저장
         mappings.put("/orders/user", new FindOrdersInUserController()); // 사용자의 모든 주문 조회 -> orderListPage.jsp에 사용
-        //mappings.put("/orders/*/*", new FindOrderProductController()); // 특정 주문의 상품 조회
         mappings.put("/purchase/purchase", new ForwardController("/purchase/purchasePage.jsp"));  // 주문하기
         mappings.put("/purchase/purchaseUpdate", new ForwardController("/purchase/purchaseUpdatePage.jsp"));  // 주문하기
         mappings.put("/purchase/purchaseList", new FindOrdersInUserController());

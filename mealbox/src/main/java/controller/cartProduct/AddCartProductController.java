@@ -14,7 +14,7 @@ public class AddCartProductController implements Controller {
         CartProductManager cartProductMan = CartProductManager.getInstance();
 
         try {
-            int userId = Integer.parseInt(request.getParameter("userId"));
+            String userId = request.getParameter("userId");
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int cartItemPrice = Integer.parseInt(request.getParameter("cartItemPrice"));

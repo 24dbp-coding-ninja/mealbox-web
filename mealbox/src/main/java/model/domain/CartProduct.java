@@ -6,14 +6,14 @@
 package model.domain;
 
 public class CartProduct {
-	private int userId;
+	private String userId;
 	private int productId;
 	private int quantity;
 	private int cartItemPrice;
 	
 	public CartProduct() {}
 	
-	public CartProduct(int userId, int productId, int quantity, int cartItemPrice) {
+	public CartProduct(String userId, int productId, int quantity, int cartItemPrice) {
 		this.userId = userId;
 		this.productId = productId;
 		this.quantity = quantity;
@@ -27,11 +27,11 @@ public class CartProduct {
 	}
 	
 	// setter & getter
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

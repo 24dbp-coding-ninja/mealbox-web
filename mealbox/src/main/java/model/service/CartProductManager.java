@@ -49,7 +49,7 @@ public class CartProductManager {
     /**
      * 특정 사용자의 장바구니 상품 조회
      */
-    public List<CartProduct> getCartProducts(int userId) throws SQLException {
+    public List<CartProduct> getCartProducts(String userId) throws SQLException {
         return cartProductDAO.findCartProductInUser(userId);
     }
     

@@ -34,6 +34,7 @@ body {
 
 #contentContainer{
 	display: flex;
+	padding-top: 10px;
 	
 }
 
