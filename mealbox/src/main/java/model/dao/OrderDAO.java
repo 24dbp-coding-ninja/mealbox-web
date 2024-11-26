@@ -28,14 +28,33 @@ public class OrderDAO {
 	 * MEAL_ORDER 테이블에 새로운 행 생성 (PK 값은 Sequence를 이용하여 자동 생성)
 	*/
 	public int create(Order order) throws SQLException {
-		String sql = "INSERT INTO MEAL_ORDER VALUES (Sequence_orderId.nextval, ?, SYSDATE, ?, ?, ?, ?, ?, ?, ?)";		
-		Object[] param = new Object[] {order.getUserId(), order.getOrderAt(), order.getPurchaser(), order.getPurPhone(), 
-							order.getRecipient(), order.getRecPhone(), order.getDeliveryAddress(), order.getTotalPrice(), order.getDeliveryDate()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
+	    String sql = "INSERT INTO MEAL_ORDER (orderId, userId, orderAt, purchaser, purPhone, recipient, recPhone, deliveryAddress, totalPrice, deliveryDate) "
+	               + "VALUES (sequence_orderid.nextval, ?, SYSDATE, ?, ?, ?, ?, ?, ?, ?)";
+	    
+	    Object[] param = new Object[] {
+	        order.getUserId(), 
+	        order.getPurchaser(), 
+	        order.getPurPhone(),
+	        order.getRecipient(), 
+	        order.getRecPhone(), 
+	        order.getDeliveryAddress(), 
+	        order.getTotalPrice(), 
+	        new java.sql.Date(order.getDeliveryDate().getTime())
+	    };
+	    
+	    jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 SQL과 매개 변수 설정
+		
 		try {				
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
-			return result;
+			if (result > 0) {
+	            // 자동 생성된 orderId 가져오기
+	            String getIdSql = "SELECT sequence_orderid.currval FROM DUAL";
+	            jdbcUtil.setSqlAndParameters(getIdSql, null);
+	            ResultSet rs = jdbcUtil.executeQuery();
+	            if (rs.next()) {
+	                return rs.getInt(1); // 생성된 orderId 반환
+	            }
+			}
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
@@ -43,8 +62,9 @@ public class OrderDAO {
 			jdbcUtil.commit();
 			jdbcUtil.close();	// resource 반환
 		}		
-		return 0;				
+		return 0;
 	}
+
 	
 	/**
 	 * 기존 주문 정보를 수정.
@@ -108,7 +128,7 @@ public class OrderDAO {
 			if (rs.next()) {						// 주문 정보 발견
 				Order order = new Order(		// Order 객체를 생성하여 주문 정보를 저장
 					orderId,
-					rs.getInt("userId"),
+					rs.getString("userId"),
 					rs.getDate("orderAt"),
 					rs.getString("purchaser"),
 					rs.getString("purPhone"),
@@ -142,7 +162,7 @@ public class OrderDAO {
 			while (rs.next()) {
 				Order order = new Order(			// Order 객체를 생성하여 현재 행의 정보를 저장
 					rs.getInt("orderId"),
-					rs.getInt("userId"),
+					rs.getString("userId"),
 					rs.getDate("orderAt"),
 					rs.getString("purchaser"),
 					rs.getString("purPhone"),
@@ -185,7 +205,7 @@ public class OrderDAO {
 				do {
 					Order order = new Order(			// Order 객체를 생성하여 현재 행의 정보를 저장
 							rs.getInt("orderId"),
-							rs.getInt("userId"),
+							rs.getString("userId"),
 							rs.getDate("orderAt"),
 							rs.getString("purchaser"),
 							rs.getString("purPhone"),

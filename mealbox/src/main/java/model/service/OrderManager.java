@@ -38,7 +38,9 @@ public class OrderManager {
         if (orderDAO.existingOrder(order.getOrderId())) {
             throw new ExistingOrderException(order.getOrderId() + "는 존재하는 주문아이디입니다.");
         }
-        return orderDAO.create(order);
+        int orderId = orderDAO.create(order); // 생성된 orderId 반환
+        order.setOrderId(orderId); // Order 객체에 orderId 설정
+        return orderId;
     }
 
     /**

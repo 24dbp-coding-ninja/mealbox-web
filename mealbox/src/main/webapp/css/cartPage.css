@@ -134,10 +134,6 @@ p {
   margin: 15px 0 25px 0;
 }
 
-.itemInfo2 span {
-	font-size: 15px;
-}
-
 /* 총 가격과 닫기 버튼 */
 .itemInfo3 {
   text-align: right;

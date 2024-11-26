@@ -28,21 +28,29 @@ public class OrderProductDAO {
 	 * MEAL_ORDER_PRODUCT 테이블에 새로운 행 생성 (PK 값은 Sequence를 이용하여 자동 생성)
 	*/
 	public int create(OrderProduct orderProduct) throws SQLException {
-		String sql = "INSERT INTO MEAL_ORDER_PRODUCT VALUES ?, ?, ?, ?, ?)";		
-		Object[] param = new Object[] {orderProduct.getOrderId(), orderProduct.getLineNo(), orderProduct.getProductId(), orderProduct.getQuantity(), orderProduct.getOrderItemPrice()};				
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
-						
-		try {				
-			int result = jdbcUtil.executeUpdate();	// insert 문 실행
-			return result;
-		} catch (Exception ex) {
-			jdbcUtil.rollback();
-			ex.printStackTrace();
-		} finally {		
-			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 반환
-		}		
-		return 0;				
+	    String sql = "INSERT INTO MEAL_ORDER_PRODUCT (orderId, lineNo, productId, quantity, orderItemPrice) " +
+	                 "VALUES (?, sequence_lineno.nextval, ?, ?, ?)";
+	    
+	    Object[] param = new Object[] {
+	        orderProduct.getOrderId(),
+	        orderProduct.getProductId(),
+	        orderProduct.getQuantity(),
+	        orderProduct.getOrderItemPrice()
+	    };
+	    
+	    jdbcUtil.setSqlAndParameters(sql, param); // JDBCUtil에 insert문과 매개 변수 설정
+
+	    try {				
+	        int result = jdbcUtil.executeUpdate(); // insert 문 실행
+	        return result;
+	    } catch (Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {		
+	        jdbcUtil.commit();
+	        jdbcUtil.close(); // resource 반환
+	    }		
+	    return 0;				
 	}
 	
 	/**

@@ -16,6 +16,7 @@ public class RemoveCartProductController implements Controller {
 
         try {
 			HttpSession session = request.getSession();
+        	
 			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             int productId = Integer.parseInt(request.getParameter("productId"));
 

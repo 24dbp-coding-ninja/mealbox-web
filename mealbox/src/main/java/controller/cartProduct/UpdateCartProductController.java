@@ -17,6 +17,7 @@ public class UpdateCartProductController implements Controller {
 
         try {
 			HttpSession session = request.getSession();
+        	
 			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -65,6 +66,7 @@ public class UpdateCartProductController implements Controller {
             } else {
                 System.out.println("장바구니 상품 업데이트 실패!");
             }
+            
             return "redirect:/cart/view";
             
         } catch (Exception e) {

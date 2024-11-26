@@ -38,7 +38,7 @@ public class UpdateOrderController implements Controller {
             } else if ("POST".equalsIgnoreCase(request.getMethod())) {
                 // 수정 요청 처리
                 int orderId = Integer.parseInt(request.getParameter("orderId"));
-                int userId = Integer.parseInt(request.getParameter("userId"));
+                String userId = request.getParameter("userId");
                 String purchaser = request.getParameter("purchaser");
                 String purPhone = request.getParameter("purPhone");
                 String recipient = request.getParameter("recipient");
