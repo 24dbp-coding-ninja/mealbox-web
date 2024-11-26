@@ -21,16 +21,16 @@
     		<hr>	
     	</div>
     	<div id="btnContainer">
-			<form  action="/mealbox/cart/cartList" method="GET">
+			<form  action="/mealbox/cart/cartList" method="POST">
 				<button type="submit">장바구니 바로가기</button>
 			</form>
-			<form action="/mealbox/purchase/purchaseList" method="GET">
+			<form action="/mealbox/purchase/purchaseList" method="POST">
 				<button type="submit">주문목록 바로가기</button>
 			</form>
-			<form action="/mealbox/user/updateUser" method="GET">
+			<form action="/mealbox/user/updateUser" method="POST">
 				<button type="submit">내 정보 수정하기</button>
 			</form>
-			<form action="/mealbox/user/deleteUser" method="GET">
+			<form action="/mealbox/user/deleteUser" method="POST">
 				<button type="submit">탈퇴하기</button>
 			</form>
     	</div>
