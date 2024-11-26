@@ -40,6 +40,12 @@ public class ViewCartController implements Controller {
                 combinedProductDetails.add(productDetail);
             }
 
+         // 데이터 확인 (디버깅)
+            System.out.println("Combined Product Details: " + combinedProductDetails.size());
+            for (Map<String, Object> detail : combinedProductDetails) {
+                System.out.println(detail);
+            }
+            
             int totalPrice = cartProductMan.calculateTotalCartPrice(userId);
             
             request.setAttribute("totalPrice", totalPrice);

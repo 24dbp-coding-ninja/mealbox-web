@@ -28,8 +28,11 @@ public class CartProductDAO {
 	 * MEAL_CART_PRODUCT 테이블에 새로운 행 생성 (PK 값은 Sequence를 이용하여 자동 생성)
 	*/
 	public int create(CartProduct cartProduct) throws SQLException {
-		String sql = "INSERT INTO MEAL_CART_PRODUCT VALUES ?, ?, ?, ?)";		
-		Object[] param = new Object[] {cartProduct.getUserId(), cartProduct.getProductId(), cartProduct.getQuantity(), cartProduct.getCartItemPrice()};				
+		String sql = "INSERT INTO MEAL_CART_PRODUCT (productId, quantity, cartItemPrice, userId) "
+				+ "SELECT productId=?, quantity=?, price * (quantity = ?), userId=? "
+				+ "FROM MEAL_PRODUCT "
+				+ "WHERE productId = ?";	
+		Object[] param = new Object[] {cartProduct.getProductId(), cartProduct.getQuantity(), cartProduct.getQuantity(), cartProduct.getUserId(), cartProduct.getProductId()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 						
 		try {				
