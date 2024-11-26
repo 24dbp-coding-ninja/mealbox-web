@@ -5,8 +5,10 @@ import model.service.CartProductManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 
 public class UpdateCartProductController implements Controller {
     @Override
@@ -14,7 +16,8 @@ public class UpdateCartProductController implements Controller {
         CartProductManager cartProductMan = CartProductManager.getInstance();
 
         try {
-            String userId = request.getParameter("userId");
+			HttpSession session = request.getSession();
+			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int cartItemPrice = Integer.parseInt(request.getParameter("cartItemPrice"));
@@ -41,10 +44,29 @@ public class UpdateCartProductController implements Controller {
             	}
             }
 
-            CartProduct cartProduct = new CartProduct(userId, productId, quantity, cartItemPrice);
-            cartProductMan.updateCartProduct(cartProduct);
 
+			System.out.println("Quantity: " + quantity);
+			System.out.println("Cart Item Price: " + cartItemPrice);
+			
+            // CartProduct 객체 생성
+            CartProduct cartProduct = new CartProduct();
+            cartProduct.setUserId(userId);
+            cartProduct.setProductId(productId);
+            cartProduct.setQuantity(quantity);
+            cartProduct.setCartItemPrice(cartItemPrice);
+     
+            int result =  cartProductMan.updateCartProduct(cartProduct);
+
+
+            // 결과 출력
+            if (result > 0) {
+                System.out.println("장바구니 상품 업데이트 성공!");
+                System.out.println(cartProduct.toString());
+            } else {
+                System.out.println("장바구니 상품 업데이트 실패!");
+            }
             return "redirect:/cart/view";
+            
         } catch (Exception e) {
         	System.out.println("오류 발생: " + e.getMessage());
         	e.printStackTrace(); // 자세한 오류 로그 출력

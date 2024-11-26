@@ -7,8 +7,10 @@ import model.service.ProductManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +24,9 @@ public class ViewCartController implements Controller {
         ProductManager productManager = ProductManager.getInstance();
 
         try {
-            String userId = "ninja2";
+            // 사용자 ID 추출
+			HttpSession session = request.getSession();
+			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
 
             List<CartProduct> cartProductList = cartProductMan.getCartProducts(userId);
             
@@ -36,6 +40,9 @@ public class ViewCartController implements Controller {
                 combinedProductDetails.add(productDetail);
             }
 
+            int totalPrice = cartProductMan.calculateTotalCartPrice(userId);
+            
+            request.setAttribute("totalPrice", totalPrice);
             request.setAttribute("combinedProductDetails", combinedProductDetails);
             
             return "/cart/cartPage.jsp"; 

@@ -4,8 +4,10 @@ import model.service.CartProductManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 
 public class RemoveCartProductController implements Controller {
     @Override
@@ -13,7 +15,8 @@ public class RemoveCartProductController implements Controller {
         CartProductManager cartProductMan = CartProductManager.getInstance();
 
         try {
-            int userId = Integer.parseInt(request.getParameter("userId"));
+			HttpSession session = request.getSession();
+			String userId = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
             int productId = Integer.parseInt(request.getParameter("productId"));
 
             int result = cartProductMan.removeCartProduct(userId, productId);

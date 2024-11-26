@@ -26,7 +26,7 @@
     		<c:forEach var="detail" items="${combinedProductDetails}">
 			    <div class="item">
 			    	<div class="itemInfo1">
-			    		<img alt="상품사진" src=${detail.productDetail.thumb}>
+			    		<img alt="상품사진" src="">
 			    	</div>
 			    	<div class="itemInfo2">
 			    		<div class="itemInfo2-name">
@@ -34,7 +34,7 @@
 				        </div>
 				        <div class="itemInfo2-quantity">
 				        	<p><strong>수량:</strong> </p>
-		               		<form action="${pageContext.request.contextPath}/cart/update" method="GET">
+							<form action="${pageContext.request.contextPath}/cart/update" method="GET">
 		               			<input type="hidden" name="userId" value="${detail.cartProduct.userId}" />
 				               	<input type="hidden" name="productId" value="${detail.cartProduct.productId}" />
 				               	<input type="hidden" name="quantity" value="${detail.cartProduct.quantity}" />
@@ -54,7 +54,7 @@
 	                    </div>
 			        </div>
 			        <div class="itemInfo3">
-	               		<form action="${pageContext.request.contextPath}/cart/remove" method="GET">
+	               		<form action="/cart/remove" method="GET">
 	               			<input type="hidden" name="userId" value="${detail.cartProduct.userId}" />
 			               	<input type="hidden" name="productId" value="${detail.cartProduct.productId}" />
 		                	<button type="submit" class="close-btn">X</button>
@@ -65,12 +65,12 @@
 			</c:forEach>
 			
 		    <c:if test="${empty combinedProductDetails}">
-		        <p>해당 상품 정보를 찾을 수 없습니다.</p>
+		        <p>장바구니에 담긴 상품이 없습니다.</p>
 		    </c:if>
     	</div>
     	<div id="totalMoney">
 	        <p>결제예정금액</p>
-	        <p id="money">13,000원</p>
+	        <p id="money">${totalPrice}원</p>
         </div>
         <div id="btn">
 	       <form>

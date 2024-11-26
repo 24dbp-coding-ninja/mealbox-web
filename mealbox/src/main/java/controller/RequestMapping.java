@@ -55,7 +55,6 @@ public class RequestMapping {
         mappings.put("/cart/update", new UpdateCartProductController());
         mappings.put("/cart/remove", new RemoveCartProductController());
         mappings.put("/cart/view", new ViewCartController());
-        mappings.put("/cart/totalPrice", new CalculateTotalCartPriceController());
         mappings.put("/cart/cartList",new ForwardController("/cart/cartPage.jsp"));
         
         // 고은-주문 관련 request URI 추가
@@ -73,7 +72,10 @@ public class RequestMapping {
     }
 
     public Controller findController(String uri) {	
-    	// 주어진 uri에 대응되는 controller 객체를 찾아 반환
-        return mappings.get(uri);
+    	System.out.println("Request URI: " + uri); // 요청된 URI 출력
+        if (mappings.get(uri) == null) {
+            System.out.println("No controller found for URI: " + uri);
+        }
+        return  mappings.get(uri);
     }
 }

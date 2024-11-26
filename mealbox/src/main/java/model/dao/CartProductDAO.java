@@ -72,7 +72,7 @@ public class CartProductDAO {
 	/**
 	 * 주어진 ID에 해당하는 장바구니 상품 정보를 삭제.
 	 */
-	public int remove(int userId, int productId) throws SQLException {
+	public int remove(String userId, int productId) throws SQLException {
 		String sql = "DELETE FROM MEAL_CART_PRODUCT WHERE userId=? AND productId=?";		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, productId});	// JDBCUtil에 delete문과 매개 변수 설정
 
@@ -124,8 +124,8 @@ public class CartProductDAO {
 	/**
 	 * 특정 사용자의 장바구니 총 금액 계산
 	 */
-	public int calculateTotalCartPrice(int userId) throws SQLException {
-	    String sql = "SELECT SUM(quantity * cartItemPrice) AS totalPrice " 
+	public int calculateTotalCartPrice(String userId) throws SQLException {
+	    String sql = "SELECT SUM(cartItemPrice) AS totalPrice " 
 	               + "FROM MEAL_CART_PRODUCT WHERE userId = ?";
 	    jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
 

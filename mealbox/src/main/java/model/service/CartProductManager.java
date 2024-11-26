@@ -42,7 +42,7 @@ public class CartProductManager {
     /**
      * 특정 장바구니 상품 삭제
      */
-    public int removeCartProduct(int userId, int productId) throws SQLException {
+    public int removeCartProduct(String userId, int productId) throws SQLException {
         return cartProductDAO.remove(userId, productId);
     }
 
@@ -56,7 +56,7 @@ public class CartProductManager {
     /**
      * 특정 사용자의 장바구니 총 금액 계산
      */
-    public int calculateTotalCartPrice(int userId) throws SQLException {
+    public int calculateTotalCartPrice(String userId) throws SQLException {
         return cartProductDAO.calculateTotalCartPrice(userId);
     }
 }
