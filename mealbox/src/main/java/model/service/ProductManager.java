@@ -34,13 +34,11 @@ public class ProductManager {
 	}
 	
 	public int updateProduct(Product product) {
-		// TODO : 구현 
-		return 0;
+		return productDao.update(product);
 	}
 	
 	public int removeProduct(String productId) {
-		// TODO : 구현 
-		return 0;
+		return productDao.delete(Integer.parseInt(productId));
 	}
 	
 	public List<Product> searchProduct(String categoryType, String categoryValue, String orderBy) {

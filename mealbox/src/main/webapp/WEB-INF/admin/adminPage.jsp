@@ -16,46 +16,56 @@
 <link rel="stylesheet" type="text/css" href="css/admin.css" />
 <script>
 	function submitForm(action) {
-    const form = document.getElementById('productForm');
+    	const form = document.getElementById('productForm');
+    	form.action = '${pageContext.request.contextPath}/admin/' + action;
     
-    // context path가 있을 경우를 대비해 기본 경로 설정
-    const contextPath = '${pageContext.request.contextPath}';
-    const checkedBoxes = document.querySelectorAll('.product_checkbox:checked');
-    
-    console.log(checkedBoxes);
-    
-    // 상품 등록
-    if(action === 'create') {
-    	form.action = contextPath + '/admin/create';bn
-    	form.submit();
-    	return;
-    }
-    
-    // 선택된 체크박스가 없는 경우
-    if(checkedBoxes.length === 0) {
-    	alert("수정 혹은 삭제될 상품이 선택되지 않았습니다.");
-    	return;
-    }
-    
-    switch(action) {
-    	// 상품 수정
-    	case 'update':
-        	form.action = contextPath + '/admin/update';
-    	    form.submit();
-    		break;
+    	if(action === 'create') {
+    		if(!validateCreation()) return;
+    	}
     	
-    	// 상품 삭제
-    	case 'delete':
-    		break;
-    }
+    	if(action === 'update' || action === 'delete'){
+    		if(!validateSelected()) return;
+    	}
+	    
+	    form.submit();
+	}
+	
+	function validateCreation() {
+	    const name = document.querySelector('input[name="newName"]').value;
+	    const price = document.querySelector('input[name="newPrice"]').value;
+	    const stock = document.querySelector('input[name="newStock"]').value;
+		
+		if(!name) {
+			alert("상품명 입력 후 상품을 추가해주세요.");
+			return false;
+		}
+		if(!price || isNaN(price)) {
+			alert("가격을 입력 후 상품을 추가해주세요.");
+			return false;
+		}
+		if(!stock || isNaN(stock)) {
+			alert("재고 수량을 입력 후 상품을 추가해주세요.");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	function validateSelected() {
+	    const checkboxes = document.querySelectorAll('.product_checkbox:checked');
+	    if (checkboxes.length === 0) {
+	        alert('최소 한 개의 상품을 선택하세요.');
+	        return false;
+	    }
+	    return true;
 	}
 	
 
 	function toggleAllCheckboxes(source) {
-	    const checkboxes = document.querySelectorAll('.product-checkbox');
-	    checkboxes.forEach(checkbox => {
+	    const checkboxes = document.getElementsByClassName('product_checkbox');
+	    for (let checkbox of checkboxes) {
 	        checkbox.checked = source.checked;
-	    });
+	    }
 	}
 </script>
 <title>상품 관리 어드민 페이지</title>
@@ -64,11 +74,11 @@
 	<%@ include file="../nav.jsp"%>
 	<div id="adminContainer">
 		<h1>상품 관리</h1>
-		<form id="productForm" method="POST" enctype="multipart/form-data">
+		<form id="productForm" method="POST">
 			<div id="selectedActionContainer">
-				<input type="button" onclick="submitForm('create')" name="action" value="상품 추가" />
-				<input type="button" onclick="submitForm('update')" name="action" value="선택 수정" />
-				<input type="button" onclick="submitForm('delete')" name="action" value="선택 삭제" />
+				<input class="submitButton" type="button" onclick="submitForm('create')" name="action" value="상품 추가" />
+				<input class="submitButton" type="button" onclick="submitForm('update')" name="action" value="선택 수정" />
+				<input class="submitButton" type="button" onclick="submitForm('delete')" name="action" value="선택 삭제" />
 			</div>
 			<div id="hr"></div>
 			<div id="formContainer">
@@ -91,10 +101,10 @@
 						<input type="text" id="newName" name="newName" />
 					</div>
 					<div>
-						<input type="text" id="newPrice" name="newPrice" />
+						<input type="text" id="newPrice" type="number" name="newPrice" />
 					</div>
 					<div>
-						<input type="text" id="newStock" name="newStock" />
+						<input type="text" id="newStock" type="number" name="newStock" />
 					</div>
 					<div>0</div>
 					<div>0</div>
