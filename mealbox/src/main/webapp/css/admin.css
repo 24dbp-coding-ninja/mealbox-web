@@ -34,6 +34,16 @@ body {
   }
 }
 
+.submitButton {
+	&:hover {
+		cursor: pointer;
+	}
+	
+	&:active {
+		background-color: red;
+	}
+}
+
 #hr {
   width: 95%;
   border-bottom: 1px solid black;

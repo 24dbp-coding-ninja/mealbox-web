@@ -36,12 +36,11 @@
            <div>홍길동님의<br>
             회원가입이 완료되었습니다.</div>
         </main>
-        <div id="joinSuccess_buttons">
-            <form action="/mealbox/user/login/form" method="GET">
+        <div id="joinSuccess_buttons" align="center" >
+            <form id="loginButton" action="/mealbox/user/login/form" method="GET">
                 <button class="style_button">로그인</button>
             </form>
-            
-            <form action="/mealbox/product" method="GET">
+            <form id="mainButton" action="/mealbox/product" method="GET">
             	<button class="style_button">메인으로</button>
             </form>
         </div>
