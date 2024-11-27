@@ -67,7 +67,9 @@ public class DeleteUserController implements Controller {
     	//loginId = 일반회원인 경우
     		String deleteId = loginId;
     		log.debug("Delete User : {}", deleteId);
-    		manager.remove(deleteId);
+    		manager.remove(deleteId); //삭제
+    		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);//로그아웃
+    		session.invalidate();
     		return "redirect:/product";
     	}
 	}
