@@ -31,8 +31,9 @@
 		        </div>
 		        <div class="itemInfo3">
 		        	
-               	<form action="${pageContext.request.contextPath}" method="POST">
-               		<input type="hidden" name="orderId" value="${order.orderId}" />
+               	<form action="${pageContext.request.contextPath}/review/items" method="GET">
+               		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
+               		<input type="hidden" name="productId" value="${detail.productDetail.id}" />
                     <button class="btn" type="submit">리뷰 등록/수정</button>
                 </form>
                      
