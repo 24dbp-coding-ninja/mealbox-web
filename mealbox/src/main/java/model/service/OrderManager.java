@@ -81,4 +81,11 @@ public class OrderManager {
     public List<Order> findOrderList() throws SQLException {
         return orderDAO.findOrderList();
     }
+
+    /**
+	 * 특정 사용자의 주문 건수 조회 
+     */
+    public int countOrder(String userId) throws SQLException {
+        return orderDAO.count(userId);
+    }
 }
