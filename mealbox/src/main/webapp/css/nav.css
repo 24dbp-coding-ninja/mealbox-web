@@ -44,6 +44,8 @@ nav {
 }
 
 #navInNav {
+	display: flex;
+	align-items: center;
   border: none;
 }
 
@@ -76,6 +78,7 @@ nav {
 }
 
 #basket {
+	margin-left: 10px;
   width: 30px;
   height: 30px;
 }
@@ -89,9 +92,8 @@ nav {
   }
 }
 
-#join,
-#login {
-  width: 50px;
+.navButton {
+  width: 90px;
   height: auto;
   text-align: center;
 

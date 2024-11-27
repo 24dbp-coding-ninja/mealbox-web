@@ -1,8 +1,7 @@
 <%--
 기능: nav jsp
 작성자: 신윤지
-마지막 수정일: 2024-11-18
-추가해야할 기능: search, cart, join, login 주소 연결
+마지막 수정일: 2024-11-27
  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -61,7 +60,6 @@
 		});
 		
 	};
-	<!-- /* 로그인 */ -->
 </script>
 </head>
 <body>
@@ -69,6 +67,7 @@
 	<div id="navContainer">
 		<!--메뉴아이콘-->
 		<input type="button" id="menuOpen" />
+		
 		<div id="navInNav">
 		<!--검색-->
 		<div id="search">
@@ -78,19 +77,52 @@
 				<img id="search_icon" src="/mealbox/images/search.png" align="center" />
 			</form>
 		</div>
-		<!--장바구니-->
-		<div id="basket">
-			<img id="basket_icon" src="/mealbox/images/basket.png" align="center" />
-			<!--장바구니아이콘-->
-		</div>
-		<!--join-->
-		<!--<form id="joinForm" action="/mealbox/user/join/form" method="GET" >-->
-			<div id="join" onclick="document.getElementById('joinForm').submit();">JOIN</div>
-		<!--</form>-->
-		<!--login-->
-		<!--<form id="loginForm" action="/mealbox/user/login/form" method="GET">-->
-			<div id="login" onclick="document.getElementById('loginForm').submit();">LOGIN</div>
-		<!--</form>-->
+	
+		<c:set var="loginId" value="${sessionScope.userId}" />
+	
+		</span>
+		<c:choose>
+		    <c:when test="${empty loginId}">
+				<div class="navButton" onclick="document.getElementById('joinForm').submit();">
+					<form id="joinForm" action="/mealbox/user/join/form" method="GET" >
+					</form>
+				JOIN</div>
+				<div class="navButton" onclick="document.getElementById('loginForm').submit();">
+					<form id="loginForm" action="/mealbox/user/login/form" method="GET">
+					</form>
+				LOGIN</div>
+			</c:when>
+			
+		    <c:when test="${loginId eq 'admin'}">
+				<div class="navButton" onclick="document.getElementById('adminForm').submit();">
+					<form id="adminForm" action="/mealbox/admin" method="GET">
+					</form>
+				상품관리</div>
+				<div class="navButton" onclick="document.getElementById('listUserForm').submit();">
+					<form id="listUserForm" action="/mealbox/user/listUser" method="GET">
+					</form>
+				회원관리</div>
+				<div class="navButton" onclick="document.getElementById('logoutForm').submit();">
+					<form id="logoutForm" action="/mealbox/user/logout" method="GET" >
+					</form>
+				LOGOUT</div>
+			</c:when>
+			
+			<c:otherwise>
+				<div id="basket">
+					<img id="basket_icon" src="/mealbox/images/basket.png" align="center" />
+				</div>
+				<div class="navButton" onclick="document.getElementById('logoutForm').submit();">
+					<form id="logoutForm" action="/mealbox/user/logout" method="GET" >
+					</form>
+				LOGOUT</div>
+				<div class="navButton" onclick="document.getElementById('myPageForm').submit();">
+					<form id="myPageForm" action="/mealbox/user/readUser" method="GET">
+					</form>
+				MYPAGE</div>
+			</c:otherwise>
+		</c:choose>	
+		
 		</div>
 	</div>
 	
