@@ -33,7 +33,7 @@
         <!--회원가입 메인 부분-->
         <main id="joinSuccess_main">
            <div>회원가입 완료</div>
-           <div>홍길동님의<br>
+           <div><span>${userName}</span>님의<br>
             회원가입이 완료되었습니다.</div>
         </main>
         <div id="joinSuccess_buttons" align="center" >

@@ -35,6 +35,7 @@ public class CreateUserController implements Controller {
 
 		try {
 			manager.create(user);
+			request.setAttribute("userName", user.getName());
 	        return "/user/joinSuccess.jsp";	// 성공 시 joinSuccess.jsp로 포워딩
 	        
 		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
