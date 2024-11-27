@@ -283,4 +283,24 @@ public class OrderDAO {
 		}
 		return false;
 	}
+	
+	/**
+	 * 특정 사용자의 주문 건수 조회 
+	 */
+	public int count(String userId) throws SQLException {
+		String sql = "SELECT count(*) FROM MEAL_ORDER WHERE userId=?";      
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil에 query문과 매개 변수 설정
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			return rs.getInt(1);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		return 0;
+	}
 }
+
+
