@@ -84,13 +84,13 @@
 			<!--장바구니아이콘-->
 		</div>
 		<!--join-->
-		<form id="joinForm" action="/mealbox/user/join/form" method="GET" >
+		<!--<form id="joinForm" action="/mealbox/user/join/form" method="GET" >-->
 			<div id="join" onclick="document.getElementById('joinForm').submit();">JOIN</div>
-		</form>
+		<!--</form>-->
 		<!--login-->
-		<form id="loginForm" action="/mealbox/user/login/form" method="GET">
+		<!--<form id="loginForm" action="/mealbox/user/login/form" method="GET">-->
 			<div id="login" onclick="document.getElementById('loginForm').submit();">LOGIN</div>
-		</form>
+		<!--</form>-->
 		</div>
 	</div>
 	
