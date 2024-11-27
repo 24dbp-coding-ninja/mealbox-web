@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -21,7 +21,7 @@
         <c:forEach var="detail" items="${combinedProductDetails}">
 		    <div class="item">
 		    	<div class="itemInfo1">
-		    		<img alt="상품사진" src=${detail.productDetail.thumb}>
+		    		<img alt="상품사진" src=${detail.productDetail.thumb} >
 		    	</div>
 		    	<div class="itemInfo2">
 			        <p><strong>상품명:</strong> ${detail.productDetail.name}</p>
@@ -30,24 +30,23 @@
 			        <p><strong>가격:</strong> ${detail.orderProduct.orderItemPrice}원</p>
 		        </div>
 		        <div class="itemInfo3">
-               		<%--  <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST"> --%>
-               		<%-- 	<input type="hidden" name="orderId" value="${order.orderId}" /> --%>
-                        <button class="btn" type="submit">리뷰 등록/수정</button>
-                     <!-- </form> -->
-                     <%--  <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST"> --%>
-           			<%-- 	<input type="hidden" name="orderId" value="${order.orderId}" /> --%>
-                        <button class="btn" type="submit">상품 상세 정보</button>
-                     <!-- </form> -->
-		        </div>
+		        	
+               	<form action="${pageContext.request.contextPath}" method="POST">
+               		<input type="hidden" name="orderId" value="${order.orderId}" />
+                    <button class="btn" type="submit">리뷰 등록/수정</button>
+                </form>
+                     
+                <form action="${pageContext.request.contextPath}/product/detail" method="GET">
+      			   <input type="hidden" name="id" value="${detail.productDetail.id}" /> 
+                   <button class="btn" type="submit">상품 상세 정보</button>
+                </form>
+		    	</div>
 		    </div>
 		</c:forEach>
-		
 	    <c:if test="${empty combinedProductDetails}">
 	        <p>해당 상품 정보를 찾을 수 없습니다.</p>
 	    </c:if>
-	    
-	    
-    	<form action="${pageContext.request.contextPath}/purchase/purchaseList" method="POST">
+	   	<form action="${pageContext.request.contextPath}/purchase/purchaseList" method="POST">
 				<button  id="backBtn" type="submit">주문목록 바로가기</button>
 		</form>
       </div>

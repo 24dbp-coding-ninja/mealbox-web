@@ -63,7 +63,7 @@ public class ViewCartController implements Controller {
             } else if("purchasePage".equals(page)) {
                 return "/purchase/purchasePage.jsp";
             } else {
-                return "/cart/cartProductListPage.jsp"; 
+                return "/cart/cartPage.jsp"; 
             }
         } catch (Exception e) {
             e.printStackTrace();

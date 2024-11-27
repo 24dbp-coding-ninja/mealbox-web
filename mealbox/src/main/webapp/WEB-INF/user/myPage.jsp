@@ -21,10 +21,11 @@
     		<hr>	
     	</div>
     	<div id="btnContainer">
-			<form  action="/mealbox/cart/cartList" method="POST">
+			<form  action="${pageContext.request.contextPath}/cart/view" method="POST">
+			    <input type="hidden" name="page" value="cartPage" />
 				<button type="submit">장바구니 바로가기</button>
 			</form>
-			<form action="/mealbox/purchase/purchaseList" method="POST">
+			<form action="${pageContext.request.contextPath}/purchase/purchaseList" method="POST">
 				<button type="submit">주문목록 바로가기</button>
 			</form>
 			<form action="/mealbox/user/updateUser" method="GET"><!-- post로 하면 안됨. updateUserController에서 get인지 post인지 따라 다르게 코드를 작성함 -->
