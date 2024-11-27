@@ -9,13 +9,13 @@ import model.domain.Product;
 public class CreateProductController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		ProductManager manager = ProductManager.getInstance();
 		
 		Product product = new Product(
 					request.getParameter("newName"),
-					request.getParameter("newThumb"),
-					request.getParameter("newDesc"),
+//					request.getParameter("newThumb"),
+					"img",
+					request.getParameter("newDescription"),
 					Integer.parseInt(request.getParameter("newPrice")),
 					Integer.parseInt(request.getParameter("newStock")),
 					0,
@@ -24,11 +24,11 @@ public class CreateProductController implements Controller {
 					Integer.parseInt(request.getParameter("newFoodTypeCategory"))
 		);
 	
-		System.out.println(product.getId());
-        System.out.println(product.getName());
 
-//			manager.createProduct(product);
-			return "redirect:/admin.jsp";
-	}
-	
+		    int res = manager.createProduct(product);
+			if(res <= 0) {
+			    request.setAttribute("creation failed", product);
+			}
+		    return "redirect:/admin";
+	}	
 }

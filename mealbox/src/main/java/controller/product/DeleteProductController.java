@@ -1,5 +1,6 @@
 package controller.product;
 
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,21 +11,29 @@ public class DeleteProductController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	{
-		String[] productId = request.getParameterValues("id");
-	
-		ProductManager manager = ProductManager.getInstance();
-		int res = 0;
+		ProductManager manager = ProductManager.getInstance();        
+
+        Map<String, String[]> paramMap = request.getParameterMap();
+        List<String> selectedIds = new ArrayList<>();
+        
+        for (String paramName : paramMap.keySet()) {
+            if (paramName.startsWith("checked_")) {
+                selectedIds.add(paramName.replace("checked_", ""));
+            }
+        }
+        if (selectedIds == null || selectedIds.size() < 1) {
+            request.setAttribute("errorMsg", "삭제할 상품을 선택해주세요.");
+            return "redirect:/admin";
+        }
 		
-		for(int i=0; i<productId.length; i++) {
-			res = res + manager.removeProduct(productId[i]);
-		}
-		
-		if(res!=productId.length) {
-			// 뭔가 한 두 개 덜 혹은 안 삭제되었음
-			// return ... 
-		}
-		
-		// 전부 제대로 삭제된 경우
-		return "redirect:/admin/products";
+        int successCount = 0;
+        for (String id : selectedIds) {
+            successCount += manager.removeProduct(id);
+        }
+        
+        if (successCount != selectedIds.size()) {
+            request.setAttribute("errorMsg", "일부 상품 삭제에 실패했습니다.");
+        }
+        return "redirect:/admin";
     }
 }
