@@ -1,7 +1,7 @@
 <%--
 기능: adminPage jsp 
 작성자: 신윤지
-마지막 수정일: 2024-11-05
+마지막 수정일: 2024-11-27
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
