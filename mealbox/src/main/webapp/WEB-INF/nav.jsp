@@ -110,7 +110,12 @@
 			
 			<c:otherwise>
 				<div id="basket">
-					<img id="basket_icon" src="/mealbox/images/basket.png" align="center" />
+					<form  action="${pageContext.request.contextPath}/cart/view" method="POST">
+			    		<input type="hidden" name="page" value="cartPage" />
+						<button type="submit" id="btn_basket">
+							<img id="basket_icon" src="/mealbox/images/basket.png" align="center" />
+						</button>
+					</form>
 				</div>
 				<div class="navButton" onclick="document.getElementById('logoutForm').submit();">
 					<form id="logoutForm" action="/mealbox/user/logout" method="GET" >
