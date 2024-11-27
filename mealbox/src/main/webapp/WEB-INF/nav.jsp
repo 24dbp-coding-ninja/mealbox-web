@@ -84,12 +84,16 @@
 			<!--장바구니아이콘-->
 		</div>
 		<!--join-->
-		<div id="join">JOIN</div>
+		<form id="joinForm" action="/mealbox/user/join/form" method="GET" >
+			<div id="join" onclick="document.getElementById('joinForm').submit();">JOIN</div>
+		</form>
 		<!--login-->
-		<div id="login">LOGIN</div>
+		<form id="loginForm" action="/mealbox/user/login/form" method="GET">
+			<div id="login" onclick="document.getElementById('loginForm').submit();">LOGIN</div>
+		</form>
 		</div>
 	</div>
-
+	
 	<!--사이드 바-->
 	<aside id="sidebar">
 		<section class="closeSection">
