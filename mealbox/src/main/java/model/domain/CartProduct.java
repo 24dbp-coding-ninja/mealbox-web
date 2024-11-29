@@ -20,6 +20,21 @@ public class CartProduct {
 		this.cartItemPrice = cartItemPrice;
 	}
 	
+	public CartProduct(CartProduct cartProduct) {
+	    if (cartProduct != null) {
+	        this.userId = cartProduct.getUserId();
+	        this.productId = cartProduct.getProductId();
+	        this.quantity = cartProduct.getQuantity();
+	        this.cartItemPrice = cartProduct.getCartItemPrice();
+	    } else {
+	        // null 입력에 대한 기본 처리
+	        this.userId = null;
+	        this.productId = 0;
+	        this.quantity = 0;
+	        this.cartItemPrice = 0;
+	    }
+	}
+	
 	public CartProduct(int productId, int quantity, int cartItemPrice) {
 		this.productId = productId;
 		this.quantity = quantity;

@@ -54,6 +54,21 @@ public class CartProductManager {
     }
     
     /**
+     * 특정 사용자의 특정 장바구니 상품 조회
+     */
+    public CartProduct getCartProduct(String userId, int productId) throws SQLException {
+        return cartProductDAO.findCartProductInUserAndProduct(userId, productId);
+    }
+  //return cartProductDAO.findCartProductInUserAndProduct(userId, productId);
+    
+//    /**
+//     * 특정 사용자가 특정 상품을 가지고 있는지 조회
+//     */
+//    public CartProduct getIsCartProduct(String userId, int productId) throws SQLException {
+//        return cartProductDAO.countCartProductInUserAndProduct(userId, productId);
+//    }
+    
+    /**
      * 특정 사용자의 장바구니 총 금액 계산
      */
     public int calculateTotalCartPrice(String userId) throws SQLException {
