@@ -76,10 +76,17 @@
 	        <p id="money">${totalPrice}원</p>
         </div>
         <div id="btn">
-	       <form action="${pageContext.request.contextPath}/cart/view" method="POST">
-	   			<input type="hidden" name="page" value="purchasePage" />
-	          	<button type="submit">구매하기</button>
-	        </form>
+        	<c:choose>
+			    <c:when test="${empty combinedProductDetails}">
+			        <button type="button" onClick="alert('상품을 담은 후 구매를 진행해주세요.');">구매하기</button>
+			    </c:when>
+			    <c:otherwise>
+			        <form action="${pageContext.request.contextPath}/cart/view" method="POST">
+			            <input type="hidden" name="page" value="purchasePage" />
+			            <button type="submit">구매하기</button>
+			        </form>
+			    </c:otherwise>
+			</c:choose>
 	    </div>
     </div>
   </body>
