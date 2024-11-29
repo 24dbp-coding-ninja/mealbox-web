@@ -1,7 +1,6 @@
 /*
 기능: CartProductDAO
 작성자: 장고은
-마지막 수정일: 2024-11-10
 */
 
 package model.dao;
@@ -147,36 +146,6 @@ public class CartProductDAO {
 	    }
 	    return null; // 데이터가 없으면 null 반환
 	}
-//	
-//	/**
-//	 * 특정 사용자가 특정 상품을 장바구니에 담은 상태인지 반환
-//	 */
-//	public CartProduct countCartProductInUserAndProduct(String userId, int productId) throws SQLException {
-//        String sql = "SELECT COUNT(*) AS cnt, quantity, cartItemPrice  " 
-//      		   + "FROM MEAL_CART_PRODUCT "
-//      		   + "WHERE userId = ? AND productId = ?";                
-//		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, productId});	// JDBCUtil에 query문과 매개 변수 설정
-//		
-//		try {
-//	        ResultSet rs = jdbcUtil.executeQuery(); // query 실행
-//	        if (rs.next()) {
-//	            int count = rs.getInt("cnt");
-//	            if(count > 0) { // 조건을 만족하는 데이터가 존재하면 true 반환
-//	            	return new CartProduct(
-//	                    	userId,
-//	                    	productId,
-//	                        rs.getInt("quantity"),
-//	                        rs.getInt("cartItemPrice")
-//	                    );
-//	            }
-//	        }
-//	    } catch (Exception ex) {
-//	        ex.printStackTrace();
-//	    } finally {
-//	        jdbcUtil.close(); // resource 반환
-//	    }
-//	    return null;
-//	}
 	
 	/**
 	 * 특정 사용자의 장바구니 총 금액 계산

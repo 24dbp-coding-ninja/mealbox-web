@@ -16,34 +16,34 @@ public class OrderTest {
         Scanner sc = new Scanner(System.in);
 
         
-        try {
-            // 사용자로부터 orderId와 lineNo 입력받기
-            System.out.print("orderId를 입력하시오: ");
-            int orderId = sc.nextInt();
-
-            System.out.print("lineNo를 입력하시오: ");
-            int lineNo = sc.nextInt();
-
-            System.out.println("\n--- [" + orderId + ", " + lineNo + "]에 대한 주문 상품 정보 조회 ---");
-
-            // 입력받은 orderId와 lineNo로 주문 상품 조회
-            OrderProduct orderProduct = orderProductDao.findOrderProduct(orderId, lineNo);
-
-            // 결과 출력
-            if (orderProduct != null) {
-                System.out.println(orderProduct.toString());
-            } else {
-                System.out.println("해당하는 주문 상품 정보가 없습니다.");
-            }
-        } catch (SQLException e) {
-            System.out.println("데이터베이스 오류: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("오류 발생: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            sc.close(); // Scanner 리소스 반환
-        }
+//        try {
+//            // 사용자로부터 orderId와 lineNo 입력받기
+//            System.out.print("orderId를 입력하시오: ");
+//            int orderId = sc.nextInt();
+//
+//            System.out.print("lineNo를 입력하시오: ");
+//            int lineNo = sc.nextInt();
+//
+//            System.out.println("\n--- [" + orderId + ", " + lineNo + "]에 대한 주문 상품 정보 조회 ---");
+//
+//            // 입력받은 orderId와 lineNo로 주문 상품 조회
+//            OrderProduct orderProduct = orderProductDao.findOrderProduct(orderId, lineNo);
+//
+//            // 결과 출력
+//            if (orderProduct != null) {
+//                System.out.println(orderProduct.toString());
+//            } else {
+//                System.out.println("해당하는 주문 상품 정보가 없습니다.");
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("데이터베이스 오류: " + e.getMessage());
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            System.out.println("오류 발생: " + e.getMessage());
+//            e.printStackTrace();
+//        } finally {
+//            sc.close(); // Scanner 리소스 반환
+//        }
         
         //findOrderProductInOrder test
 //        try {
