@@ -81,9 +81,20 @@ public class CreateOrderController implements Controller {
                     result = orderProductMan.createOrderProduct(orderProduct); // OrderProduct 생성
                     System.out.println("OrderProduct creation result: " + result);
 
-                    if (result > 0) {
+                    CartProduct oldCartProduct = new CartProduct(cartProductMan.getCartProduct(userId, cartProduct.getProductId()));
+                    if (result > 0 && ("cartPage".equals(session.getAttribute("redirectPage")) || oldCartProduct.getQuantity() == cartProduct.getQuantity())) {
                         result = cartProductMan.removeCartProduct(userId, cartProduct.getProductId()); // 장바구니 삭제
                         System.out.println("Cart product removal result: " + result);
+                    } else {
+                    	// 데이터가 있으므로 수량 및 가격 업데이트
+                        int updatedQuantity = oldCartProduct.getQuantity() - cartProduct.getQuantity();
+                        int updatedCartItemPrice = oldCartProduct.getCartItemPrice() - cartProduct.getCartItemPrice();
+
+                        oldCartProduct.setQuantity(updatedQuantity);
+                        oldCartProduct.setCartItemPrice(updatedCartItemPrice);
+
+                        result = cartProductMan.updateCartProduct(oldCartProduct);
+                        System.out.println("Cart product update result: " + result);
                     }
                 }
             } else if (cartProducts == null) {

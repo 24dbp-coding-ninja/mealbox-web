@@ -28,11 +28,8 @@ public class CartProductDAO {
 	 * MEAL_CART_PRODUCT 테이블에 새로운 행 생성 (PK 값은 Sequence를 이용하여 자동 생성)
 	*/
 	public int create(CartProduct cartProduct) throws SQLException {
-		String sql = "INSERT INTO MEAL_CART_PRODUCT (productId, quantity, cartItemPrice, userId) "
-				+ "SELECT productId=?, quantity=?, price * (quantity = ?), userId=? "
-				+ "FROM MEAL_PRODUCT "
-				+ "WHERE productId = ?";	
-		Object[] param = new Object[] {cartProduct.getProductId(), cartProduct.getQuantity(), cartProduct.getQuantity(), cartProduct.getUserId(), cartProduct.getProductId()};				
+		String sql = "INSERT INTO MEAL_CART_PRODUCT (userId, productId, quantity, cartItemPrice) VALUES (?, ?, ?, ?)";
+		Object[] param = new Object[] {cartProduct.getUserId(), cartProduct.getProductId(), cartProduct.getQuantity(), cartProduct.getCartItemPrice()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정
 						
 		try {				
@@ -123,6 +120,63 @@ public class CartProductDAO {
 		}
 		return null;
 	}
+	
+	/**
+	 * 특정 사용자가 장바구니에 담은 상품 정보을 검색하여 List에 저장 및 반환
+	 */
+	public CartProduct findCartProductInUserAndProduct(String userId, int productId) throws SQLException {
+	    String sql = "SELECT quantity, cartItemPrice " 
+	               + "FROM MEAL_CART_PRODUCT "
+	               + "WHERE userId = ? AND productId = ?";                
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, productId});
+
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+	        if (rs.next()) {
+	            return new CartProduct(
+	                userId,
+	                productId,
+	                rs.getInt("quantity"),
+	                rs.getInt("cartItemPrice")
+	            );
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.close(); // resource 반환
+	    }
+	    return null; // 데이터가 없으면 null 반환
+	}
+//	
+//	/**
+//	 * 특정 사용자가 특정 상품을 장바구니에 담은 상태인지 반환
+//	 */
+//	public CartProduct countCartProductInUserAndProduct(String userId, int productId) throws SQLException {
+//        String sql = "SELECT COUNT(*) AS cnt, quantity, cartItemPrice  " 
+//      		   + "FROM MEAL_CART_PRODUCT "
+//      		   + "WHERE userId = ? AND productId = ?";                
+//		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId, productId});	// JDBCUtil에 query문과 매개 변수 설정
+//		
+//		try {
+//	        ResultSet rs = jdbcUtil.executeQuery(); // query 실행
+//	        if (rs.next()) {
+//	            int count = rs.getInt("cnt");
+//	            if(count > 0) { // 조건을 만족하는 데이터가 존재하면 true 반환
+//	            	return new CartProduct(
+//	                    	userId,
+//	                    	productId,
+//	                        rs.getInt("quantity"),
+//	                        rs.getInt("cartItemPrice")
+//	                    );
+//	            }
+//	        }
+//	    } catch (Exception ex) {
+//	        ex.printStackTrace();
+//	    } finally {
+//	        jdbcUtil.close(); // resource 반환
+//	    }
+//	    return null;
+//	}
 	
 	/**
 	 * 특정 사용자의 장바구니 총 금액 계산
