@@ -28,7 +28,8 @@ public class ReviewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
         // 모든 리뷰 가져오기
         List<Review> reviews = reviewManager.getAllReviews();
-
+        //ProductDetail productDetail = reviewManager.getProductDetail(productId);
+        
         // 정렬 기준을 파라미터로 받음
         String sortStandard = request.getParameter("sort");
 

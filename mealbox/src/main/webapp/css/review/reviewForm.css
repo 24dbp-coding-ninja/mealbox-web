@@ -16,6 +16,13 @@ font-family: Arial, sans-serif;
 	margin-top: 10px;
 }
 
+#title {
+	text-align: center;
+	font-size: 36px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 #formWrapper {
 	width: 550px;
 	height: 570px;
@@ -46,7 +53,7 @@ font-family: Arial, sans-serif;
 #buyProduct {
 	width: 63px;
 	height: 89px;
-	background-color: blue;
+	/*background-color: blue;*/
 	border-radius: 10px;
 	border: none;
 	margin-right: 30px;

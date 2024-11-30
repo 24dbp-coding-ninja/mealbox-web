@@ -18,11 +18,13 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
 //    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
         int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
+        
 //        String nickname = request.getParameter("nickname");
         HttpSession session = request.getSession();
-    	String nickname = "seoni";//(String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
+    	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
     	
 //        String date = request.getParameter("date");
         double rating = Double.parseDouble(request.getParameter("rating"));

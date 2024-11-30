@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,39 +10,41 @@
     <body>    
         <jsp:include page="../nav.jsp"/>
         <form id="container" action="/mealbox/review/create" method="POST">
-	        <h2 align="center">리뷰 작성</h2>
-	        <hr/>
+	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 작성</div>
+		    <hr/>
 	        <div id="reviewWrapper">
+		        
 	            <div id="formWrapper" align="center">                
 	                <div id="itemList" align="center">
-	                    <!-- 상품 내역이 동적으로 추가되는 경우 예시 -->
-	                    <c:forEach var="item" items="${items}">
+	                    <!-- 상품 내역 정보 -->
+	                    <c:forEach var="detail" items="${combinedProductDetails}">
 	                        <div class="item">
 	                            <div id="buyProduct">
-	                                <img src="${item.imageUrl}" alt="${item.name}">
+	                                <img alt="상품사진" src="${detail.productDetail.thumb}"/>
 	                            </div>
 	                            <div id="productDescript">
 	                            	<div>
-	                            		<p><strong>상품명</strong></p>
-	                    				<p>${item.name}</p>
+	                            		<p><strong>상품명: </strong></p>
+	                    				<p>${detail.productDetail.name}</p>
 	                            	</div>
 	                    			<div>
-		                    			<p><strong>상품설명</strong></p>
-		                                <p>${item.description}</p>
+		                    			<p style="padding-left: 15px;"><strong>상품설명: </strong></p>
+		                                <p>${detail.productDetail.description}</p>
 		                            </div>
 	                            </div>
 	                        </div>
 	                    </c:forEach>
 	                </div>
-	               	<p align="left" style="margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
+	                <!-- 실제로 넘길 부분 -->
+	               	<p align="left" style="margin-top: 20px; margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
 	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요.">
 	                <div id="show">
 		                <div id="rate">
-		                	<p align="left" style="margin-left: 25px;"><strong>평점</strong></p> 
+		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 
 	                        <input id="writeRating" name="rating">
 		                </div>
 	                    <div id="pics">
-	                        <p align="left" style="margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
+	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
 	                        <span id="pic">
 	                            <button type="button" id="pic1" name="reviewImg">+</button>
 	                            <button type="button" id="pic2" name="reviewImg2">+</button>
