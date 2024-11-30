@@ -127,17 +127,22 @@
     		form.name.focus();
     		return false;
     	}
-    	if(form.phone_part1.value == ""){
+    	
+    	const phonePattern1 = /^[0-9]{3}$/; // 앞자리: 숫자 3자리
+        const phonePattern2 = /^[0-9]{4}$/; // 중간자리: 숫자 4자리
+        const phonePattern3 = /^[0-9]{4}$/; // 뒷자리: 숫자 4자리
+        
+    	if(!phonePattern1.test(form.phone_part1.value)){
     		document.getElementById("text_phone").style.color = "red";
     		form.phone_part1.focus();
     		return false;
     	}
-    	if(form.phone_part2.value == ""){
+    	if(!phonePattern2.test(form.phone_part2.value)){
     		document.getElementById("text_phone").style.color = "red";
     		form.phone_part2.focus();
     		return false;
     	}
-    	if(form.phone_part3.value == ""){
+    	if(!phonePattern3.test(form.phone_part3.value)){
     		document.getElementById("text_phone").style.color = "red";
     		form.phone_part3.focus();
     		return false;
