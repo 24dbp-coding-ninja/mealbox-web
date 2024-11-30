@@ -24,13 +24,33 @@ public class CreateUserController implements Controller {
     	
     	if (request.getMethod().equals("GET")) {
     		String id = request.getParameter("inputId");
+    		String password = request.getParameter("inputPw");
+    		String check_password = request.getParameter("inputCheckPw");
+    		String name = request.getParameter("inputName");
+    		String phone_part1 = request.getParameter("inputPhone_part1");
+    		String phone_part2 = request.getParameter("inputPhone_part2");
+    		String phone_part3 = request.getParameter("inputPhone_part3");
+    		String email_id = request.getParameter("inputEmail_id");
+    		String email_domain = request.getParameter("inputEmail_domain");
+    		String address = request.getParameter("inputAddress");
+    		
 	    	request.setAttribute("idExist", false);
 	    	if(manager.getUserDAO().existingUser(id)) {
 	    		request.setAttribute("idExist", true);
 	    	}
 	    	request.setAttribute("inputId", id);
+	    	request.setAttribute("inputPassword", password);
+	    	request.setAttribute("inputCheckPw", check_password);
+	    	request.setAttribute("inputName", name);
+	    	request.setAttribute("inputPhone_part1", phone_part1);
+	    	request.setAttribute("inputPhone_part2", phone_part2);
+	    	request.setAttribute("inputPhone_part3", phone_part3);
+	    	request.setAttribute("inputEmail_id", email_id);
+	    	request.setAttribute("inputEmail_domain", email_domain);
+	    	request.setAttribute("inputAddress", address);
     	return "/user/join.jsp";
     	}
+    	
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
 			request.getParameter("id"),
