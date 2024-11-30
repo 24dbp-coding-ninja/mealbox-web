@@ -11,7 +11,31 @@
     <!--join.css-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/join.css"/>
     <!--join.js-->
-    <script src="../js/join.js"></script>
+    <script type="text/javascript">
+    	function checkValidId(){
+    		console.log("checkValidId()함수입니다.");
+    		var id = document.getElementById("id").value;
+    		console.log("검사할 id=" + id);
+    		
+    		if(id == ""){
+    			alert("아이디를 입력해주세요.");
+    			return;
+    		}
+    		
+    		var form = document.createElement("form");
+    		form.method="GET";
+    		form.action ="/mealbox/user/createUser";
+    		
+			var input = document.createElement("input");
+			input.type="hidden";
+			input.name="inputId";
+			input.value=id;
+			form.appendChild(input);
+			
+			document.body.appendChild(form);
+			form.submit();
+    	}
+    </script>
 <title>회원가입</title>
 </head>
 <body>
@@ -43,8 +67,7 @@
                 <div><label for="address">주소</label></div>
             </div>
             <div id="join_input">
-                <!--할일)제한조건 구현하기-->
-                <input type="text" id="id" name="id" required>
+                <input type="text" id="id" name="id" value="<%= request.getAttribute("inputId") != null ? request.getAttribute("inputId") : "" %>" required>
                 <div class="text" id="text_id">이미 존재하는 아이디입니다.</div>
                 <input type="password" id="password" name="password" required>
                 <div class="text" id="text_password">특수문자, 소문자, 숫자를 포함하며 8자 이상이어야 합니다.</div>
@@ -75,6 +98,20 @@
             <button type="button" class="style_button" id="before" onclick="history.back();">이전</button>
             <input type="submit" class="style_button" id="after" value="다음">
         </div>
+        
+       <% if(request.getAttribute("idExist") != null) { 
+            Boolean idExist = (Boolean) request.getAttribute("idExist"); %>
+            <script>
+                var textIdElement = document.getElementById("text_id");
+                if (<%= idExist %>) {
+                    textIdElement.style.color = "red";
+                    textIdElement.innerHTML = "이미 존재하는 아이디입니다.";
+                } else {
+                    textIdElement.style.color = "green";
+                    textIdElement.innerHTML = "사용가능한 아이디입니다.";
+                }
+            </script>
+        <% } %>
     </form>
 </body>
 </html>

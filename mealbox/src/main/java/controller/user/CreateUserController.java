@@ -21,7 +21,16 @@ public class CreateUserController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	
     	UserManager manager = UserManager.getInstance();
-
+    	
+    	if (request.getMethod().equals("GET")) {
+    		String id = request.getParameter("inputId");
+	    	request.setAttribute("idExist", false);
+	    	if(manager.getUserDAO().existingUser(id)) {
+	    		request.setAttribute("idExist", true);
+	    	}
+	    	request.setAttribute("inputId", id);
+    	return "/user/join.jsp";
+    	}
     	// POST request (회원정보가 parameter로 전송됨)
        	User user = new User(
 			request.getParameter("id"),
