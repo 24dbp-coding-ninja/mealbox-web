@@ -42,6 +42,8 @@
 		if(!price || isNaN(price)) {
 			alert("가격을 입력 후 상품을 추가해주세요.");
 			return false;
+			
+			
 		}
 		if(!stock || isNaN(stock)) {
 			alert("재고 수량을 입력 후 상품을 추가해주세요.");
