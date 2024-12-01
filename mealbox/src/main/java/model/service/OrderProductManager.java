@@ -34,44 +34,10 @@ public class OrderProductManager {
     }
 
     /**
-     * 기존 주문 상품 업데이트
-     */
-    public int updateOrderProduct(OrderProduct orderProduct) throws SQLException {
-        return orderProductDAO.update(orderProduct);
-    }
-
-    /**
-     * 특정 주문 상품 삭제
-     */
-    public int removeOrderProduct(int orderId, int lineNo) throws SQLException {
-        return orderProductDAO.remove(orderId, lineNo);
-    }
-
-    /**
-     * 특정 주문의 모든 상품 삭제
-     */
-    public int removeAllOrderProducts(int orderId) throws SQLException {
-        return orderProductDAO.removeAll(orderId);
-    }
-
-    /**
-     * 특정 주문 상품 조회
-     */
-    public OrderProduct findOrderProduct(int orderId, int lineNo) throws SQLException {
-        return orderProductDAO.findOrderProduct(orderId, lineNo);
-    }
-
-    /**
      * 특정 주문 ID의 모든 상품 조회
      */
     public List<OrderProduct> findOrderProductsInOrder(int orderId) throws SQLException {
         return orderProductDAO.findOrderProductInOrder(orderId);
     }
     
-    /**
-     * 주문에 포함된 상품들의 총 금액 계산
-     */
-    public int calculateTotalPrice(int orderId) throws Exception {
-        return orderProductDAO.calculateTotalPrice(orderId);
-    }
 }

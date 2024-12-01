@@ -45,10 +45,7 @@ public class ProductManager {
 		return productDao.searchProduct(categoryType, categoryValue, orderBy);
 	}
 	
-//	 public int getPurchaseTotalPrice(productDetail) {
-//	 }
-//
-//	 
-//	 public void updateItemQuantity(productDetail, String, int) {
-//	 }
+	 public int decreaseItemQuantity(int id, int quantity) {
+	     return productDao.decreaseQuantity(id, quantity);
+	 }
 }

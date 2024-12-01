@@ -210,6 +210,30 @@ public class ProductDAO {
 			default: return "";
 		}
 	}
+	
+	public int decreaseQuantity(int id, int quantity) {
+	    int result = 0;
+	    String updateQuery = "UPDATE MEAL_PRODUCT "
+                + "SET stock=stock-? "
+                + "WHERE productId=?";
+	    
+	    Object[] param = new Object[] {
+	            quantity, id
+	    };
+	    
+	    jdbcUtil.setSqlAndParameters(updateQuery, param);
+
+	    try {
+	        result = jdbcUtil.executeUpdate();
+	    } catch(Exception ex) {
+	        jdbcUtil.rollback();
+	        ex.printStackTrace();
+	    } finally {
+	        jdbcUtil.commit();
+	        jdbcUtil.close();
+	    }
+	    return result;
+	}
 
 
 }

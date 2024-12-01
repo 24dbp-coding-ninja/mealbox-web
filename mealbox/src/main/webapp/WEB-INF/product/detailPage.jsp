@@ -15,22 +15,53 @@
 	<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
 	<script>
 		function increaseQuantity() {
-			var price = Number((document.getElementById("how_much").innerHTML).slice(0, -1));
+			var price = parseInt("${product.price}");
 			
 			document.getElementById("quantity").value = Number(document.getElementById("quantity").value)+1;
+			document.getElementById("how_much").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
 			document.getElementById("total_price").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
 		}
 		
 		function decreaseQuantity() {
-			var price = Number((document.getElementById("how_much").innerHTML).slice(0, -1));
+			var price = parseInt("${product.price}");
 			
 			if(document.getElementById("quantity").value==="1") {
 				alert("1 이하의 수량은 주문하실 수 없습니다.");
 				return;
 			}
 			document.getElementById("quantity").value = Number(document.getElementById("quantity").value)-1;
+			document.getElementById("how_much").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
 			document.getElementById("total_price").innerHTML = price * Number(document.getElementById("quantity").value) + "원";
 		}
+		function checkLoginAndSubmit(event, form) {
+	        // 서버에서 전달된 sessionScope.userId 값을 확인
+	        var loginId = "${sessionScope.userId}";
+
+	        if (!loginId) {
+	            alert('로그인 후 이용해주세요.');
+	            event.preventDefault(); // 폼 제출 중단
+	            return false;
+	        }
+
+	        // 사용자가 선택한 수량 설정
+	        const quantityInput = form.querySelector("#hiddenQuantity");
+	        const quantityField = document.getElementById("quantity");
+	        if (quantityField && quantityInput) {
+	            quantityInput.value = quantityField.value;
+	        }
+	        
+
+	     // 가격 설정
+	        const cartItemPriceInput = form.querySelector("#hiddenCartItemPrice");
+	        const price = Number(document.getElementById("how_much").textContent.replace("원", ""));
+
+	        if (cartItemPriceInput) {
+	            cartItemPriceInput.value = price;
+	        }
+
+	        // 폼 제출
+	        return true;
+	    }
 	</script>
 	<title>상품 상세 페이지</title>
 </head>
@@ -75,8 +106,28 @@
 				<span id="total_price">${product.price}원</span>
 			</p>
 			<div class="buy_yet">
-				<button class="add_cart">장바구니</button>
-				<button class="buy_now">바로구매</button>
+				<c:set var="loginId" value="${sessionScope.userId}" />
+				<form id="cartForm" action="${pageContext.request.contextPath}/cart/add" method="GET" onsubmit="return checkLoginAndSubmit(event, this)">
+				    <input type="hidden" name="productId" value="${product.id}" />
+				    <input type="hidden" name="quantity" id="hiddenQuantity" value="" />
+				    <input type="hidden" name="cartItemPrice" id="hiddenCartItemPrice" value="" />
+				  	<% 
+				        // 서버에서 HttpSession에 값 저장
+				        session.setAttribute("redirectPage", "cartPage");
+				    %>
+				    <input type="hidden" name="btnName" value="장바구니" />
+				    <button class="add_cart" type="submit">장바구니</button>
+				</form>
+				<form id="purchaseForm" action="${pageContext.request.contextPath}/cart/add" method="GET" onsubmit="return checkLoginAndSubmit(event, this)">
+				    <input type="hidden" name="productId" value="${product.id}" />
+				    <input type="hidden" name="quantity" id="hiddenQuantity" value="" />
+				    <input type="hidden" name="cartItemPrice" id="hiddenCartItemPrice" value="" />
+				  	<% 
+				        // 서버에서 HttpSession에 값 저장
+				        session.setAttribute("redirectPage", "purchase");
+				    %>
+			        <button class="buy_now" type="submit">바로구매</button>
+			    </form>
 			</div>
 		</div>
 	</div>

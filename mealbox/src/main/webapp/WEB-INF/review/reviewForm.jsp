@@ -17,27 +17,28 @@
 	            <div id="formWrapper" align="center">                
 	                <div id="itemList" align="center">
 	                    <!-- 상품 내역 정보 -->
-	                    <c:forEach var="detail" items="${combinedProductDetails}">
+	                    
 	                        <div class="item">
 	                            <div id="buyProduct">
-	                                <img alt="상품사진" src="${detail.productDetail.thumb}"/>
+	                                <img alt="상품사진" src="${product.thumb}"/>
 	                            </div>
 	                            <div id="productDescript">
 	                            	<div>
 	                            		<p><strong>상품명: </strong></p>
-	                    				<p>${detail.productDetail.name}</p>
+	                    				<p>${product.name}</p>
 	                            	</div>
 	                    			<div>
 		                    			<p style="padding-left: 15px;"><strong>상품설명: </strong></p>
-		                                <p>${detail.productDetail.description}</p>
+		                                <p>${product.description}</p>
 		                            </div>
 	                            </div>
 	                        </div>
-	                    </c:forEach>
+	                    
 	                </div>
 	                <!-- 실제로 넘길 부분 -->
 	               	<p align="left" style="margin-top: 20px; margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
 	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요.">
+					<input style="display: none;" name="productId" value="${product.id}" />
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 

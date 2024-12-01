@@ -92,6 +92,12 @@ nav {
   }
 }
 
+#btn_basket{
+  all: unset;
+  background-color: transparent;
+  border: none;
+}
+
 .navButton {
   width: 90px;
   height: auto;

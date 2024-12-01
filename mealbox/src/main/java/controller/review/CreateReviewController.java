@@ -1,6 +1,8 @@
 package controller.review;
 
+import model.service.ProductManager;
 import model.service.ReviewManager;
+import model.domain.Product;
 import model.domain.Review;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +22,9 @@ public class CreateReviewController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         
 //    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-        int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
-        
+//        int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
+    	int productId = Integer.parseInt(request.getParameter("productId"));
+     
 //        String nickname = request.getParameter("nickname");
         HttpSession session = request.getSession();
     	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
