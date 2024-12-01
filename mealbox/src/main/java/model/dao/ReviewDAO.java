@@ -69,11 +69,32 @@ public class ReviewDAO {
 
     public List<Review> findReviewsByProduct(int productId) { // 제품 ID를 기준으로 리뷰 검색 로직 
     	List<Review> result = new ArrayList<>(); 
-    	for (Review review : reviewList) { 
-    		if (review.getProductId() == (productId)) { 
-    			result.add(review); 
-    		} 
-    	} 
+    	
+    	StringBuffer query = new StringBuffer();
+		query.append("SELECT * ");
+		query.append("FROM MEAL_REVIEW ");
+		query.append("WHERE productId=?");  
+		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {productId});
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			while (rs.next()) {						// review 정보 발견
+				Review review = new Review(		// review 객체를 생성하여 리뷰 정보를 저장
+					rs.getInt("reviewid"),
+					rs.getInt("productid"),
+					rs.getString("userid"),
+					rs.getString("reviewcreatedat"),
+					rs.getFloat("rating"),
+					rs.getString("reviewtext"),
+					rs.getString("reviewimg"));
+					result.add(review);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		
     	return result; 
     }
     // 특정 제품의 리뷰 조회

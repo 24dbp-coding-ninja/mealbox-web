@@ -18,7 +18,10 @@ public class ReadReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<Review> reviews = reviewManager.getAllReviews();
+    	//int productId = Integer.parseInt(request.getParameter("productId"));
+        int productId = 1020;
+    	
+    	List<Review> reviews = reviewManager.findReviewsByProduct(productId);
         String sortStandard = request.getParameter("sort");
 
         if ("latest".equals(sortStandard)) {
@@ -30,6 +33,6 @@ public class ReadReviewController implements Controller {
         }
 
         request.setAttribute("reviews", reviews);
-        return "/review/reviewItems.jsp";
+        return "/product/reviewPage.jsp";
     }
 }
