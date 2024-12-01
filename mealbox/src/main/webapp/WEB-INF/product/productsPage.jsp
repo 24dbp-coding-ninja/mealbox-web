@@ -13,6 +13,7 @@
 		<link rel="preconnect" href="https://rsms.me/" />
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
  		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
  		<script>
         function changeOrder(orderBy) {
             var currentUrl = new URL(window.location.href);

@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://rsms.me/" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <link rel="stylesheet" type="text/css" href="css/admin.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
 <script>
 	function submitForm(action) {
     	const form = document.getElementById('productForm');
