@@ -13,6 +13,7 @@
 	<link rel="preconnect" href="https://rsms.me/" />
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
 	<script>
 		function increaseQuantity() {
 			var price = parseInt("${product.price}");
@@ -131,9 +132,7 @@
 			</div>
 		</div>
 	</div>
-	<hr>
-	<c:import url="./reviewPage.jsp" charEncoding="UTF-8">
-		<%-- <c:param> 태그를 사용하여 필요한 거 보내기! --%>
-	</c:import>
+	<hr> 
+	
 </body>
 </html>
