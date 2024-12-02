@@ -76,7 +76,6 @@ public class UserManager {
 		return true;
 	}
 
-
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}

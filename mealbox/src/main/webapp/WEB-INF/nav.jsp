@@ -66,8 +66,13 @@
 	<!--검색, 장바구니, join, login-->
 	<div id="navContainer">
 		<!--메뉴아이콘-->
-		<input type="button" id="menuOpen" />
+		<div id="leftSide">
+			<input type="button" id="menuOpen" />
 		
+			<a href="${pageContext.request.contextPath}/product">
+				<img src="/mealbox/images/codeNinja.png" />
+			</a>
+		</div>
 		<div id="navInNav">
 		<!--검색-->
 		<div id="search">

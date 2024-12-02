@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--joinSuccess.css-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/joinSuccess.css"/>
+<link rel="shortcut icon" href="/mealbox/favicon.ico">
 <title>회원가입 완료</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
                 <hr>
                 <span id="progress_inputInfo">정보입력</span> 
                 <div id="progress_sign">
-                    <img src="../images/arrow.png">
+                    <img src="${pageContext.request.contextPath}/images/arrow.png">
                 </div>
                 <span id="progress_complete">가입완료</span>
                 <hr>

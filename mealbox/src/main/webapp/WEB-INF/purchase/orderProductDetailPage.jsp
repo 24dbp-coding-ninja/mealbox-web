@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문 상세 정보</title>
     <link rel="stylesheet" href="../../css/orderProductDetail.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
 </head>
 <body>
 	<jsp:include page="../nav.jsp" />
@@ -39,6 +40,8 @@
                      
                 <form action="${pageContext.request.contextPath}/product/detail" method="GET">
       			   <input type="hidden" name="id" value="${detail.productDetail.id}" /> 
+               		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
+               		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                    <button class="btn" type="submit">상품 상세 정보</button>
                 </form>
 		    	</div>

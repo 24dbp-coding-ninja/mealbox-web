@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.domain.User;
-
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
  * USERINFO 테이블에 사용자 정보를 추가, 수정, 삭제, 검색 수행 
@@ -125,8 +124,10 @@ public class UserDAO {
 	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 	 */
 	public List<User> findUserList() throws SQLException {
-        String sql = "SELECT userId, password, name, phone, address, email " 
-        		   + "FROM MEAL_USER "
+        String sql = "SELECT u.userId, u.password, u.name, u.phone, u.address, u.email, COUNT(o.orderId) AS orderCount, COUNT(r.reviewId) AS reviewCount " 
+        		   + "FROM MEAL_USER u LEFT OUTER JOIN MEAL_ORDER o ON u.userId = o.userId "
+        		   + "LEFT OUTER JOIN MEAL_REVIEW r ON u.userId = r.userId "
+        		   + "GROUP BY u.userId, u.password, u.name, u.phone, u.address, u.email "
         		   + "ORDER BY userId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
 					
@@ -134,13 +135,17 @@ public class UserDAO {
 			ResultSet rs = jdbcUtil.executeQuery();			// query 실행			
 			List<User> userList = new ArrayList<User>();	// User들의 리스트 생성
 			while (rs.next()) {
-				User user = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
-					rs.getString("userId"),
-					rs.getString("password"),
-					rs.getString("name"),
-					rs.getString("phone"), 
-					rs.getString("email"),
-					rs.getString("address"));
+				String userId = rs.getString("userId");
+				String password = rs.getString("password");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String email = rs.getString("email");
+				String address = rs.getString("address");
+				
+				User user = new User(userId, password, name, phone, email, address);// User 객체를 생성하여 현재 행의 정보를 저장
+				user.setOrderCount(rs.getInt("orderCount"));
+				user.setReviewCount(rs.getInt("reviewCount")); 
+				
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					
