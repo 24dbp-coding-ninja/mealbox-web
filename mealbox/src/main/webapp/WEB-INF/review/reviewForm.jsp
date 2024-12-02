@@ -22,7 +22,7 @@
 	                    
 	                        <div class="item">
 	                            <div id="buyProduct">
-	                                <img alt="상품사진" src="${product.thumb}"/>
+	                                <img alt="상품사진" src=""/>
 	                            </div>
 	                            <div id="productDescript">
 	                            	<div>
@@ -54,12 +54,10 @@
 	                </div>
 	                <!-- 버튼 부분 -->	
 	                <div id="btn">
-	                    <button type="submit">
-	                    	<c:set var="btnName" value="cancel" scope="request"/>
+	                    <button type="button" onclick="history.back();">
 	                    	<strong>취소</strong>
 	                    </button>
 	                    <button type="submit">
-							<c:set var="btnName" value="save" scope="request"/>
 							<strong>저장</strong>
 						</button>	                    
 	                </div>

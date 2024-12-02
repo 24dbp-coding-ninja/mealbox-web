@@ -26,6 +26,8 @@ public class ReviewDAO {
 				Review review = new Review(		// review 객체를 생성하여 리뷰 정보를 저장
 					rs.getInt("reviewid"),
 					rs.getInt("productid"),
+					rs.getInt("orderid"),
+					rs.getInt("lineno"),
 					rs.getString("userid"),
 					rs.getString("reviewcreatedat"),
 					rs.getFloat("rating"),
@@ -49,8 +51,8 @@ public class ReviewDAO {
     public boolean create(Review review) {
         // 데이터베이스에 리뷰를 추가하는 로직
     	StringBuffer query = new StringBuffer();
-		query.append("INSERT INTO MEAL_REVIEW (productId, userid, reviewCreateDat, rating, reviewText, reviewImg) VALUES (?, ?, SYSDATE, ?, ?, ?)");
-		Object[] newReview = new Object[] {review.getProductId(), review.getNickname(), review.getRating(), review.getReviewText(), review.getReviewImg()};
+		query.append("INSERT INTO MEAL_REVIEW (productId, orderId, lineNo, userid, reviewCreateDat, rating, reviewText, reviewImg) VALUES (?, ?, ?, ?, SYSDATE, ?, ?, ?)");
+		Object[] newReview = new Object[] {review.getProductId(), review.getOrderId(), review.getLineNo(), review.getNickname(), review.getRating(), review.getReviewText(), review.getReviewImg()};
 		jdbcUtil.setSqlAndParameters(query.toString(), newReview);
 		
 		try {				
@@ -82,6 +84,8 @@ public class ReviewDAO {
 				Review review = new Review(		// review 객체를 생성하여 리뷰 정보를 저장
 					rs.getInt("reviewid"),
 					rs.getInt("productid"),
+					rs.getInt("orderid"),
+					rs.getInt("lineno"),
 					rs.getString("userid"),
 					rs.getString("reviewcreatedat"),
 					rs.getFloat("rating"),
@@ -110,29 +114,30 @@ public class ReviewDAO {
 //    	//return null;
 //    }
 
-    public List<Review> findReviewsByMyPage(int reviewId) { // 리뷰 ID를 기준으로 리뷰 검색 로직 
-    	List<Review> result = new ArrayList<>(); 
-    	for (Review review : reviewList) { 
-    		if (review.getReviewId() == reviewId) { 
-    			result.add(review); 
-    		} 
-    	} 
-    	return result; 
-    }
+//    public List<Review> findReviewsByMyPage(int reviewId) { // 리뷰 ID를 기준으로 리뷰 검색 로직 
+//    	List<Review> result = new ArrayList<>(); 
+//    	for (Review review : reviewList) { 
+//    		if (review.getReviewId() == reviewId) { 
+//    			result.add(review); 
+//    		} 
+//    	} 
+//    	return result; 
+//    }
 
     // 리뷰 수정
-    public boolean update(Review review) {
-        // 데이터베이스에서 리뷰를 수정하는 로직
-    	Review existingReview = findById(review.getReviewId()); 
-    	if (existingReview != null) { 
-    		existingReview.setRating(review.getRating()); 
-    		existingReview.setReviewText(review.getReviewText()); 
-    		existingReview.setReviewImg(review.getReviewImg()); 
-    		return true;
-    	} 
-    	return false;
-    	//return true;
-    }
+//    public boolean update(Review review) {
+//        // 데이터베이스에서 리뷰를 수정하는 로직
+//    	Review existingReview = findById(review.getReviewId()); 
+//    	if (existingReview != null) { 
+//    		existingReview.setRating(review.getRating()); 
+//    		existingReview.setReviewText(review.getReviewText()); 
+//    		existingReview.setReviewImg(review.getReviewImg()); 
+//    		return true;
+//    	} 
+//    	return false;
+//    	//return true;
+//    }
+    
 //    public boolean update(Review review) { // 리뷰 업데이트 로직 
 //    	int index = reviewList.indexOf(review); 
 //    	if (index != -1) { 
@@ -149,16 +154,17 @@ public class ReviewDAO {
 //    	return reviews.remove(review);
 //        //return true;
 //    }
-    public boolean delete(int reviewId) { // 리뷰 삭제 로직 
-    	return reviewList.removeIf(review -> review.getReviewId() == reviewId);
-    }
     
-    public Review findById(int reviewId) { 
-    	for (Review review : reviews) { 
-    		if (review.getReviewId() == reviewId) { 
-    			return review; 
-    		} 
-    	}
-    	return null;
-    }
+//    public boolean delete(int reviewId) { // 리뷰 삭제 로직 
+//    	return reviewList.removeIf(review -> review.getReviewId() == reviewId);
+//    }
+//    
+//    public Review findById(int reviewId) { 
+//    	for (Review review : reviews) { 
+//    		if (review.getReviewId() == reviewId) { 
+//    			return review; 
+//    		} 
+//    	}
+//    	return null;
+//    }
 }

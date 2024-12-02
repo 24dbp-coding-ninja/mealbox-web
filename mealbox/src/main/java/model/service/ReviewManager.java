@@ -55,18 +55,18 @@ public class ReviewManager {
     	return reviewDAO.findReviewsByProduct(productId); 
     }
     
-    public List<Review> findReviewsByMyPage(int reviewId) { 
-    	return reviewDAO.findReviewsByMyPage(reviewId); 
-    }
+//    public List<Review> findReviewsByMyPage(int reviewId) { 
+//    	return reviewDAO.findReviewsByMyPage(reviewId); 
+//    }
 
     // 모든 리뷰 조회 메서드
     public List<Review> getAllReviews() {
         return reviews;
     }
 
-    public boolean updateReview(Review review) { 
-    	return reviewDAO.update(review);
-    }
+//    public boolean updateReview(Review review) { 
+//    	return reviewDAO.update(review);
+//    }
     
     // 리뷰 삭제 메서드 추가
 //    public boolean deleteReviewById(int reviewId) {
@@ -76,9 +76,10 @@ public class ReviewManager {
 //        }
 //        return false;
 //    }
-    public boolean deleteReview(int reviewId) { 
-    	return reviewDAO.delete(reviewId);
-    }
+    
+//    public boolean deleteReview(int reviewId) { 
+//    	return reviewDAO.delete(reviewId);
+//    }
 
     // 평균 점수 계산 메서드
     public double calculateAverageScore(int productId) {

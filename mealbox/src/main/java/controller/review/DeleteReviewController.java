@@ -18,13 +18,13 @@ public class DeleteReviewController implements Controller {
         int reviewId = Integer.parseInt(request.getParameter("reviewId"));
         
         // 리뷰 삭제
-        boolean isDeleted = reviewManager.deleteReview(reviewId); // 삭제 성공 여부 반환
+        //boolean isDeleted = reviewManager.deleteReview(reviewId); // 삭제 성공 여부 반환
 
-        if (isDeleted) {
-            response.setStatus(HttpServletResponse.SC_OK); // 성공 응답 코드
-        } else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 실패 응답 코드
-        }
+//        if (isDeleted) {
+//            response.setStatus(HttpServletResponse.SC_OK); // 성공 응답 코드
+//        } else {
+//            response.setStatus(HttpServletResponse.SC_NOT_FOUND); // 실패 응답 코드
+//        }
 
         // 리뷰 목록 페이지로 리다이렉트
         return "review/reviewItems";

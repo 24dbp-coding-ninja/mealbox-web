@@ -20,17 +20,17 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	int orderId = Integer.parseInt(request.getParameter("orderId"));
-    	System.out.println("\n\n\n orderId="+ orderId);
+    	
+    	//System.out.println("\n\n\n orderId="+ orderId);
     	//request.setAttribute("orderId", orderId);
     	
-    	String btnName = request.getParameter("btnName");
     	
-    	if ("save".equals(btnName)) {
 //        	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
         	int productId = Integer.parseInt(request.getParameter("productId")); // int productId = 1010;
-         
+        	int orderId = Integer.parseInt(request.getParameter("orderId"));
+        	int lineNo = Integer.parseInt(request.getParameter("lineNo"));
+        	
 //            String nickname = request.getParameter("nickname");
             HttpSession session = request.getSession();
         	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
@@ -40,16 +40,14 @@ public class CreateReviewController implements Controller {
             String reviewText = request.getParameter("reviewText");
             String reviewImg = "example.jpg";//request.getParameter("reviewImg");
 
-            Review newReview = new Review(productId, nickname, rating, reviewText, reviewImg);
+            Review newReview = new Review(productId, orderId, lineNo, nickname, rating, reviewText, reviewImg);
             boolean createResult = reviewManager.createReview(newReview);
 
             if (createResult) {
-                return "redirect:/purchase/purchaseList/orderId";
+                return "redirect:/purchase/purchaseList";
             } else {
                 request.setAttribute("createResult", createResult);
                 return "/review/reviewForm.jsp";
             }
-    	}
-    	return "redirect:/purchase/purchaseList/orderId";
     }
 }
