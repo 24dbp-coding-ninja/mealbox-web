@@ -13,6 +13,20 @@ nav {
   padding: 16px 20px;
   font-size: 20px;
   }
+  
+#leftSide {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	
+	a {
+		display: block;
+	}
+	 
+	img {
+		width: 45px;
+	}
+}
 
 #navInNav,
 #search,
@@ -26,6 +40,7 @@ nav {
   width: 30px;
   height: 25px;
   border: 0px;
+  margin-bottom: 3px;
   background-image: url("/mealbox/images/menu.png");
   background-color: rgba(1, 1, 1, 0);
 
