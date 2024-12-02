@@ -11,7 +11,9 @@
         <jsp:include page="../nav.jsp"/>
         <form id="container" action="/mealbox/review/create" method="POST">
 	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
-		    <hr id="line"/>
+		    <div id="line">
+		        <hr />
+		    </div>
 	        <div id="reviewWrapper">
 		        
 	            <div id="formWrapper">                

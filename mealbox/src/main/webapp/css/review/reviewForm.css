@@ -23,6 +23,10 @@ font-family: Arial, sans-serif;
 	margin-bottom: 20px;
 }
 
+#line{
+	width:1295px;
+}
+
 #formWrapper {
 	width: 550px;
 	height: 570px;
