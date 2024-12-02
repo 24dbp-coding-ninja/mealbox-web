@@ -69,6 +69,7 @@ public class ReviewDAO {
         return false;
     }
 
+    // 특정 제품의 리뷰 조회
     public List<Review> findReviewsByProduct(int productId) { // 제품 ID를 기준으로 리뷰 검색 로직 
     	List<Review> result = new ArrayList<>(); 
     	
@@ -101,19 +102,28 @@ public class ReviewDAO {
 		
     	return result; 
     }
-    // 특정 제품의 리뷰 조회
-//    public List<Review> findReviewsByProduct(String productId) {
-//        // 데이터베이스에서 특정 제품의 리뷰를 조회하는 로직
-//    	List<Review> result = new ArrayList<>();
-//    	for (Review review : reviews) { 
-//    		if (review.getProductId().equals(productId)) { 
-//    			result.add(review);
-//    		}
-//    	}
-//    	return result;
-//    	//return null;
-//    }
 
+    public int findReviewId(int productId, int orderId) {
+    	StringBuffer query = new StringBuffer();
+		query.append("SELECT reviewId ");
+		query.append("FROM MEAL_REVIEW ");
+		query.append("WHERE productId=? and orderId=?");  
+		jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {productId, orderId});
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 실행
+			while (rs.next()) {						// review 정보 발견
+				int reviewId = rs.getInt("reviewid");
+				return reviewId;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 반환
+		}
+		
+    	return 0;
+    }
 //    public List<Review> findReviewsByMyPage(int reviewId) { // 리뷰 ID를 기준으로 리뷰 검색 로직 
 //    	List<Review> result = new ArrayList<>(); 
 //    	for (Review review : reviewList) { 
@@ -125,7 +135,7 @@ public class ReviewDAO {
 //    }
 
     // 리뷰 수정
-//    public boolean update(Review review) {
+//    public boolean update(int reviewId) {
 //        // 데이터베이스에서 리뷰를 수정하는 로직
 //    	Review existingReview = findById(review.getReviewId()); 
 //    	if (existingReview != null) { 

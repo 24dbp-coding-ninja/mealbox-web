@@ -19,7 +19,7 @@ public class ReviewFormController implements Controller {
     }
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {        
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception { 		
 //    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
         //int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
     	int productId = Integer.parseInt(request.getParameter("productId"));
@@ -33,6 +33,12 @@ public class ReviewFormController implements Controller {
         request.setAttribute("product", product);
         //System.out.println(productId);
         
-		return "/review/reviewForm.jsp";
+        int reviewId = reviewManager.findReviewId(productId, orderId);
+		if (reviewId != 0) { // 리뷰 이미 있다
+			Review review = reviewManager.getReviewById(reviewId);
+			//request.setAttribute("reviewId", reviewId);
+		}
+        
+		return "/review/reviewForm.jsp";		
     }
 }
