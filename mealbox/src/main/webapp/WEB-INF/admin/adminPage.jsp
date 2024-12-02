@@ -77,7 +77,7 @@
 	<%@ include file="../nav.jsp"%>
 	<div id="adminContainer">
 		<h1>상품 관리</h1>
-		<form id="productForm" method="POST">
+		<form id="productForm" method="POST" enctype="multipart/form-data">
 			<div id="selectedActionContainer">
 				<input class="submitButton" type="button" onclick="submitForm('create')" name="action" value="상품 추가" />
 				<input class="submitButton" type="button" onclick="submitForm('update')" name="action" value="선택 수정" />

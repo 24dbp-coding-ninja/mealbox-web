@@ -6,7 +6,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <!DOCTYPE html>
- <html>
+ <html lang="ko-kr">
  	<head>
  		<meta charset="UTF-8" />
  		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +39,7 @@
             <c:forEach var="product" items="${productList}">
                 <a href="<c:url value='/product/detail'><c:param name='id' value='${product.id}'/></c:url>">
                     <div id="card">
-                        <img id="cardImg" src="${product.thumb}" />
+						<img id="cardImg" src="<c:url value='/upload/${product.thumb}'/>" />
                         <div id="cardText">
                             <div id="cardName">${product.name}</div>
                             <div id="cardPrice">${product.price}원</div>

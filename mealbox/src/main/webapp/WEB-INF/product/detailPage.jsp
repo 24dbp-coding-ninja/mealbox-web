@@ -70,7 +70,7 @@
  	<%@ include file="../nav.jsp" %>
 	<div class="container meal">
 		<div class="meal_img">
-			<img id="product_image" src="../<c:out value='${product.thumb}'/>"
+			<img id="product_image" src="<c:url value='/upload/${product.thumb}'/>"
 				alt="<c:out value='${product.name}'/>">
 		</div>
 		<div class="details_container">
