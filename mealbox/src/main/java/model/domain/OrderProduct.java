@@ -26,12 +26,12 @@ public class OrderProduct{
 		this.orderItemPrice = orderItemPrice;
 	}
 	
-	public OrderProduct(int lineNo, int productId, int quantity, int orderItemPrice) {
-		this.lineNo = lineNo;
-		this.productId = productId;
-		this.quantity = quantity;
-		this.orderItemPrice = orderItemPrice;
-	}
+//	public OrderProduct(int lineNo, int productId, int quantity, int orderItemPrice) {
+//		this.lineNo = lineNo;
+//		this.productId = productId;
+//		this.quantity = quantity;
+//		this.orderItemPrice = orderItemPrice;
+//	}
 	
 	// setter & getter
 	public int getOrderId() {
