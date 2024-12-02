@@ -71,7 +71,7 @@ public class CreateOrderController implements Controller {
                 for (Map<String, Object> cartProductDetail : cartProducts) {
                     CartProduct cartProduct = (CartProduct) cartProductDetail.get("cartProduct");
                     Product product = (Product) cartProductDetail.get("productDetail");
-
+                    
                     OrderProduct orderProduct = new OrderProduct();
                     orderProduct.setOrderId(orderId);
                     orderProduct.setProductId(cartProduct.getProductId());
@@ -99,6 +99,7 @@ public class CreateOrderController implements Controller {
                         result = cartProductMan.updateCartProduct(oldCartProduct);
                         System.out.println("Cart product update result: " + result);
                     }
+                
                 }
             } else if (cartProducts == null) {
                 System.out.println("No cartProducts found in session.");
