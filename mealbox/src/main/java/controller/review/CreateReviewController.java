@@ -20,28 +20,35 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
-//    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
-//        int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
-    	int productId = Integer.parseInt(request.getParameter("productId"));
-     
-//        String nickname = request.getParameter("nickname");
-        HttpSession session = request.getSession();
-    	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
+    	int orderId = Integer.parseInt(request.getAttribute(orderId));
+    	request.setAttribute("orderId", orderId);
     	
-//        String date = request.getParameter("date");
-        double rating = Double.parseDouble(request.getParameter("rating"));
-        String reviewText = request.getParameter("reviewText");
-        String reviewImg = "example.jpg";//request.getParameter("reviewImg");
+    	String btnName = request.getParameter("btnName");
+    	
+    	if ("save".equals(btnName)) {
+//        	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
-        Review newReview = new Review(productId, nickname, rating, reviewText, reviewImg);
-        boolean createResult = reviewManager.createReview(newReview);
+        	int productId = Integer.parseInt(request.getParameter("productId")); // int productId = 1010;
+         
+//            String nickname = request.getParameter("nickname");
+            HttpSession session = request.getSession();
+        	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);
+        	
+//            String date = request.getParameter("date");
+            double rating = Double.parseDouble(request.getParameter("rating"));
+            String reviewText = request.getParameter("reviewText");
+            String reviewImg = "example.jpg";//request.getParameter("reviewImg");
 
-        if (createResult) {
-            return "redirect:/purchase/purchaseList";
-        } else {
-            request.setAttribute("createResult", createResult);
-            return "/review/reviewForm.jsp";
-        }
+            Review newReview = new Review(productId, nickname, rating, reviewText, reviewImg);
+            boolean createResult = reviewManager.createReview(newReview);
+
+            if (createResult) {
+                return "redirect:/purchase/purchaseList/orderId";
+            } else {
+                request.setAttribute("createResult", createResult);
+                return "/review/reviewForm.jsp";
+            }
+    	}
+    	return "redirect:/purchase/purchaseList/orderId";
     }
 }

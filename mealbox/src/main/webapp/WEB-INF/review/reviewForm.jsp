@@ -4,18 +4,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>리뷰 페이지</title>
+        <title>리뷰 등록/수정</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review/reviewForm.css" />
     </head>
     <body>    
         <jsp:include page="../nav.jsp"/>
         <form id="container" action="/mealbox/review/create" method="POST">
-	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 작성</div>
-		    <hr/>
+	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
+		    <hr id="line"/>
 	        <div id="reviewWrapper">
 		        
-	            <div id="formWrapper" align="center">                
-	                <div id="itemList" align="center">
+	            <div id="formWrapper">                
+	                <div id="itemList">
 	                    <!-- 상품 내역 정보 -->
 	                    
 	                        <div class="item">
@@ -24,12 +24,9 @@
 	                            </div>
 	                            <div id="productDescript">
 	                            	<div>
-	                            		<p><strong>상품명: </strong></p>
-	                    				<p>${product.name}</p>
-	                            	</div>
-	                    			<div>
-		                    			<p style="padding-left: 15px;"><strong>상품설명: </strong></p>
-		                                <p>${product.description}</p>
+	                            		<strong>상품명: </strong>${product.name}
+	                            		<br/>
+		                    			<strong>상품설명: </strong>${product.description}
 		                            </div>
 	                            </div>
 	                        </div>
@@ -42,7 +39,7 @@
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 
-	                        <input id="writeRating" name="rating">
+	                        <input id="writeRating" name="rating" style="margin-left: 10px; text-align: center;">
 		                </div>
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
@@ -53,10 +50,16 @@
 	                        </span>
 	                    </div>
 	                </div>
-	
+	                <!-- 버튼 부분 -->	
 	                <div id="btn">
-	                    <button type="button"><strong>취소</strong></button>
-	                    <button type="submit"><strong>저장</strong></button>
+	                    <button type="submit">
+	                    	<c:set var="btnName" value="cancel" scope="request"/>
+	                    	<strong>취소</strong>
+	                    </button>
+	                    <button type="submit">
+							<c:set var="btnName" value="save" scope="request"/>
+							<strong>저장</strong>
+						</button>	                    
 	                </div>
 	            </div>
 	        </div>
