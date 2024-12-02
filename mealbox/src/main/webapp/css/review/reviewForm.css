@@ -23,6 +23,10 @@ font-family: Arial, sans-serif;
 	margin-bottom: 20px;
 }
 
+#line{
+	width:1295px;
+}
+
 #formWrapper {
 	width: 550px;
 	height: 570px;
@@ -72,9 +76,9 @@ font-family: Arial, sans-serif;
 /* 개별 상품 아이템 */
 .item {
 	display: flex;
-	align-items: center;
+	align-items: left;
 	background-color: #fff;
-	width: auto;
+	width: 484px;
 	height: 100px;
 	border-radius: 10px;
 }
@@ -99,7 +103,7 @@ font-family: Arial, sans-serif;
 	background-color: white;
 	border-radius: 10px;
 	border: none;
-	margin: 0;
+	margin-left: 20px;
 }
 
 #show{
