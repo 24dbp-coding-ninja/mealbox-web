@@ -3,6 +3,8 @@ package model.domain;
 import java.util.List;
 //import java.util.ArrayList;
 
+import model.dao.OrderDAO;
+
 public class User {
 	private String id;
 	private String password;
@@ -11,6 +13,8 @@ public class User {
 	private String email;
 	private String address;
 	private List<Order> orderHistory; //주문 목록
+	private int orderCount = 0;//주문 갯수
+	private int reviewCount = 0;//리뷰 갯수
 	
 	public User() {
 		
@@ -66,6 +70,18 @@ public class User {
 	public void setOrderHistory(List<Order> orderHistory) { 
 		this.orderHistory = orderHistory;
 	}
+	public int getOrderCount() {
+		return orderCount;
+	}
+	public void setOrderCount(int orderCount) {
+		this.orderCount = orderCount;
+	}
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
 	 
 	/*기능*/
 	//사용자 정보
@@ -77,7 +93,6 @@ public class User {
 		str += "휴대폰: " + getPhone() + "\n";
 		str += "이메일: " + getEmail() + "\n";
 		str += "주소: " + getAddress() + "\n";
-		//str += "주문내역" + "\n" + printOrderHistory() + "\n";//구매자 아이디든 이름이든 조인해야하는데 이걸 java로 구현해야하는건가? 아님 sql?
 		System.out.print(str);
 	}
 	
@@ -93,12 +108,5 @@ public class User {
 	}
 	
 	
-	/*
-	 * //주문내역 출럭 public String printOrderHistory() { String rslt =""; for(Order
-	 * order : orderHistory) { for(OrderProduct item : order.getOrderItems()) { rslt
-	 * += "구매목록\n"; rslt += "상품id: " + item.getOrderItemId() + "\n"; rslt += "수량: "
-	 * + item.getQuantity() + "\n"; rslt += "가격: " + item.getPrice() + "\n"; } }
-	 * return rslt; }
-	 */
 	 
 }

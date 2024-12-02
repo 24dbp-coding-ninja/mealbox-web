@@ -21,7 +21,7 @@ public class CreateUserController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	
     	UserManager manager = UserManager.getInstance();
-    	
+    	//GET request (회원정보 임시저장-중복검사시 새로고침되기 때문)
     	if (request.getMethod().equals("GET")) {
     		String id = request.getParameter("inputId");
     		String password = request.getParameter("inputPw");

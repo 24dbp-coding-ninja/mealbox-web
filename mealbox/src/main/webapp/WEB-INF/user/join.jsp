@@ -184,7 +184,7 @@
                 <hr>
                 <span id="progress_inputInfo">정보입력</span> 
                 <div id="progress_sign">
-                    <img src="../images/arrow.png">
+                    <img src="${pageContext.request.contextPath}/images/arrow.png">
                 </div>
                 <span id="progress_complete">가입완료</span>
                 <hr>

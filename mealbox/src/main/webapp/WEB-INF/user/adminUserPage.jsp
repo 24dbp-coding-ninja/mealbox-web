@@ -45,8 +45,8 @@
 						<td>${user.phone}</td>
 						<td>${user.address}</td>
 						<td>${user.email}</td>
-						<td>0</td>
-						<td>0</td>
+						<td>${user.orderCount}</td>
+						<td>${user.reviewCount}</td>
 					</tr>
 				</c:forEach>
             </table>
