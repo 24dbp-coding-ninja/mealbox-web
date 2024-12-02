@@ -10,6 +10,8 @@
     <body>    
         <jsp:include page="../nav.jsp"/>
         <form id="container" action="/mealbox/review/create" method="POST">
+        <input type="hidden" id="orderId" name="orderId" value="${orderId}"/>	     
+        <input type="hidden" id="lineNo" name="lineNo" value="${lineNo}"/>
 	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
 		    <div id="line">
 		        <hr />
