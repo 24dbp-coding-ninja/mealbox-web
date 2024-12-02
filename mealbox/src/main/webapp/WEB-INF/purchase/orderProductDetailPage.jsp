@@ -33,6 +33,7 @@
 		        <div class="itemInfo3">
 		        	
                	<form action="${pageContext.request.contextPath}/review/items" method="GET">
+               		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
                		<input type="hidden" name="productId" value="${detail.productDetail.id}" />
                     <button class="btn" type="submit">리뷰 등록/수정</button>
@@ -40,8 +41,6 @@
                      
                 <form action="${pageContext.request.contextPath}/product/detail" method="GET">
       			   <input type="hidden" name="id" value="${detail.productDetail.id}" /> 
-               		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
-               		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                    <button class="btn" type="submit">상품 상세 정보</button>
                 </form>
 		    	</div>
