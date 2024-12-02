@@ -46,8 +46,10 @@ public class reviewTest {
 		System.out.println("\nreview 생성 Test용 코드입니다.");
         Review review = new Review();
         review.setProductId(1010);
+        review.setOrderId(1270);
+        review.setLineNo(1470);
         review.setNickname("id3");
-        review.setRating(3.5);
+        review.setRating(Double.parseDouble("2"));
         review.setReviewText("만들기 어렵당!");
         review.setReviewImg("review3.jpg");
         

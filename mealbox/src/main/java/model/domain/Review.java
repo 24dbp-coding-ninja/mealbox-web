@@ -24,6 +24,7 @@ public class Review {
         this.productId = productId;
         this.orderId = orderId;
         this.lineNo = lineNo;
+        
         this.nickname = nickname;
         this.date = date;
         this.rating = rating;
@@ -35,6 +36,7 @@ public class Review {
         this.productId = productId;
         this.orderId = orderId;
         this.lineNo = lineNo;
+        
         this.nickname = nickname;
         this.rating = rating;
         this.reviewText = reviewText;
