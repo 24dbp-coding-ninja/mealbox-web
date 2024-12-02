@@ -20,7 +20,7 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	int orderId = Integer.parseInt(request.getAttribute(orderId));
+    	int orderId = Integer.parseInt(request.getParameter("orderId"));
     	request.setAttribute("orderId", orderId);
     	
     	String btnName = request.getParameter("btnName");
