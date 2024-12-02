@@ -102,6 +102,7 @@
     }
 
     function checkValidForm(){
+    	var form = document.getElementById("container");
     	if(form.id.value == ""){
     		var textIdElement = document.getElementById("text_id");
     		textIdElement.style.color = "red";
