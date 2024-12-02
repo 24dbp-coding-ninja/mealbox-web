@@ -19,6 +19,7 @@ import model.service.CartProductManager;
 import model.service.ExistingOrderException;
 import model.service.OrderManager;
 import model.service.OrderProductManager;
+import model.service.ProductManager;
 
 public class CreateOrderController implements Controller {
 	@Override
@@ -26,6 +27,7 @@ public class CreateOrderController implements Controller {
 		OrderManager orderMan = OrderManager.getInstance();
 		OrderProductManager orderProductMan = OrderProductManager.getInstance();
         CartProductManager cartProductMan = CartProductManager.getInstance();
+        ProductManager productMan = ProductManager.getInstance();
 		
 		try {
             // 파라미터 추출 및 변환
@@ -79,6 +81,7 @@ public class CreateOrderController implements Controller {
                     System.out.println("OrderProduct details: " + orderProduct);
 
                     result = orderProductMan.createOrderProduct(orderProduct); // OrderProduct 생성
+                    productMan.decreaseItemQuantity(cartProduct.getProductId(), cartProduct.getQuantity());  // 재고 수량 업데이트
                     System.out.println("OrderProduct creation result: " + result);
 
                     CartProduct oldCartProduct = new CartProduct(cartProductMan.getCartProduct(userId, cartProduct.getProductId()));
