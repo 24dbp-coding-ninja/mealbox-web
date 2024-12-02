@@ -13,6 +13,36 @@
     <title>구매하기</title>
 	<link rel="stylesheet" href="../css/purchasePage.css" />
 	<link rel="shortcut icon" href="/mealbox/favicon.ico">
+	<script>
+	  function validateCart(event) {
+	    const items = document.querySelectorAll(".item"); // 상품 목록
+	    let isValid = true;
+	
+	    items.forEach(item => {
+	        const nameField = item.querySelector(".itemInfo2-name p span"); // 상품 이름
+	        const quantityField = item.querySelector(".itemInfo2-quantity p span"); // 장바구니 수량
+	        const availableQuantityField = item.querySelector(".availableQuantity"); // 재고 수량 필드
+
+	        const name = nameField ? nameField.textContent.trim() : "알 수 없는 상품"; // 상품 이름 가져오기
+	        const quantity = parseInt(quantityField.textContent.trim(), 10) || 0; // 장바구니 수량
+	        const availableQuantity = parseInt(availableQuantityField.value, 10) || 0; // 재고 수량
+	     	// 디버깅용 출력
+	        console.log("상품명:", name);
+	        console.log("수량:", quantity);
+	        console.log("재고:", availableQuantity);
+	        
+	        if (quantity > availableQuantity) {
+	          isValid = false;
+	          alert('"' + name + '" 상품의 수량이 재고(' + availableQuantity + ')를 초과했습니다.');
+	        }
+	      });
+	
+	    if (!isValid) {
+	      event.preventDefault(); // 버튼 클릭 무효화 (폼 제출 중단)
+	    }
+	  }
+	</script>
+
   </head>
   <body>
   	<% 
@@ -88,15 +118,16 @@
 						    	</div>
 						    	<div class="itemInfo2">
 						    		<div class="itemInfo2-name">
-							        	<p><strong>상품명:</strong> ${detail.productDetail.name}</p>
+							        	<p><strong>상품명:</strong> <span>${detail.productDetail.name}</span></p>
 							        </div>
 							        <div class="itemInfo2-quantity">
-							        	<p><strong>수량:</strong> ${detail.cartProduct.quantity}</p>
+							        	<p><strong>수량:</strong> <span>${detail.cartProduct.quantity}</span></p>
 				                    </div>
 						        </div>
 						        <div class="itemInfo3">
 							        <p><strong>총가격 </strong> ${detail.cartProduct.cartItemPrice}원</p>
 						        </div>
+		    					<input type="hidden" class="availableQuantity" value="${detail.productDetail.stock}" />
 					    	</div>
 						</c:forEach>
 					
@@ -110,7 +141,7 @@
 			        </div>
 			        <div id="btn">
 	            		<input type="hidden" name="totalPrice" value="${sessionScope.cartTotalPrice}" />
-		          		<button type="submit">구매하기</button>
+		          		<button type="submit" onclick="validateCart(event)">구매하기</button>
 				    </div>
 				</div>
     		</div>
