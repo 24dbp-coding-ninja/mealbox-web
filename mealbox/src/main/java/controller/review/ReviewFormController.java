@@ -23,6 +23,9 @@ public class ReviewFormController implements Controller {
 //    	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
         //int productId = 1010;//Integer.parseInt(request.getParameter("productId"));
     	int productId = Integer.parseInt(request.getParameter("productId"));
+//    	int orderId = Integer.parseInt(request.getParameter("orderId"));
+//    	int lineNo = Integer.parseInt(request.getParameter("lineNo"));
+    	//request.setAttribute("orderId", orderId);
         
     	ProductManager manager = ProductManager.getInstance();
         Product product = manager.getDetail(productId);

@@ -20,15 +20,12 @@ public class CreateReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	
-    	//System.out.println("\n\n\n orderId="+ orderId);
-    	//request.setAttribute("orderId", orderId);
-    	
-    	
 //        	int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
         	int productId = Integer.parseInt(request.getParameter("productId")); // int productId = 1010;
+        	System.out.println("\n productId==="+productId);
         	int orderId = Integer.parseInt(request.getParameter("orderId"));
+        	System.out.println("\n orderId==="+orderId);
         	int lineNo = Integer.parseInt(request.getParameter("lineNo"));
 
 			System.out.println("Logged-in OrderId ID: " + orderId);

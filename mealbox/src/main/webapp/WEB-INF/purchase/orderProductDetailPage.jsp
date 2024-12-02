@@ -32,7 +32,7 @@
 		        </div>
 		        <div class="itemInfo3">
 		        	
-               	<form action="${pageContext.request.contextPath}/review/create" method="GET">
+               	<form action="${pageContext.request.contextPath}/review/items" method="GET">
                		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
                		<input type="hidden" name="productId" value="${detail.productDetail.id}" />
