@@ -39,6 +39,8 @@
                      
                 <form action="${pageContext.request.contextPath}/product/detail" method="GET">
       			   <input type="hidden" name="id" value="${detail.productDetail.id}" /> 
+               		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
+               		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                    <button class="btn" type="submit">상품 상세 정보</button>
                 </form>
 		    	</div>
