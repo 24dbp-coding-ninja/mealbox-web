@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	<!--login.css-->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
 	<script>
 	function login() {
 		if (form.userId.value == "") {

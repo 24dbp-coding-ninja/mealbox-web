@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>myPage</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/myPage.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
   </head>
   <body>
     <jsp:include page="../nav.jsp"/>

@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--joinSuccess.css-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/joinSuccess.css"/>
+<link rel="shortcut icon" href="/mealbox/favicon.ico">
 <title>회원가입 완료</title>
 </head>
 <body>

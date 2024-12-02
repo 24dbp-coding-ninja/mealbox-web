@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 <!--adminUserPage.css: css경로 변경하지 말 것-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUserPage.css"/>
+<link rel="shortcut icon" href="/mealbox/favicon.ico">
 <title>회원관리페이지</title>
 </head>
 <body>

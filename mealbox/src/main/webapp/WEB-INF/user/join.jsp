@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <!--join.css-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/join.css"/>
+    <link rel="shortcut icon" href="/mealbox/favicon.ico">
     <!--join.js-->
     <script type="text/javascript">
     var isIdChecked = false;
