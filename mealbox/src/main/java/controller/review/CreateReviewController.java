@@ -30,7 +30,8 @@ public class CreateReviewController implements Controller {
         	int productId = Integer.parseInt(request.getParameter("productId")); // int productId = 1010;
         	int orderId = Integer.parseInt(request.getParameter("orderId"));
         	int lineNo = Integer.parseInt(request.getParameter("lineNo"));
-        	
+
+			System.out.println("Logged-in OrderId ID: " + orderId);
 //            String nickname = request.getParameter("nickname");
             HttpSession session = request.getSession();
         	String nickname = (String)session.getAttribute(UserSessionUtils.USER_SESSION_KEY);

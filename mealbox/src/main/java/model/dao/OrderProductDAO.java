@@ -58,7 +58,7 @@ public class OrderProductDAO {
 	 * 특정 주문ID 값을 가지는 주문 상품 정보들을 검색하여 List에 저장 및 반환
 	 */
 	public List<OrderProduct> findOrderProductInOrder(int orderId) throws SQLException {
-        String sql = "SELECT lineNo, productId, quantity, orderItemPrice " 
+        String sql = "SELECT orderId, lineNo, productId, quantity, orderItemPrice " 
       		   + "FROM MEAL_ORDER_PRODUCT "
       		   + "WHERE orderId = ? "
       		   + "ORDER BY lineNo";                        
@@ -69,7 +69,7 @@ public class OrderProductDAO {
 			List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();	// 주문들의 리스트 생성
 			while (rs.next()) {
 				OrderProduct orderProduct = new OrderProduct(			// Order 객체를 생성하여 현재 행의 정보를 저장
-						orderId,
+						rs.getInt("orderId"),
 						rs.getInt("lineNo"),
 						rs.getInt("productId"),
 						rs.getInt("quantity"),

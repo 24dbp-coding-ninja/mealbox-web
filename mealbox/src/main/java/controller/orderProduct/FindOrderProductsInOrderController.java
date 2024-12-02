@@ -33,6 +33,7 @@ public class FindOrderProductsInOrderController implements Controller   {
             for (OrderProduct orderProduct : orderProductList) {
                 Map<String, Object> productDetail = new HashMap<>();
                 productDetail.put("orderProduct", orderProduct);
+    			System.out.println("Logged-in OrderId ID: " + orderProduct.getOrderId());
                 Product product = productManager.getDetail(orderProduct.getProductId());
                 productDetail.put("productDetail", product);
                 combinedProductDetails.add(productDetail);
