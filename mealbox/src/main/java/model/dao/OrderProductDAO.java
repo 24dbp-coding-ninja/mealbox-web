@@ -69,6 +69,7 @@ public class OrderProductDAO {
 			List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();	// 주문들의 리스트 생성
 			while (rs.next()) {
 				OrderProduct orderProduct = new OrderProduct(			// Order 객체를 생성하여 현재 행의 정보를 저장
+						orderId,
 						rs.getInt("lineNo"),
 						rs.getInt("productId"),
 						rs.getInt("quantity"),

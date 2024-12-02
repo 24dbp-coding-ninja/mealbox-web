@@ -22,7 +22,7 @@
         <c:forEach var="detail" items="${combinedProductDetails}">
 		    <div class="item">
 		    	<div class="itemInfo1">
-		    		<img alt="상품사진" src=${detail.productDetail.thumb} >
+		    		<img alt="상품사진" src="" >
 		    	</div>
 		    	<div class="itemInfo2">
 			        <p><strong>상품명:</strong> ${detail.productDetail.name}</p>
@@ -32,7 +32,7 @@
 		        </div>
 		        <div class="itemInfo3">
 		        	
-               	<form action="${pageContext.request.contextPath}/review/items" method="GET">
+               	<form action="${pageContext.request.contextPath}/review/items" method="POST">
                		<input type="hidden" name="orderId" value="${detail.orderProduct.orderId}" />
                		<input type="hidden" name="lineNo" value="${detail.orderProduct.lineNo}" />
                		<input type="hidden" name="productId" value="${detail.productDetail.id}" />
