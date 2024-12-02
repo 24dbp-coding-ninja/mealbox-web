@@ -6,8 +6,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>orderListPage</title>
+    <title>주문목록</title>
     <link rel="stylesheet" href="../css/orderListPage.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
   </head>
   <body>
     <jsp:include page="../nav.jsp" />

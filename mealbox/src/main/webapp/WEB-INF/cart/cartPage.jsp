@@ -10,8 +10,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cartPage</title>
+    <title>장바구니</title>
 	<link rel="stylesheet" href="../css/cartPage.css" />
+	<link rel="shortcut icon" href="/mealbox/favicon.ico">
   </head>
   <body>
 	<jsp:include page="../nav.jsp"/>
