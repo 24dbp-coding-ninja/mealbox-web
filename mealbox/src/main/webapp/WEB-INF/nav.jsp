@@ -172,7 +172,7 @@
         	    </a>
             </div>
 			<div id="biggerSelection">
-            	<a href="<c:url value='/product'><c:param name='categoryType' value='person'/><c:param name='categoryValue' value='3-4'/></c:url>">
+            	<a href="<c:url value='/product'><c:param name='categoryType' value='person'/><c:param name='categoryValue' value='2'/></c:url>">
                 	3~4인분
             	</a>
             </div>
