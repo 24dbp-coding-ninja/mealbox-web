@@ -44,8 +44,7 @@
                          <p>구매상품: ${review.product}</p>
                     </div> -->
                     <hr>           
-                </c:forEach>                
-                                                  
+                </c:forEach>                    
             </div>
         </div>
     </body>
