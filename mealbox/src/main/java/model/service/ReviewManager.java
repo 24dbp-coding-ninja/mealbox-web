@@ -39,15 +39,26 @@ public class ReviewManager {
     public boolean createReview(Review review) { 
     	return reviewDAO.create(review);
     }
-
-    // reviewId로 리뷰 조회 메서드
-    public Review getReviewById(int reviewId) {
-        for (Review review : reviews) {
-            if (review.getReviewId() == reviewId) {
-                return review;
-            }
-        }
-        return null;
+    
+    // reivewId 찾기
+    public int findReviewId(int productId, int orderId) {
+    	return reviewDAO.findReviewId(productId, orderId);
+//        for (Review review : reviews) {
+//            if (review.getReviewId() == reviewId) {
+//                return review;
+//            }
+//        }
+//        return null;
+    }
+ // reviewId로 리뷰 조회 메서드
+    public Review getReviewById(int reviewId) throws SQLException {
+    	return reviewDAO.findReview(reviewId);
+//        for (Review review : reviews) {
+//            if (review.getReviewId() == reviewId) {
+//                return review;
+//            }
+//        }
+//        return null;
     }
 
     // 특정 상품의 리뷰 조회 메서드
@@ -64,6 +75,7 @@ public class ReviewManager {
         return reviews;
     }
 
+    
 //    public boolean updateReview(Review review) { 
 //    	return reviewDAO.update(review);
 //    }

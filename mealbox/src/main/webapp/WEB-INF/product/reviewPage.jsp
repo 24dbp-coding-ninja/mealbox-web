@@ -22,7 +22,34 @@
                     </div>
 
                     <span>${review.date}</span>
+                    
+					<div class="review_text">
+                        <p>${review.text}</p>
+                        <img src="${review.reviewImg}" alt="상품 이미지" class="product_image">
+                    </div>
 
+                   <!-- <div class="footer">
+                         <p>구매상품: ${review.product}</p>
+                    </div> -->
+                    <hr>
+                
+                                    <!--  <span class="rating">
+                        <c:set var="fullStars" value="${floor(review.rating)}" />
+                        <c:set var="hasHalfStar" value="${review.rating - fullStars >= 0.5}" />
+
+                        <c:forEach var="i" begin="1" end="${fullStars}">
+                            ⭐️
+                        </c:forEach>
+
+                        <c:if test="${hasHalfStar}">
+                            ☆
+                        </c:if>
+
+                        <c:forEach var="i" begin="${fullStars + (hasHalfStar ? 1 : 0)}" end="5">
+                            ☆
+                        </c:forEach>
+                    </span>
+                    -->
                 </c:forEach>
                 
                                                   

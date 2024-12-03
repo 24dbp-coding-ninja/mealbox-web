@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>리뷰 등록/수정</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review/reviewForm.css" />
+        <link rel="shortcut icon" href="/mealbox/favicon.ico">
     </head>
     <body>    
         <jsp:include page="../nav.jsp"/>
