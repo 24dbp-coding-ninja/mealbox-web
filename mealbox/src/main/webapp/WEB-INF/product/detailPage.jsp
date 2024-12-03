@@ -133,6 +133,6 @@
 		</div>
 	</div>
 	<hr> 
-	
+	<jsp:include page="detailProductReviewPage.jsp"/>
 </body>
 </html>
