@@ -77,7 +77,7 @@
 	<%@ include file="../nav.jsp"%>
 	<div id="adminContainer">
 		<h1>상품 관리</h1>
-		<form id="productForm" method="POST">
+		<form id="productForm" method="POST" enctype="multipart/form-data">
 			<div id="selectedActionContainer">
 				<input class="submitButton" type="button" onclick="submitForm('create')" name="action" value="상품 추가" />
 				<input class="submitButton" type="button" onclick="submitForm('update')" name="action" value="선택 수정" />
@@ -113,10 +113,10 @@
 					<div>0</div>
 					<div>
 						<select name="newFoodTypeCategory">
-							<option value="1">양식</option>
-							<option value="2">중식</option>
-							<option value="3">분식</option>
-							<option value="4">뭔식</option>
+							<option value="1">한식</option>
+							<option value="2">양식</option>
+							<option value="3">중식</option>
+							<option value="4">분식</option>
 						</select>
 					</div>
 					<div>
@@ -155,13 +155,13 @@
 						<div>
 							<select name="foodTypeCategory_${product.id}">
 								<option value="1"
-									<c:if test="${product.categoryType eq 1}">selected</c:if>>양식</option>
+									<c:if test="${product.categoryType eq 1}">selected</c:if>>한식</option>
 								<option value="2"
-									<c:if test="${product.categoryType eq 2}">selected</c:if>>중식</option>
+									<c:if test="${product.categoryType eq 2}">selected</c:if>>양식</option>
 								<option value="3"
-									<c:if test="${product.categoryType eq 3}">selected</c:if>>분식</option>
+									<c:if test="${product.categoryType eq 3}">selected</c:if>>중식</option>
 								<option value="4"
-									<c:if test="${product.categoryType eq 4}">selected</c:if>>뭔식</option>
+									<c:if test="${product.categoryType eq 4}">selected</c:if>>분식</option>
 							</select>
 						</div>
 						<div>
