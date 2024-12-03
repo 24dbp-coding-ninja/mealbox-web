@@ -72,6 +72,12 @@
 	                    <button type="button" onclick="history.back();">
 	                    	<strong>취소</strong>
 	                    </button>
+	                    <!-- 삭제 버튼을 조건부로 표시 -->
+	                    <c:if test="${foundReview != null}">
+	                        <button type="button" onclick="deleteReview();">
+	                        	<strong>삭제</strong>
+	                        </button>
+	                    </c:if>
 	                    <button type="submit">
 							<strong>저장</strong>
 						</button>	                    
