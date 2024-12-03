@@ -151,7 +151,7 @@ public class ProductDAO {
 		
 		if(categoryType != null && categoryValue != null) {
 		    switch(categoryType) {
-		    case "type":
+		    case "food":
                 searchQuery = searchQuery.concat("WHERE foodTypeCategory = ?");
                 System.out.println("in case clause : " + categoryValue);
                 params.add(categoryValue);
