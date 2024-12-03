@@ -20,20 +20,7 @@
                     <div class="review_header">
                         <div>${review.nickname}</div>
                     </div>
-
-                    <span>${review.date}</span>
-                    
-					<div class="review_text">
-                        <p>${review.text}</p>
-                        <img src="${review.reviewImg}" alt="상품 이미지" class="product_image">
-                    </div>
-
-                   <!-- <div class="footer">
-                         <p>구매상품: ${review.product}</p>
-                    </div> -->
-                    <hr>
-                
-                                    <!--  <span class="rating">
+			<!--  <span class="rating">
                         <c:set var="fullStars" value="${floor(review.rating)}" />
                         <c:set var="hasHalfStar" value="${review.rating - fullStars >= 0.5}" />
 
@@ -50,6 +37,17 @@
                         </c:forEach>
                     </span>
                     -->
+                    <span>${review.date}</span>
+                    
+					<div class="review_text">
+                        <p>${review.text}</p>
+                        <img src="${review.reviewImg}" alt="상품 이미지" class="product_image">
+                    </div>
+
+                   <!-- <div class="footer">
+                         <p>구매상품: ${review.product}</p>
+                    </div> -->
+                    <hr>           
                 </c:forEach>
                 
                                                   
