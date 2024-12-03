@@ -27,7 +27,7 @@
     		<c:forEach var="detail" items="${combinedProductDetails}">
 			    <div class="item">
 			    	<div class="itemInfo1">
-			    		<img alt="상품사진" src="">
+			    		<img alt="상품사진" src="<c:url value='/upload/${detail.productDetail.thumb}'/>">
 			    	</div>
 			    	<div class="itemInfo2">
 			    		<div class="itemInfo2-name">

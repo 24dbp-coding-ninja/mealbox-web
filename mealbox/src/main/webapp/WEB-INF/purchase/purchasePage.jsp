@@ -13,36 +13,50 @@
     <title>구매하기</title>
 	<link rel="stylesheet" href="../css/purchasePage.css" />
 	<link rel="shortcut icon" href="/mealbox/favicon.ico">
-	<script>
-	  function validateCart(event) {
-	    const items = document.querySelectorAll(".item"); // 상품 목록
-	    let isValid = true;
-	
-	    items.forEach(item => {
-	        const nameField = item.querySelector(".itemInfo2-name p span"); // 상품 이름
-	        const quantityField = item.querySelector(".itemInfo2-quantity p span"); // 장바구니 수량
-	        const availableQuantityField = item.querySelector(".availableQuantity"); // 재고 수량 필드
-
-	        const name = nameField ? nameField.textContent.trim() : "알 수 없는 상품"; // 상품 이름 가져오기
-	        const quantity = parseInt(quantityField.textContent.trim(), 10) || 0; // 장바구니 수량
-	        const availableQuantity = parseInt(availableQuantityField.value, 10) || 0; // 재고 수량
-	     	// 디버깅용 출력
-	        console.log("상품명:", name);
-	        console.log("수량:", quantity);
-	        console.log("재고:", availableQuantity);
-	        
-	        if (quantity > availableQuantity) {
-	          isValid = false;
-	          alert('"' + name + '" 상품의 수량이 재고(' + availableQuantity + ')를 초과했습니다.');
-	        }
-	      });
-	
-	    if (!isValid) {
-	      event.preventDefault(); // 버튼 클릭 무효화 (폼 제출 중단)
-	    }
-	  }
+    <script>      
+		let today = new Date();
+		let tomorrow = new Date(today.setDate(today.getDate() + 1));
+		let year = tomorrow.getFullYear();
+		let month = tomorrow.getMonth() + 1;
+		let day = tomorrow.getDate();
+		if (month < 10) {
+		  month = "0" + month;
+		}
+		if (day < 10) {
+		  day = "0" + day;
+		}
+		let availableDay = `${year}-${month}-${day}`;
+		console.log("availableDay:", availableDay);
+		
+		// 재고 >= 장바구니 수량일 때만 구매 가능하도록
+		function validateCart(event) {
+		  const items = document.querySelectorAll(".item"); // 상품 목록
+		  let isValid = true;
+		
+		  items.forEach(item => {
+		      const nameField = item.querySelector(".itemInfo2-name p span"); // 상품 이름
+		      const quantityField = item.querySelector(".itemInfo2-quantity p span"); // 장바구니 수량
+		      const availableQuantityField = item.querySelector(".availableQuantity"); // 재고 수량 필드
+		
+		      const name = nameField ? nameField.textContent.trim() : "알 수 없는 상품"; // 상품 이름 가져오기
+		      const quantity = parseInt(quantityField.textContent.trim(), 10) || 0; // 장바구니 수량
+		      const availableQuantity = parseInt(availableQuantityField.value, 10) || 0; // 재고 수량
+		   	// 디버깅용 출력
+		      console.log("상품명:", name);
+		      console.log("수량:", quantity);
+		      console.log("재고:", availableQuantity);
+		      
+		      if (quantity > availableQuantity) {
+		        isValid = false;
+		        alert('"' + name + '" 상품의 수량이 재고(' + availableQuantity + ')를 초과했습니다.');
+		      }
+		    });
+		
+		  if (!isValid) {
+		    event.preventDefault(); // 버튼 클릭 무효화 (폼 제출 중단)
+		  }
+		}
 	</script>
-
   </head>
   <body>
   	<% 
@@ -114,7 +128,7 @@
 		    			<c:forEach var="detail" items="${sessionScope.cartProducts}">
 					    	<div class="item">
 						    	<div class="itemInfo1">
-						    		<img alt="상품사진" src="">
+						    		<img alt="상품사진" src="<c:url value='/upload/${detail.productDetail.thumb}'/>">
 						    	</div>
 						    	<div class="itemInfo2">
 						    		<div class="itemInfo2-name">
@@ -147,5 +161,6 @@
     		</div>
 		</form>
     </div>
+
   </body>
 </html>
