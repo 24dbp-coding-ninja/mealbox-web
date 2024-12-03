@@ -13,6 +13,7 @@ public class ReviewDAO {
 		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
 	}
 
+	// 리뷰 찾기
 	public Review findReview(int reviewId) throws SQLException {		
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT * ");
@@ -103,6 +104,7 @@ public class ReviewDAO {
     	return result; 
     }
 
+    // 리뷰 아이디 찾기
     public int findReviewId(int productId, int orderId) {
     	StringBuffer query = new StringBuffer();
 		query.append("SELECT reviewId ");
@@ -135,18 +137,43 @@ public class ReviewDAO {
 //    }
 
     // 리뷰 수정
-//    public boolean update(int reviewId) {
-//        // 데이터베이스에서 리뷰를 수정하는 로직
-//    	Review existingReview = findById(review.getReviewId()); 
-//    	if (existingReview != null) { 
-//    		existingReview.setRating(review.getRating()); 
-//    		existingReview.setReviewText(review.getReviewText()); 
-//    		existingReview.setReviewImg(review.getReviewImg()); 
+    public boolean update(Review review) throws SQLException {
+        // 데이터베이스에서 리뷰를 수정하는 로직
+    	StringBuffer query = new StringBuffer();
+        query.append("UPDATE MEAL_REVIEW ");
+        query.append("SET rating = ?, reviewText = ?, reviewImg = ? ");
+        query.append("WHERE reviewId = ?");
+        
+        Object[] updateParams = new Object[] {
+            review.getRating(),
+            review.getReviewText(),
+            review.getReviewImg(),
+            review.getReviewId()
+        };
+
+        jdbcUtil.setSqlAndParameters(query.toString(), updateParams);
+            
+        try {
+            int result = jdbcUtil.executeUpdate(); // update 문 실행
+            return result > 0; // 업데이트 성공 여부 반환
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.commit();
+            jdbcUtil.close(); // resource 반환
+        }
+
+        return false;
+//    	Review previousReview = findReview(review.getReviewId()); 
+//    	if (previousReview != null) { 
+//    		previousReview.setRating(review.getRating()); 
+//    		previousReview.setReviewText(review.getReviewText()); 
+//    		previousReview.setReviewImg(review.getReviewImg()); 
 //    		return true;
 //    	} 
 //    	return false;
-//    	//return true;
-//    }
+    }
     
 //    public boolean update(Review review) { // 리뷰 업데이트 로직 
 //    	int index = reviewList.indexOf(review); 

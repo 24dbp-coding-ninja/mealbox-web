@@ -34,11 +34,16 @@ public class ReviewFormController implements Controller {
         //System.out.println(productId);
         
         int reviewId = reviewManager.findReviewId(productId, orderId);
-		if (reviewId != 0) { // 리뷰 이미 있다
-			Review review = reviewManager.getReviewById(reviewId);
-			//request.setAttribute("reviewId", reviewId);
+		if (reviewId != 0) { // 리뷰 이미 있을 유
+			Review foundReview = reviewManager.getReviewById(reviewId);
+			System.out.println("\n\n찾은 리뷰 평점="+ foundReview.getRating());
+			if (foundReview.getReviewText() == null) {
+		        foundReview.setReviewText(""); // text 값이 null일 경우 기본값 설정
+		    }
+			request.setAttribute("foundReview", foundReview); // 리뷰 데이터를 JSP로 전달
+		} else {
+			request.setAttribute("foundReview", null);			
 		}
-        
 		return "/review/reviewForm.jsp";		
     }
 }
