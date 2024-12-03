@@ -44,7 +44,18 @@
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 
-	                        <input id="writeRating" name="rating" style="margin-left: 10px; text-align: center;">
+	                        <select id="writeRating" name="rating" style="margin-left: 10px; text-align: center;">
+	                        	<option value="0.5">0.5</option>
+							    <option value="1.0">1.0</option>
+							    <option value="1.5">1.5</option>
+							    <option value="2.0">2.0</option>
+							    <option value="2.5">2.5</option>
+							    <option value="3.0">3.0</option>
+							    <option value="3.5">3.5</option>
+							    <option value="4.0">4.0</option>
+							    <option value="4.5">4.5</option>
+							    <option value="5.0">5.0</option>
+							</select>
 		                </div>
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
