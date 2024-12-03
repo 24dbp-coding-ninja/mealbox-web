@@ -76,9 +76,9 @@ public class ReviewManager {
     }
 
     
-//    public boolean updateReview(Review review) { 
-//    	return reviewDAO.update(review);
-//    }
+    public boolean updateReview(Review review) throws SQLException { 
+    	return reviewDAO.update(review);
+    }
     
     // 리뷰 삭제 메서드 추가
 //    public boolean deleteReviewById(int reviewId) {
