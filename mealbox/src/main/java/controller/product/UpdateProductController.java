@@ -50,7 +50,9 @@ public class UpdateProductController implements Controller {
             FileItem thumbnailFile = files.get("thumb_" + selectedId);
             String thumbnailPath = "img";
             if (thumbnailFile != null && !thumbnailFile.getName().isEmpty()) {
-                String fileName = new File(thumbnailFile.getName()).getName();
+                String originalFileName = new File(thumbnailFile.getName()).getName();
+                String fileName = UUID.randomUUID().toString() + "_" 
+                                         + originalFileName.substring(originalFileName.lastIndexOf("\\") + 1);
                 File storeFile = new File(uploadPath + File.separator + fileName);
                 thumbnailFile.write(storeFile);
                 thumbnailPath = fileName;

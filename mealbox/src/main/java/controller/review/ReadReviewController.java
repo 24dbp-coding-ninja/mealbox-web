@@ -1,6 +1,8 @@
 package controller.review;
 
+import model.service.ProductManager;
 import model.service.ReviewManager;
+import model.domain.Product;
 import model.domain.Review;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,9 +20,12 @@ public class ReadReviewController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	//int productId = Integer.parseInt(request.getParameter("productId"));
-        int productId = 1020;
-    	
+    	ProductManager manager = ProductManager.getInstance();
+		Product product = manager.getDetail(Integer.parseInt(request.getParameter("id")));
+		request.setAttribute("product", product);
+    	int productId = Integer.parseInt(request.getParameter("productId"));
+        //int productId = 1010;
+				
     	List<Review> reviews = reviewManager.findReviewsByProduct(productId);
         String sortStandard = request.getParameter("sort");
 
@@ -33,6 +38,6 @@ public class ReadReviewController implements Controller {
         }
 
         request.setAttribute("reviews", reviews);
-        return "/product/reviewPage.jsp";
+        return "/product/detailProductReviewPage.jsp";
     }
 }

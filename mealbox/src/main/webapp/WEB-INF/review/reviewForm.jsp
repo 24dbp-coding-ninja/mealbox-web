@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>리뷰 등록/수정</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review/reviewForm.css" />
+        <link rel="shortcut icon" href="/mealbox/favicon.ico">
     </head>
     <body>    
         <jsp:include page="../nav.jsp"/>
@@ -38,12 +39,24 @@
 	                </div>
 	                <!-- 실제로 넘길 부분 -->
 	               	<p align="left" style="margin-top: 20px; margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
-	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요.">
+	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요." value="${foundReview.reviewText}">
 					<input style="display: none;" name="productId" value="${product.id}" />
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 
-	                        <input id="writeRating" name="rating" style="margin-left: 10px; text-align: center;">
+	                        <select id="writeRating" name="rating" style="margin-left: 10px; text-align: center;">
+						    <option value="0.0" <c:if test="${foundReview == null}">selected</c:if>>선택해주세요.</option>
+						    <option value="0.5" <c:if test="${foundReview != null && foundReview.rating == 0.5}">selected</c:if>>0.5</option>
+						    <option value="1.0" <c:if test="${foundReview != null && foundReview.rating == 1.0}">selected</c:if>>1.0</option>
+						    <option value="1.5" <c:if test="${foundReview != null && foundReview.rating == 1.5}">selected</c:if>>1.5</option>
+						    <option value="2.0" <c:if test="${foundReview != null && foundReview.rating == 2.0}">selected</c:if>>2.0</option>
+						    <option value="2.5" <c:if test="${foundReview != null && foundReview.rating == 2.5}">selected</c:if>>2.5</option>
+						    <option value="3.0" <c:if test="${foundReview != null && foundReview.rating == 3.0}">selected</c:if>>3.0</option>
+						    <option value="3.5" <c:if test="${foundReview != null && foundReview.rating == 3.5}">selected</c:if>>3.5</option>
+						    <option value="4.0" <c:if test="${foundReview != null && foundReview.rating == 4.0}">selected</c:if>>4.0</option>
+						    <option value="4.5" <c:if test="${foundReview != null && foundReview.rating == 4.5}">selected</c:if>>4.5</option>
+						    <option value="5.0" <c:if test="${foundReview != null && foundReview.rating == 5.0}">selected</c:if>>5.0</option>
+						</select>
 		                </div>
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
@@ -59,6 +72,12 @@
 	                    <button type="button" onclick="history.back();">
 	                    	<strong>취소</strong>
 	                    </button>
+	                    <!-- 삭제 버튼을 조건부로 표시 -->
+	                    <c:if test="${foundReview != null}">
+	                        <button type="button" onclick="deleteReview();">
+	                        	<strong>삭제</strong>
+	                        </button>
+	                    </c:if>
 	                    <button type="submit">
 							<strong>저장</strong>
 						</button>	                    

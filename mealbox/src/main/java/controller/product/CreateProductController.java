@@ -36,10 +36,8 @@ public class CreateProductController implements Controller {
 		if(check) {
 			ServletContext context = request.getServletContext();
 			String path = context.getRealPath("/upload");
-			System.out.println("Upload Path: " + path);
 			File dir = new File(path);
 			
-			System.out.println("able? " + dir.canWrite());
 			if(!dir.exists()) {
 				dir.mkdir();
 			}
