@@ -24,10 +24,10 @@
 	                    <!-- 상품 내역 정보 -->
 	                    
 	                        <div class="item">
-	                            <div id="buyProduct" style="background-color: yellow;">
-	                                <img alt="상품사진" src="" />
+	                            <div id="buyProduct">
+	                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 5px;"/>
 	                            </div>
-	                            <div id="productDescript" style="background-color: pink;">
+	                            <div id="productDescript" style="display:flex; justify-content: center;">
 	                            	<div>
 	                            		<strong>상품명: </strong>${product.name}
 	                            		<br/>
