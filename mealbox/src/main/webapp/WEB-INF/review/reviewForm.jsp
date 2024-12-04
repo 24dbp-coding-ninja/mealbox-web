@@ -25,7 +25,7 @@
 	                    
 	                        <div class="item">
 	                            <div id="buyProduct">
-	                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 5px;"/>
+	                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 7px;"/>
 	                            </div>
 	                            <div id="productDescript" style="display:flex; justify-content: center;">
 	                            	<div>
