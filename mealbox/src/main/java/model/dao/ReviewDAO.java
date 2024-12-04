@@ -43,10 +43,6 @@ public class ReviewDAO {
 		}
 		return null;
 	}
-
-	// 미완성
-	private List<Review> reviewList = new ArrayList<>();
-	private List<Review> reviews = new ArrayList<>();
 	
     // 리뷰 생성
     public boolean create(Review review) {
@@ -62,7 +58,7 @@ public class ReviewDAO {
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
-		} finally {		
+		} finally {
 			jdbcUtil.commit();
 			jdbcUtil.close();	// resource 반환
 		}	
@@ -165,24 +161,7 @@ public class ReviewDAO {
         }
 
         return false;
-//    	Review previousReview = findReview(review.getReviewId()); 
-//    	if (previousReview != null) { 
-//    		previousReview.setRating(review.getRating()); 
-//    		previousReview.setReviewText(review.getReviewText()); 
-//    		previousReview.setReviewImg(review.getReviewImg()); 
-//    		return true;
-//    	} 
-//    	return false;
     }
-    
-//    public boolean update(Review review) { // 리뷰 업데이트 로직 
-//    	int index = reviewList.indexOf(review); 
-//    	if (index != -1) { 
-//    		reviewList.set(index, review); 
-//    		return true; 
-//    	} 
-//    	return false;
-//    }
 
     // 리뷰 삭제
 //    public boolean delete(int reviewId) {
