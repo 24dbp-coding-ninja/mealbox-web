@@ -136,7 +136,7 @@
 							<input type="text" id="id" name="id_${product.id}" value="${product.id}" readonly />
 						</div>
 						<div>
-							<input type="file" id="thumb" name="thumb_${product.id}" value="${product.thumb}" />
+							<input type="file" id="thumb" name="thumb_${product.id}" accept="image/*" value="${product.thumb}" required />
 						</div>
 						<div>
 							<textarea id="description" name="description_${product.id}" rows="3">${product.description}</textarea>
