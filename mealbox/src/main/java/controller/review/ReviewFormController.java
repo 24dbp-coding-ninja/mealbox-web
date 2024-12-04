@@ -31,7 +31,7 @@ public class ReviewFormController implements Controller {
     	ProductManager manager = ProductManager.getInstance();
         Product product = manager.getDetail(productId);
         request.setAttribute("product", product);
-        //System.out.println(productId);
+        System.out.println("\n from --> productId==="+productId);
         
         int reviewId = reviewManager.findReviewId(productId, orderId);
 		if (reviewId != 0) { // 리뷰 이미 있을 유

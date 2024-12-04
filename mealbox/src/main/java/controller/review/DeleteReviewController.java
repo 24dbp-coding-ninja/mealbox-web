@@ -27,6 +27,6 @@ public class DeleteReviewController implements Controller {
 //        }
 
         // 리뷰 목록 페이지로 리다이렉트
-        return "review/reviewItems";
+        return "redirect:/purchase/purchaseList";
     }
 }

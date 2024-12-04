@@ -27,11 +27,11 @@ public class CreateReviewController implements Controller {
         	ProductManager manager = ProductManager.getInstance();
             Product product = manager.getDetail(productId);
             request.setAttribute("product", product);
-        	//System.out.println("\n productId==="+productId);
+        	System.out.println("\n productId==="+productId);
         	int orderId = Integer.parseInt(request.getParameter("orderId"));
-        	//System.out.println("\n orderId==="+orderId);
+        	System.out.println("\n orderId==="+orderId);
         	int lineNo = Integer.parseInt(request.getParameter("lineNo"));
-        	//System.out.println("\n lineNo==="+lineNo);
+        	System.out.println("\n lineNo==="+lineNo);
 
 			System.out.println("Logged-in OrderId ID: " + orderId);
             HttpSession session = request.getSession();

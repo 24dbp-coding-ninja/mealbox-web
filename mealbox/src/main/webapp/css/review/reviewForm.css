@@ -9,6 +9,7 @@ font-family: Arial, sans-serif;
 #reviewWrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items:center;
 	margin-left: 50px;
 	margin-right: 50px;
@@ -25,6 +26,9 @@ font-family: Arial, sans-serif;
 
 #line{
 	width:1295px;
+	display: flex;
+	justify-content: center;	
+	align-items: center;
 }
 
 #formWrapper {
@@ -54,19 +58,27 @@ font-family: Arial, sans-serif;
 	border-radius: 10px;
 }
 
-#buyProduct {
-	width: 63px;
-	height: 89px;
-	/*background-color: blue;*/
-	border-radius: 10px;
-	border: none;
-	margin-right: 30px;
+#buyProduct img {
+	width: 100%;    /* 부모 요소의 너비에 맞게 크기 조정 */
+    height: auto;   /* 비율에 맞춰 높이 자동 조정 */
+    max-width: 63px; /* 최대 너비를 63px로 제한 */
+    max-height: 89px; /* 최대 높이를 89px로 제한 */
+    margin: 0 15px 0 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
 }
 
 #productDescript {
-	/* width: 200px; */
+	/* 
+	width: 200px; 
+	justify-content: space-between;
+	margin-top: 10px;
+	*/
+    background-color: pink;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 #itemList > p {
@@ -125,7 +137,7 @@ font-family: Arial, sans-serif;
 	margin: 0;
 	justify-content: space-around;
 }
-#pic1, #pic2, #pic3 {
+#reviewImg, #pic1, #pic2, #pic3 {
 	width: 75px;
 	height: 72px;
 	background-color: white;
