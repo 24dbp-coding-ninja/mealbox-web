@@ -15,7 +15,7 @@
         <input type="hidden" id="lineNo" name="lineNo" value="${lineNo}"/>
 	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
 		    <div id="line">
-		        <hr />
+		        <hr style="width:1295px;"/>
 		    </div>
 	        <div id="reviewWrapper">
 		        
