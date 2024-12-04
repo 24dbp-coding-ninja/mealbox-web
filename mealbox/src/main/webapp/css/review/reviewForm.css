@@ -25,9 +25,8 @@ font-family: Arial, sans-serif;
 }
 
 #line{
-	width:1295px;
-	display: flex;
-	justify-content: center;	
+	display:flex; 
+	justify-content: center; 
 	align-items: center;
 }
 
@@ -59,10 +58,8 @@ font-family: Arial, sans-serif;
 }
 
 #buyProduct img {
-	width: 100%;    /* 부모 요소의 너비에 맞게 크기 조정 */
-    height: auto;   /* 비율에 맞춰 높이 자동 조정 */
-    max-width: 63px; /* 최대 너비를 63px로 제한 */
-    max-height: 89px; /* 최대 높이를 89px로 제한 */
+    width: 63px; /* 최대 너비를 63px로 제한 */
+    height: 89px; /* 최대 높이를 89px로 제한 */
     margin: 0 15px 0 10px;
     border-radius: 10px;
     border: none;
@@ -70,12 +67,6 @@ font-family: Arial, sans-serif;
 }
 
 #productDescript {
-	/* 
-	width: 200px; 
-	justify-content: space-between;
-	margin-top: 10px;
-	*/
-    background-color: pink;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
