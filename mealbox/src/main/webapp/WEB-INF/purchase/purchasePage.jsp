@@ -13,7 +13,7 @@
     <title>구매하기</title>
 	<link rel="stylesheet" href="../css/purchasePage.css" />
 	<link rel="shortcut icon" href="/mealbox/favicon.ico">
-    <script>      
+    <script>
 		let today = new Date();
 		let tomorrow = new Date(today.setDate(today.getDate() + 1));
 		let year = tomorrow.getFullYear();
@@ -25,8 +25,11 @@
 		if (day < 10) {
 		  day = "0" + day;
 		}
-		let availableDay = `${year}-${month}-${day}`;
-		console.log("availableDay:", availableDay);
+		let availableDay = year+"-"+month+"-"+day;
+		
+		window.addEventListener('DOMContentLoaded', function(){
+			document.getElementById("deliveryDate").setAttribute("min", availableDay);
+		});
 		
 		// 재고 >= 장바구니 수량일 때만 구매 가능하도록
 		function validateCart(event) {
@@ -115,7 +118,7 @@
 		                    <tr>
 		                        <td>배송희망일</td>
 		                        <td>
-		                            <input type="date" name="deliveryDate" required>
+		                            <input type="date" name="deliveryDate" id="deliveryDate" required>
 		                        </td>
 		                    </tr>
 		                </table>
