@@ -35,11 +35,12 @@
                     </span>
 
                     <span>${review.date}</span>
-                    
+                    <!-- 
 					<div class="review_text">
                         <p>${review.text}</p>
                         <img src="" alt="상품 이미지" class="product_image">
                     </div>
+                     -->
                    <!-- <div class="footer">
                          <p>구매상품: ${review.product}</p>
                     </div> -->

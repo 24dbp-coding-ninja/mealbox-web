@@ -9,6 +9,7 @@ font-family: Arial, sans-serif;
 #reviewWrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items:center;
 	margin-left: 50px;
 	margin-right: 50px;
@@ -24,23 +25,25 @@ font-family: Arial, sans-serif;
 }
 
 #line{
-	width:1295px;
+	display:flex; 
+	justify-content: center; 
+	align-items: center;
 }
 
 #formWrapper {
 	width: 550px;
-	height: 570px;
+	height: 530px;
 	background-color: #f2f2f2;
 	margin: 10px;
 	padding: 20px;
 	border-radius: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 /* 장바구니 아이템 목록 */
 #itemList {
 	background-color: white;
-	width: 484px;
+	width: 500px;
 	height: 106px;
 	overflow: auto; /* 혹은 visible */
 	display: flex;
@@ -48,25 +51,26 @@ font-family: Arial, sans-serif;
 	/* max-height: 50px; 높이를 제한하지 않음 */
 	
 	padding-top: 10px;
-	padding-left: 10px;
+	padding-left: 25px;
 	padding-bottom: 10px;
 	margin: 10px;
 	border-radius: 10px;
 }
 
-#buyProduct {
-	width: 63px;
-	height: 89px;
-	/*background-color: blue;*/
-	border-radius: 10px;
-	border: none;
-	margin-right: 30px;
+#buyProduct img {
+    width: 63px; /* 최대 너비를 63px로 제한 */
+    height: 89px; /* 최대 높이를 89px로 제한 */
+    margin: 0 15px 0 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
 }
 
 #productDescript {
-	/* width: 200px; */
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	margin-left: 10px;
 }
 
 #itemList > p {
@@ -78,7 +82,7 @@ font-family: Arial, sans-serif;
 	display: flex;
 	align-items: left;
 	background-color: #fff;
-	width: 484px;
+	width: 515px;
 	height: 100px;
 	border-radius: 10px;
 }
@@ -125,7 +129,7 @@ font-family: Arial, sans-serif;
 	margin: 0;
 	justify-content: space-around;
 }
-#pic1, #pic2, #pic3 {
+#reviewImg, #pic1, #pic2, #pic3 {
 	width: 75px;
 	height: 72px;
 	background-color: white;
@@ -136,10 +140,10 @@ font-family: Arial, sans-serif;
 
 /* 구매하기 버튼 */
 #btn {
-width: 500px;
-/* background-color: pink; */
-display: flex;
-justify-content:space-around;
+	width: 500px;
+	/* background-color: pink; */
+	display: flex;
+	justify-content:space-around;
 }
 #btn button {
 	width: 120px;
@@ -149,7 +153,6 @@ justify-content:space-around;
 	color: black;
 	border: none;
 	border-radius: 10px;
-	margin-top: 20px;
 	padding-left: 30px;
 	padding-right: 30px;
 }

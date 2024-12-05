@@ -38,7 +38,7 @@ public class ListProductController implements Controller {
 		
 		request.setAttribute("productList", productList);
         request.setAttribute("categoryType", categoryType);
-        request.setAttribute("categoryType", categoryType);
+        request.setAttribute("categoryValue", categoryValue);
         request.setAttribute("orderBy", orderBy);
 		return "/product/productsPage.jsp";
 	}

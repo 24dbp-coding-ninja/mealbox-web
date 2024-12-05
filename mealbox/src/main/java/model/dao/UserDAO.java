@@ -146,6 +146,7 @@ public class UserDAO {
 				user.setOrderCount(rs.getInt("orderCount"));
 				user.setReviewCount(rs.getInt("reviewCount")); 
 				
+				if(userId.equals("admin")) {continue;} //admin은 List에 저장하지 않음.
 				userList.add(user);				// List에 User 객체 저장
 			}		
 			return userList;					

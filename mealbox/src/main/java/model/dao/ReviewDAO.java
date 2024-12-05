@@ -43,10 +43,6 @@ public class ReviewDAO {
 		}
 		return null;
 	}
-
-	// 미완성
-	private List<Review> reviewList = new ArrayList<>();
-	private List<Review> reviews = new ArrayList<>();
 	
     // 리뷰 생성
     public boolean create(Review review) {
@@ -62,7 +58,7 @@ public class ReviewDAO {
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
-		} finally {		
+		} finally {
 			jdbcUtil.commit();
 			jdbcUtil.close();	// resource 반환
 		}	
@@ -165,32 +161,26 @@ public class ReviewDAO {
         }
 
         return false;
-//    	Review previousReview = findReview(review.getReviewId()); 
-//    	if (previousReview != null) { 
-//    		previousReview.setRating(review.getRating()); 
-//    		previousReview.setReviewText(review.getReviewText()); 
-//    		previousReview.setReviewImg(review.getReviewImg()); 
-//    		return true;
-//    	} 
-//    	return false;
     }
-    
-//    public boolean update(Review review) { // 리뷰 업데이트 로직 
-//    	int index = reviewList.indexOf(review); 
-//    	if (index != -1) { 
-//    		reviewList.set(index, review); 
-//    		return true; 
-//    	} 
-//    	return false;
-//    }
 
     // 리뷰 삭제
-//    public boolean delete(int reviewId) {
-//        // 데이터베이스에서 리뷰를 삭제하는 로직
-//    	Review review = findById(reviewId);
-//    	return reviews.remove(review);
-//        //return true;
-//    }
+    public boolean delete(int reviewId) {
+    	String sql = "DELETE FROM MEAL_REVIEW WHERE reviewId=?";	
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {reviewId});	// JDBCUtil에 delete문과 매개 변수 설정
+
+		try {				
+			int result = jdbcUtil.executeUpdate();	// delete 문 실행
+			return result > 0;
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		}
+		finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 반환
+		}		
+		return false;
+    }
     
 //    public boolean delete(int reviewId) { // 리뷰 삭제 로직 
 //    	return reviewList.removeIf(review -> review.getReviewId() == reviewId);

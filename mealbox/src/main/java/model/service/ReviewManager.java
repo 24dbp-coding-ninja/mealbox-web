@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewManager {
-    private static ReviewManager userMan = new ReviewManager();
+    private static ReviewManager reviewMan = new ReviewManager();
 	private ReviewDAO reviewDAO;
 
 	public ReviewManager() {
@@ -23,17 +23,7 @@ public class ReviewManager {
 		}			
 	}
 
-	// private ReviewDAO reviewDAO;
     private List<Review> reviews;
-
-//    public ReviewManager() {
-//        reviews = new ArrayList<>();
-//    }
-
-    // 리뷰 추가 메서드
-//    public void addReview(Review review) {
-//        reviews.add(review);
-//    }
 
     // 리뷰 생성 메서드 추가
     public boolean createReview(Review review) { 
@@ -43,67 +33,45 @@ public class ReviewManager {
     // reivewId 찾기
     public int findReviewId(int productId, int orderId) {
     	return reviewDAO.findReviewId(productId, orderId);
-//        for (Review review : reviews) {
-//            if (review.getReviewId() == reviewId) {
-//                return review;
-//            }
-//        }
-//        return null;
     }
- // reviewId로 리뷰 조회 메서드
+    
+    // reviewId로 리뷰 조회 메서드
     public Review getReviewById(int reviewId) throws SQLException {
     	return reviewDAO.findReview(reviewId);
-//        for (Review review : reviews) {
-//            if (review.getReviewId() == reviewId) {
-//                return review;
-//            }
-//        }
-//        return null;
     }
 
     // 특정 상품의 리뷰 조회 메서드
     public List<Review> findReviewsByProduct(int productId) { 
     	return reviewDAO.findReviewsByProduct(productId); 
     }
-    
-//    public List<Review> findReviewsByMyPage(int reviewId) { 
-//    	return reviewDAO.findReviewsByMyPage(reviewId); 
-//    }
 
     // 모든 리뷰 조회 메서드
     public List<Review> getAllReviews() {
         return reviews;
     }
 
-    
+    // 리뷰 수정
     public boolean updateReview(Review review) throws SQLException { 
     	return reviewDAO.update(review);
     }
     
-    // 리뷰 삭제 메서드 추가
-//    public boolean deleteReviewById(int reviewId) {
-//        Review review = getReviewById(reviewId);
-//        if (review != null) {
-//            return reviews.remove(review);
-//        }
-//        return false;
-//    }
-    
-//    public boolean deleteReview(int reviewId) { 
-//    	return reviewDAO.delete(reviewId);
-//    }
+    // 리뷰 삭제
+    public boolean deleteReview(int reviewId) { 
+    	return reviewDAO.delete(reviewId);
+    }
 
     // 평균 점수 계산 메서드
     public double calculateAverageScore(int productId) {
-        int totalReviews = 0;
+    	List<Review> allReviews = findReviewsByProduct(productId);
+        int countReviews = 0;
         double totalScore = 0.0;
 
-        for (Review review : reviews) {
+        for (Review review : allReviews) {
             if (review.getProductId() == productId) {
                 totalScore += review.getRating();
-                totalReviews++;
+                countReviews++;
             }
         }
-        return totalReviews > 0 ? totalScore / totalReviews : 0.0;
+        return countReviews > 0 ? totalScore / countReviews : 0.0;
     }
 }

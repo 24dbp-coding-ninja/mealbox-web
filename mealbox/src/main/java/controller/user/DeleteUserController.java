@@ -59,7 +59,13 @@ public class DeleteUserController implements Controller {
 	    		for(String deleteId : deleteIds) {
 	    		 	System.out.println(deleteId);
 	    			log.debug("Delete User(Admin) : {}", deleteId);
-	    			manager.remove(deleteId);
+	    			if(deleteId.equals("admin")) {
+	    				log.debug("admin은 삭제할 수 없습니다.");
+	    				request.setAttribute("removeFailed", true);
+	    				request.setAttribute("e", new IllegalStateException("admin은 삭제할 수 없습니다."));
+	    			}else {
+	    				manager.remove(deleteId);
+	    			}
 	    		}
     		}
     		return "redirect:/user/listUser";

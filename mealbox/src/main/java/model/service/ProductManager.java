@@ -21,8 +21,8 @@ public class ProductManager {
 		return productMan;
 	}
 	
-	public Product getDetail(int id) {
-		return productDao.getDetail(id);
+	public Product getDetail(int productId) {
+		return productDao.getDetail(productId);
 	}
 	
 	public List<Product> findProductList() {
@@ -45,7 +45,7 @@ public class ProductManager {
 		return productDao.searchProduct(categoryType, categoryValue, orderBy);
 	}
 	
-	 public int decreaseItemQuantity(int id, int quantity) {
-	     return productDao.decreaseQuantity(id, quantity);
+	 public int decreaseItemQuantity(int productId, int quantity) {
+	     return productDao.decreaseQuantity(productId, quantity);
 	 }
 }

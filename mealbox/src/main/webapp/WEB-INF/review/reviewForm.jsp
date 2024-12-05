@@ -15,7 +15,7 @@
         <input type="hidden" id="lineNo" name="lineNo" value="${lineNo}"/>
 	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
 		    <div id="line">
-		        <hr />
+		        <hr style="width:1295px;"/>
 		    </div>
 	        <div id="reviewWrapper">
 		        
@@ -25,9 +25,9 @@
 	                    
 	                        <div class="item">
 	                            <div id="buyProduct">
-	                                <img alt="상품사진" src=""/>
+	                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 7px;"/>
 	                            </div>
-	                            <div id="productDescript">
+	                            <div id="productDescript" style="display:flex; justify-content: center;">
 	                            	<div>
 	                            		<strong>상품명: </strong>${product.name}
 	                            		<br/>
@@ -61,9 +61,10 @@
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
 	                        <span id="pic">
-	                            <button type="button" id="pic1" name="reviewImg">+</button>
-	                            <button type="button" id="pic2" name="reviewImg2">+</button>
+	                        	<button type="button" id="pic1" name="reviewImg">+</button>
+	                        	<button type="button" id="pic2" name="reviewImg2">+</button>
 	                            <button type="button" id="pic3" name="reviewImg3">+</button>
+	                            <!-- <input type="file" id="reviewImg" name="reviewImg" accept="image/*" /> -->
 	                        </span>
 	                    </div>
 	                </div>
@@ -72,12 +73,14 @@
 	                    <button type="button" onclick="history.back();">
 	                    	<strong>취소</strong>
 	                    </button>
-	                    <!-- 삭제 버튼을 조건부로 표시 -->
-	                    <c:if test="${foundReview != null}">
-	                        <button type="button" onclick="deleteReview();">
-	                        	<strong>삭제</strong>
-	                        </button>
-	                    </c:if>
+	                    <!-- 삭제 버튼을 조건부로 표시 --> 
+	                          
+                        <c:if test="${foundReview != null}">	
+                        	<input style="display: none;" name="reviewId" value="${foundReview.reviewId}" />                    
+                            <button type="button" onclick="deleteReview(${foundReview.reviewId})">
+                                <strong>삭제</strong>
+                            </button>
+                        </c:if>
 	                    <button type="submit">
 							<strong>저장</strong>
 						</button>	                    
@@ -85,5 +88,30 @@
 	            </div>
 	        </div>
         </form>
+        <script>
+        window.deleteReview = function deleteReview(reviewId) {
+            if (confirm("정말로 이 리뷰를 삭제하시겠습니까?")) { 
+                // AJAX 요청으로 DELETE 요청을 서버에 보냄
+                //System.out.println("\n\n .jsp 함수 리뷰 아디"+reviewId);
+                console.error("\n\n .jsp 함수 리뷰 아디"+reviewId);
+                fetch(`/mealbox/review/delete?reviewId=${reviewId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("리뷰가 삭제되었습니다.");
+                        window.location.href = '/mealbox/purchase/purchaseList';
+                    } else {
+                        alert("리뷰 삭제에 실패했습니다.");
+                    }
+                })
+                .catch(error => {
+                    alert("리뷰 삭제 중 오류가 발생했습니다.");
+                    console.error(error);
+                });
+            }
+        }
+
+        </script>
     </body>
 </html>
