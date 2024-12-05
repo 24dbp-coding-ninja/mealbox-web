@@ -27,9 +27,8 @@ public class RequestMapping {
         //mappings.put("/review/items", new ForwardController("/review/reviewForm.jsp"));
         mappings.put("/review/form", new ReviewFormController());
         mappings.put("/review/create", new CreateReviewController());
-        //mappings.put("/review/update", new UpdateReviewController());
-        mappings.put("/review/delete", new DeleteReviewController());
         mappings.put("/review/read", new ReadReviewController());
+        mappings.put("/review/delete", new DeleteReviewController());
         
         //영선-로그인, 회원가입, adminUserPage
         mappings.put("/user/login/form", new ForwardController("/user/login.jsp"));
