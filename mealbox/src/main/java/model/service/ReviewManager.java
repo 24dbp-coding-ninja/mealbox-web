@@ -55,15 +55,6 @@ public class ReviewManager {
     	return reviewDAO.update(review);
     }
     
-    // 리뷰 삭제 메서드 추가
-//    public boolean deleteReviewById(int reviewId) {
-//        Review review = getReviewById(reviewId);
-//        if (review != null) {
-//            return reviews.remove(review);
-//        }
-//        return false;
-//    }
-    
     // 리뷰 삭제
     public boolean deleteReview(int reviewId) { 
     	return reviewDAO.delete(reviewId);
@@ -71,15 +62,16 @@ public class ReviewManager {
 
     // 평균 점수 계산 메서드
     public double calculateAverageScore(int productId) {
-        int totalReviews = 0;
+    	List<Review> allReviews = findReviewsByProduct(productId);
+        int countReviews = 0;
         double totalScore = 0.0;
 
-        for (Review review : reviews) {
+        for (Review review : allReviews) {
             if (review.getProductId() == productId) {
                 totalScore += review.getRating();
-                totalReviews++;
+                countReviews++;
             }
         }
-        return totalReviews > 0 ? totalScore / totalReviews : 0.0;
+        return countReviews > 0 ? totalScore / countReviews : 0.0;
     }
 }
