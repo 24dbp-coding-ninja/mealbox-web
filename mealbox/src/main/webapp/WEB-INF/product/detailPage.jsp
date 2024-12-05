@@ -136,7 +136,7 @@
 	</div>
 	<hr />
 	<h2>상품 리뷰</h2>
-        <div class="container">
+        <div class="reviewContainer">
             <div class="sort_options">
                 <span class="sort_option" onclick="location.href='?id=${product.id}&sort=latest'">최신 순 |</span>
                 <span class="sort_option" onclick="location.href='?id=${product.id}&sort=highRate'"> 평점 높은 순 |</span>
@@ -147,21 +147,23 @@
                     <div class="review_header">
                         <div>${review.nickname}</div>
                     </div>
-					<span class="rating">
-						<fmt:formatNumber var="fullStars" value="${review.rating}" type="number" pattern="#" />
-                        <c:set var="halfStar" value="${review.rating - fullStars >= 0.5}" />
-
-                        <c:forEach var="i" begin="1" end="${fullStars}">
-					        ⭐
-					    </c:forEach>
-					
-					    <c:if test="${halfStar}">
-					        ✨
-					    </c:if>
-                    </span>
-
-                    <span>${review.date}</span>
-                    <div>${reveiw.reviewText}</div>
+                    <div id="starAndDate">
+						<span class="rating">
+							<fmt:formatNumber var="fullStars" value="${review.rating}" type="number" pattern="#" />
+	                        <c:set var="halfStar" value="${review.rating - fullStars >= 0.5}" />
+	
+	                        <c:forEach var="i" begin="1" end="${fullStars}">
+						        ⭐
+						    </c:forEach>
+						
+						    <c:if test="${halfStar}">
+						        ✨
+						    </c:if>
+	                    </span>
+	
+	                    <span>${review.date}</span>
+                    </div>
+                    <div id="reviewTextWrapper">${review.reviewText}</div>
                     <hr>           
                 </c:forEach>                    
             </div>

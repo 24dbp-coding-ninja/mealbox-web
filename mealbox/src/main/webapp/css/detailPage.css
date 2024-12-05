@@ -161,7 +161,11 @@ hr {
 	width: 100%;
 	margin: 20px 0;
 }
-
+.reviewContainer{
+	gap: 5px;
+	margin: 10px;
+	/*background-color: skyblue;*/
+}
 h2 {
     text-align: center;
     margin-bottom: 30px;
@@ -173,6 +177,7 @@ h2 {
 }
 .review_header {
     display: flex;
+	margin-bottom: 5px;
 }
 .product_image {
     width: 200px;
@@ -180,4 +185,10 @@ h2 {
 }
 .sort_options {
     margin-bottom: 20px;
+}
+#starAndDate {	
+	margin-bottom: 10px;
+}
+#reviewTextWrapper {
+	margin-top: 5px;
 }
