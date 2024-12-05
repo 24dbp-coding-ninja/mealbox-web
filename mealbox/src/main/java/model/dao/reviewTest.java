@@ -16,6 +16,12 @@ public class reviewTest {
 		System.out.println("Review 읽기 Test용 코드입니다.");
 		Scanner sc = new Scanner(System.in);
 		
+		System.out.print("아이디를 입력하시오: ");
+        int reviewId = sc.nextInt();
+        System.out.println();
+        boolean what = reviewDao.delete(reviewId);
+        System.out.println(what);
+	    
 		/*
 		try {
 	        System.out.print("아이디를 입력하시오: ");
@@ -43,20 +49,20 @@ public class reviewTest {
 		//읽기 테스트 완료
 		 */
 		
-		System.out.println("\nreview 생성 Test용 코드입니다.");
-        Review review = new Review();
-        review.setProductId(1010);
-        review.setOrderId(1270);
-        review.setLineNo(1470);
-        review.setNickname("id3");
-        review.setRating(Double.parseDouble("2"));
-        review.setReviewText("만들기 어렵당!");
-        review.setReviewImg("review3.jpg");
-        
-        boolean result = reviewDao.create(review);
-        if(result) {
-           System.out.println("생성되었습니다.");
-        }	
+//		System.out.println("\nreview 생성 Test용 코드입니다.");
+//        Review review = new Review();
+//        review.setProductId(1010);
+//        review.setOrderId(1270);
+//        review.setLineNo(1470);
+//        review.setNickname("id3");
+//        review.setRating(Double.parseDouble("2"));
+//        review.setReviewText("만들기 어렵당!");
+//        review.setReviewImg("review3.jpg");
+//        
+//        boolean result = reviewDao.create(review);
+//        if(result) {
+//           System.out.println("생성되었습니다.");
+//        }	
 		//생성 테스트 완료
 	}
 }

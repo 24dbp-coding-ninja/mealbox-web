@@ -64,9 +64,10 @@ public class ReviewManager {
 //        return false;
 //    }
     
-//    public boolean deleteReview(int reviewId) { 
-//    	return reviewDAO.delete(reviewId);
-//    }
+    // 리뷰 삭제
+    public boolean deleteReview(int reviewId) { 
+    	return reviewDAO.delete(reviewId);
+    }
 
     // 평균 점수 계산 메서드
     public double calculateAverageScore(int productId) {

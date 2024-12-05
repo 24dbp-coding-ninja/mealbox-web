@@ -31,16 +31,18 @@ public class ReviewFormController implements Controller {
     	ProductManager manager = ProductManager.getInstance();
         Product product = manager.getDetail(productId);
         request.setAttribute("product", product);
-        System.out.println("\n from --> productId==="+productId);
+        System.out.println("\n form --> productId==="+productId);
         
         int reviewId = reviewManager.findReviewId(productId, orderId);
+        System.out.println("\n form --> reviewId==="+reviewId);
 		if (reviewId != 0) { // 리뷰 이미 있을 유
 			Review foundReview = reviewManager.getReviewById(reviewId);
-			System.out.println("\n\n찾은 리뷰 평점="+ foundReview.getRating());
+			System.out.println("찾은 리뷰 평점="+ foundReview.getRating());
 			if (foundReview.getReviewText() == null) {
 		        foundReview.setReviewText(""); // text 값이 null일 경우 기본값 설정
 		    }
 			request.setAttribute("foundReview", foundReview); // 리뷰 데이터를 JSP로 전달
+			request.setAttribute("reviewId", reviewId);
 		} else {
 			request.setAttribute("foundReview", null);			
 		}

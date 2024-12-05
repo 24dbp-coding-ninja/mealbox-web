@@ -73,12 +73,14 @@
 	                    <button type="button" onclick="history.back();">
 	                    	<strong>취소</strong>
 	                    </button>
-	                    <!-- 삭제 버튼을 조건부로 표시 -->
-	                    <c:if test="${foundReview != null}">
-	                        <button type="button" onclick="deleteReview();">
-	                        	<strong>삭제</strong>
-	                        </button>
-	                    </c:if>
+	                    <!-- 삭제 버튼을 조건부로 표시 --> 
+	                          
+                        <c:if test="${foundReview != null}">	
+                        	<input style="display: none;" name="reviewId" value="${foundReview.reviewId}" />                    
+                            <button type="button" onclick="deleteReview(${foundReview.reviewId})">
+                                <strong>삭제</strong>
+                            </button>
+                        </c:if>
 	                    <button type="submit">
 							<strong>저장</strong>
 						</button>	                    
@@ -86,5 +88,30 @@
 	            </div>
 	        </div>
         </form>
+        <script>
+        window.deleteReview = function deleteReview(reviewId) {
+            if (confirm("정말로 이 리뷰를 삭제하시겠습니까?")) { 
+                // AJAX 요청으로 DELETE 요청을 서버에 보냄
+                //System.out.println("\n\n .jsp 함수 리뷰 아디"+reviewId);
+                console.error("\n\n .jsp 함수 리뷰 아디"+reviewId);
+                fetch(`/mealbox/review/delete?reviewId=${reviewId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("리뷰가 삭제되었습니다.");
+                        window.location.href = '/mealbox/purchase/purchaseList';
+                    } else {
+                        alert("리뷰 삭제에 실패했습니다.");
+                    }
+                })
+                .catch(error => {
+                    alert("리뷰 삭제 중 오류가 발생했습니다.");
+                    console.error(error);
+                });
+            }
+        }
+
+        </script>
     </body>
 </html>
