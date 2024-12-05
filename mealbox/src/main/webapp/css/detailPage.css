@@ -69,6 +69,7 @@ span {
 	padding-top: 12px;
 	padding-bottom: 0px;
 	
+	/*
 	button:hover {
 		cursor: pointer;	
 	}
@@ -80,6 +81,16 @@ span {
 	input:hover {
 		cursor: default;
 	}
+	*/
+}
+.plusOrMinus button:hover {
+    cursor: pointer;
+}
+.plusOrMinus button:active {
+    background-color: lightgray;
+}
+.plusOrMinus input:hover {
+    cursor: default;
 }
 
 .decrease, .increase {

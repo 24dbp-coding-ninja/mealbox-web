@@ -161,6 +161,7 @@
                     </span>
 
                     <span>${review.date}</span>
+                    <div>${reveiw.reviewText}</div>
                     <hr>           
                 </c:forEach>                    
             </div>
