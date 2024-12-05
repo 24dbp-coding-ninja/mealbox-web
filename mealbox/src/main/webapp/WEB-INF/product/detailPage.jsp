@@ -5,6 +5,7 @@
  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
 	<link rel="preconnect" href="https://rsms.me/" />
 	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 	<link rel="stylesheet" type="text/css" href="/mealbox/css/detailPage.css">
+	<link rel="stylesheet" href="/mealbox/css/review/detailProductReviewPage.css">
 	<link rel="shortcut icon" href="/mealbox/favicon.ico">
 	<script>
 		function increaseQuantity() {
@@ -68,7 +70,7 @@
 </head>
 <body>
  	<%@ include file="../nav.jsp" %>
-	<div class="container meal">
+	<div class="container_meal">
 		<div class="meal_img">
 			<img id="product_image" src="<c:url value='/upload/${product.thumb}'/>"
 				alt="<c:out value='${product.name}'/>">
@@ -132,7 +134,36 @@
 			</div>
 		</div>
 	</div>
-	<hr> 
-	
+	<hr />
+	<h2>상품 리뷰</h2>
+        <div class="container">
+            <div class="sort_options">
+                <span class="sort_option" onclick="location.href='?id=${product.id}&sort=latest'">최신 순 |</span>
+                <span class="sort_option" onclick="location.href='?id=${product.id}&sort=highRate'"> 평점 높은 순 |</span>
+                <span class="sort_option" onclick="location.href='?id=${product.id}&sort=lowRate'">평점 낮은 순</span>
+            </div>
+            <div id="reviews">
+                <c:forEach var="review" items="${reviews}">
+                    <div class="review_header">
+                        <div>${review.nickname}</div>
+                    </div>
+					<span class="rating">
+						<fmt:formatNumber var="fullStars" value="${review.rating}" type="number" pattern="#" />
+                        <c:set var="halfStar" value="${review.rating - fullStars >= 0.5}" />
+
+                        <c:forEach var="i" begin="1" end="${fullStars}">
+					        ⭐
+					    </c:forEach>
+					
+					    <c:if test="${halfStar}">
+					        ✨
+					    </c:if>
+                    </span>
+
+                    <span>${review.date}</span>
+                    <hr>           
+                </c:forEach>                    
+            </div>
+        </div>
 </body>
 </html>
