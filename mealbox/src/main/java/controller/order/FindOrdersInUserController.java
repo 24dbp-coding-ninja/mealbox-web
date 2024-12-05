@@ -47,7 +47,7 @@ public class FindOrdersInUserController implements Controller {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        request.setAttribute("message", "오류 발생: " + e.getMessage());
-	        return "/error/errorPage.jsp";
+	        return "/purchase/orderListPage.jsp";
 	    }
     }
 }
