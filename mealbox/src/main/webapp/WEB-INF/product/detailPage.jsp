@@ -87,7 +87,10 @@
 					<c:forEach var="rate" begin="${product.averageReview + 1}" end="5">
 						 ☆
 					</c:forEach>
-				</span> <span id="product_rating_score">&nbsp;｜&nbsp;${product.averageReview}</span>
+				</span> <span id="product_rating_score">&nbsp;｜&nbsp;
+					<fmt:formatNumber var="fmAvg" value="${avrRev}" pattern="#.#" />
+					${fmAvg}
+				</span>
 			</div>
 			<p class="price" id="product_price">${product.price}원</p>
 			<div class="quantity">

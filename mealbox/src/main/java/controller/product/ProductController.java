@@ -36,6 +36,8 @@ public class ProductController implements Controller {
         }
 	    request.setAttribute("reviews", reviews);
 		
+	    request.setAttribute("avrRev", reviewManager.calculateAverageScore(productId));
+	    
 		return "/product/detailPage.jsp";
 	}
 }

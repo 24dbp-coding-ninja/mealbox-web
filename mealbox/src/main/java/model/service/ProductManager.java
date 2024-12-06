@@ -5,7 +5,6 @@ import java.util.List;
 import model.dao.ProductDAO;
 
 public class ProductManager {
-	
 	private static ProductManager productMan = new ProductManager();
 	private ProductDAO productDao;
 	
