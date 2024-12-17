@@ -121,7 +121,7 @@ font-family: Arial, sans-serif;
 }
 #pics{	
 	width:400px;
-	height:200px;
+	height:150px;
 }
 #pic{
 	display: flex;
@@ -130,12 +130,12 @@ font-family: Arial, sans-serif;
 	justify-content: space-around;
 }
 #reviewImg, #pic1, #pic2, #pic3 {
-	width: 75px;
-	height: 72px;
+	width: 300px;
+	height: 50px;
 	background-color: white;
 	border-radius: 10px;
 	border: none;
-	font-size: 1.5rem;
+	padding: 5px;
 }
 
 /* 구매하기 버튼 */

@@ -1,1 +1,1 @@
-<%  response.sendRedirect(request.getContextPath() + "/product"); %>
+<%  response.sendRedirect(request.getContextPath() + "/user/login/form"); %>
