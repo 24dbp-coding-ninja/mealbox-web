@@ -76,7 +76,6 @@ font-family: Arial, sans-serif;
 
 #productDescript div {
     margin-bottom: 5px; /* 아래쪽 여백 추가 */
-    text-align: left;
 }
 
 #itemList > p {
