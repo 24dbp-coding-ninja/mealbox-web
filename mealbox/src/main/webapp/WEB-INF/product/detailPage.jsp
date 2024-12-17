@@ -166,7 +166,9 @@
 	
 	                    <span>${review.date}</span>
                     </div>
-                    <img alt="리뷰사진" src="<c:url value='/upload/${review.reviewImg}'/>" style="height: 70px; width: 150px;"/>
+                    <c:if test="${not empty review.reviewImg}">
+					    <img alt="리뷰사진" src="<c:url value='/upload/${review.reviewImg}'/>" style="height: 70px; width: 150px;"/>
+					</c:if>                    
                     <div id="reviewTextWrapper">${review.reviewText}</div>
                     <hr>           
                 </c:forEach>                    
