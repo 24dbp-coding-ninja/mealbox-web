@@ -48,14 +48,26 @@
 						});
 		
 
-		// 검색 버튼 클릭 시
-		document.getElementById("search_icon").addEventListener("click", function() {
+		function performSearch() {
 			if(searchForm.keyword.value == "") {
 				alert("검색어를 입력해주세요.");
 				return;
-			} 
+			}
 			
 	        window.location.href = '/mealbox/product?categoryType=search&categoryValue=' + searchForm.keyword.value;
+		}
+		
+		// 검색 버튼 클릭 시
+		document.getElementById("search_icon").addEventListener("click", function() {
+			performSearch();
+		});
+		
+		// 엔터 입력 시
+		document.getElementById("search_text").addEventListener("keypress", function(event) {
+	        event.preventDefault();
+		    if (event.keyCode === 13) {
+		        performSearch();
+		    }
 		});
 		
 	};
