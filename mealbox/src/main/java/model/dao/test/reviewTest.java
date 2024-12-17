@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.test;
 
 import java.sql.*;
 import java.util.*;

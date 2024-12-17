@@ -81,10 +81,10 @@
 			</h3>
 			<div class="rating">
 				<span> 
-					<c:forEach var="rate" begin="1" end="${product.averageReview}">
+					<c:forEach var="rate" begin="1" end="${avrRev}">
 						★
 					</c:forEach> 
-					<c:forEach var="rate" begin="${product.averageReview + 1}" end="5">
+					<c:forEach var="rate" begin="${avrRev + 1}" end="5">
 						 ☆
 					</c:forEach>
 				</span> <span id="product_rating_score">&nbsp;｜&nbsp;

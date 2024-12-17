@@ -1,6 +1,5 @@
 package controller.user;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.domain.Community;
 import model.domain.User;
 import model.service.UserManager;
 

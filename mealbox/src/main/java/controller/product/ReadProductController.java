@@ -9,10 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import model.domain.Product;
 import model.service.ProductManager;
+import model.service.ReviewManager;
 public class ReadProductController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ProductManager manager = ProductManager.getInstance();
+        ReviewManager reviewManager = new ReviewManager();
         
         try {
         	HttpSession session = request.getSession();
@@ -20,7 +22,11 @@ public class ReadProductController implements Controller {
         
         	if(isAdmin) {
         		List<Product> productList = manager.findProductList();
-
+        		
+        		for(int i=0; i<productList.size(); i++) {
+        			double avgRev = Math.round((reviewManager.calculateAverageScore(productList.get(i).getId())*10))/10.0;
+        			productList.get(i).setAverageReview(avgRev);    		}
+        		
         		request.setAttribute("productList", productList);
         		return "/admin/adminPage.jsp";
         	}
