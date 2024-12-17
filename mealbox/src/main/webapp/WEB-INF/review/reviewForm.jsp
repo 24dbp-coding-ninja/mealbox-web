@@ -10,7 +10,8 @@
     </head>
     <body>    
         <jsp:include page="../nav.jsp"/>
-        <form id="container" action="/mealbox/review/create" method="POST">
+        <form id="container" action="/mealbox/review/create" method="POST" enctype="multipart/form-data">
+        <input type="hidden" id="productId" name="productId" value="${product.id}" />
         <input type="hidden" id="orderId" name="orderId" value="${orderId}"/>	     
         <input type="hidden" id="lineNo" name="lineNo" value="${lineNo}"/>
 	        <div id="title" align="center" style="font-size: 36px; margin-top: 50px; margin-bottom: 10px;">리뷰 등록/수정</div>
@@ -40,7 +41,7 @@
 	                <!-- 실제로 넘길 부분 -->
 	               	<p align="left" style="margin-top: 20px; margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
 	               	<input id="writeReview" name="reviewText" placeholder="구매하신 상품에 대해 리뷰를 남겨주세요." value="${foundReview.reviewText}">
-					<input style="display: none;" name="productId" value="${product.id}" />
+					<!-- input style="display: none;"name="productId" value="${product.id}" /> -->
 	                <div id="show">
 		                <div id="rate">
 		                	<p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>평점</strong></p> 
@@ -58,18 +59,18 @@
 						    <option value="5.0" <c:if test="${foundReview != null && foundReview.rating == 5.0}">selected</c:if>>5.0</option>
 						</select>
 		                </div>
-		                <!-- 사진 부분
+		                <!-- 사진 부분-->
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
-	                        <span id="pic">
+	                        <span id="pic"><!--
 	                        	<button type="button" id="pic1" name="reviewImg">+</button>
 	                        	<button type="button" id="pic2" name="reviewImg2">+</button>
-	                            <button type="button" id="pic3" name="reviewImg3">+</button>
-	                            <!-- <input type="file" id="reviewImg" name="reviewImg" accept="image/*" /> -->
-	                            <!--
+	                            <button type="button" id="pic3" name="reviewImg3">+</button>-->
+	                             <input type="file" id="reviewImg" name="reviewImg" accept="image/*" /> 
+	                            
 	                        </span>
 	                    </div>
-	                     -->	
+	                     	
 	                </div>
 	                <!-- 버튼 부분 -->	
 	                <div id="btn">
@@ -103,7 +104,7 @@
                 .then(response => {
                     if (response.ok) {
                         alert("리뷰가 삭제되었습니다.");
-                        window.location.href = '/mealbox/purchase/purchaseList';
+                        window.location.href = '/mealbox/purchase/purchaseList/orderId?orderId=${orderId}';
                     } else {
                         alert("리뷰 삭제에 실패했습니다.");
                     }
