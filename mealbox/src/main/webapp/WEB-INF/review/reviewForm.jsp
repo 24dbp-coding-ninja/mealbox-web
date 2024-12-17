@@ -58,6 +58,7 @@
 						    <option value="5.0" <c:if test="${foundReview != null && foundReview.rating == 5.0}">selected</c:if>>5.0</option>
 						</select>
 		                </div>
+		                <!-- 사진 부분
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
 	                        <span id="pic">
@@ -65,8 +66,10 @@
 	                        	<button type="button" id="pic2" name="reviewImg2">+</button>
 	                            <button type="button" id="pic3" name="reviewImg3">+</button>
 	                            <!-- <input type="file" id="reviewImg" name="reviewImg" accept="image/*" /> -->
+	                            <!--
 	                        </span>
 	                    </div>
+	                     -->	
 	                </div>
 	                <!-- 버튼 부분 -->	
 	                <div id="btn">
