@@ -138,8 +138,8 @@
 		</div>
 	</div>
 	
-        <div class="reviewContainer">
-        <hr style="width:1295px; padding-left: 10%;" />
+    <div class="reviewContainer">
+        <hr style="width:1295px;" />
 		<h2>상품 리뷰</h2>
             <div class="sort_options">
                 <span class="sort_option" onclick="location.href='?id=${product.id}&sort=latest'">최신 순 |</span>
@@ -171,7 +171,7 @@
 					    <img alt="리뷰사진" src="<c:url value='/upload/${review.reviewImg}'/>" style="height: 70px; width: 150px;"/>
 					</c:if>                    
                     <div id="reviewTextWrapper">${review.reviewText}</div>
-                    <hr style="width:1450px;">           
+                    <hr style="width:1295px;">           
                 </c:forEach>                    
             </div>
         </div>
