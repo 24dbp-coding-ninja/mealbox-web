@@ -52,16 +52,16 @@ public class RequestMapping {
         mappings.put("/user/readUser", new ForwardController("/user/myPage.jsp"));
 
         // 고은-장바구니 관련 request URI 추가
-        mappings.put("/cart/add", new AddCartProductController());  // 사용중
-        mappings.put("/cart/update", new UpdateCartProductController());   // 사용 중
-        mappings.put("/cart/remove", new RemoveCartProductController());  // 사용중
-        mappings.put("/cart/view", new ViewCartController());  // 사용중
+        mappings.put("/cart/add", new AddCartProductController());  
+        mappings.put("/cart/update", new UpdateCartProductController());   
+        mappings.put("/cart/remove", new RemoveCartProductController());  
+        mappings.put("/cart/view", new ViewCartController());  
         
         // 고은-주문 관련 request URI 추가
-        mappings.put("/order/create", new CreateOrderController());  // 사용중
-        mappings.put("/purchase/purchase", new ForwardController("/purchase/purchasePage.jsp"));  // 사용중
-        mappings.put("/purchase/purchaseList", new FindOrdersInUserController()); // 사용중
-        mappings.put("/purchase/purchaseList/orderId", new FindOrderProductsInOrderController()); // 사용중
+        mappings.put("/order/create", new CreateOrderController());  
+        mappings.put("/purchase/purchase", new ForwardController("/purchase/purchasePage.jsp")); 
+        mappings.put("/purchase/purchaseList", new FindOrdersInUserController()); 
+        mappings.put("/purchase/purchaseList/orderId", new FindOrderProductsInOrderController()); 
         
         logger.info("Initialized Request Mapping!");
     }

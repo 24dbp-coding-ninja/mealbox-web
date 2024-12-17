@@ -1,7 +1,9 @@
-package model.dao;
+package model.dao.test;
 
 import java.sql.*;
 import java.util.*;
+
+import model.dao.UserDAO;
 import model.domain.*;
 import model.service.*;
 import model.service.UserNotFoundException;
