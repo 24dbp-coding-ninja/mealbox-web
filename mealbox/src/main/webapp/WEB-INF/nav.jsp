@@ -50,13 +50,12 @@
 
 		// 검색 버튼 클릭 시
 		document.getElementById("search_icon").addEventListener("click", function() {
-			console.log("ke: " + searchForm.keyword.value);
 			if(searchForm.keyword.value == "") {
 				alert("검색어를 입력해주세요.");
 				return;
 			} 
-
-	        window.location.href = '/product?categoryType=search&categoryValue=' + searchForm.keyword.value;
+			
+	        window.location.href = '/mealbox/product?categoryType=search&categoryValue=' + searchForm.keyword.value;
 		});
 		
 	};

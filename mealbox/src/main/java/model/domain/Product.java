@@ -88,4 +88,8 @@ public class Product {
 		return id;
 	}
 	
+	public void setAverageReview(double averageReview) {
+		this.averageReview = averageReview;
+	}
+	
 }
