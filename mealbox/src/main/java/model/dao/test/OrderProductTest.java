@@ -1,4 +1,4 @@
-package model.dao;
+package model.dao.test;
 
 import java.sql.SQLException;
 import java.util.Scanner;
