@@ -22,21 +22,19 @@
 		        
 	            <div id="formWrapper">                
 	                <div id="itemList">
-	                    <!-- 상품 내역 정보 -->
-	                    
-	                        <div class="item">
-	                            <div id="buyProduct">
-	                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 7px;"/>
-	                            </div>
-	                            <div id="productDescript" style="display:flex; justify-content: center;">
-	                            	<div>
-	                            		<strong>상품명: </strong>${product.name}
-	                            		<br/>
-		                    			<strong>상품설명: </strong>${product.description}
-		                            </div>
-	                            </div>
+	                    <!-- 상품 내역 정보 -->	                    
+                        <div class="item">
+                            <div id="buyProduct">
+                                <img alt="상품사진" src="<c:url value='/upload/${product.thumb}'/>" style="min-height: 89px; margin-top: 7px;"/>
+                            </div>
+                            <div id="productDescript">
+	                            
+                            		<div><strong>상품명: </strong>${product.name}</div>
+                            		<br/>
+	                    			<div><strong>상품설명: </strong>${product.description}</div>
+	                            
 	                        </div>
-	                    
+                    	</div>
 	                </div>
 	                <!-- 실제로 넘길 부분 -->
 	               	<p align="left" style="margin-top: 20px; margin-left: 25px;"><strong>리뷰 쓰기</strong></p>
@@ -62,11 +60,14 @@
 		                <!-- 사진 부분-->
 	                    <div id="pics">
 	                        <p align="left" style="margin-top: 10px; margin-bottom: 10px; margin-left: 30px;"><strong>사진을 첨부해주세요.</strong></p>
-	                        <span id="pic"><!--
+	                        <span id="pic">
+	                        	<!--
 	                        	<button type="button" id="pic1" name="reviewImg">+</button>
 	                        	<button type="button" id="pic2" name="reviewImg2">+</button>
-	                            <button type="button" id="pic3" name="reviewImg3">+</button>-->
-	                             <input type="file" id="reviewImg" name="reviewImg" accept="image/*" /> 
+	                            <button type="button" id="pic3" name="reviewImg3">+</button>
+	                            -->
+	                            <input type="file" id="reviewImg" name="reviewImg" accept="image/*" style="display: none;" /> 
+	                            <label for="reviewImg" id="pic1">+</label>
 	                            
 	                        </span>
 	                    </div>
