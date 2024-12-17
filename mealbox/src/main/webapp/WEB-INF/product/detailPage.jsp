@@ -87,7 +87,10 @@
 					<c:forEach var="rate" begin="${product.averageReview + 1}" end="5">
 						 ☆
 					</c:forEach>
-				</span> <span id="product_rating_score">&nbsp;｜&nbsp;${product.averageReview}</span>
+				</span> <span id="product_rating_score">&nbsp;｜&nbsp;
+					<fmt:formatNumber var="fmAvg" value="${avrRev}" pattern="#.#" />
+					${fmAvg}
+				</span>
 			</div>
 			<p class="price" id="product_price">${product.price}원</p>
 			<div class="quantity">
@@ -163,6 +166,9 @@
 	
 	                    <span>${review.date}</span>
                     </div>
+                    <c:if test="${not empty review.reviewImg}">
+					    <img alt="리뷰사진" src="<c:url value='/upload/${review.reviewImg}'/>" style="height: 70px; width: 150px;"/>
+					</c:if>                    
                     <div id="reviewTextWrapper">${review.reviewText}</div>
                     <hr>           
                 </c:forEach>                    

@@ -30,7 +30,7 @@
 		        </div>
 		        <div>
 		            <!-- 주문 상품 목록 -->	
-	               <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="POST">
+	               <form action="${pageContext.request.contextPath}/purchase/purchaseList/orderId" method="GET">
             			<input type="hidden" name="orderId" value="${order.orderId}" />
                         <button class="btn" type="submit">주문 상세 정보 보기</button>
                     </form>

@@ -122,15 +122,6 @@ public class ReviewDAO {
 		
     	return 0;
     }
-//    public List<Review> findReviewsByMyPage(int reviewId) { // 리뷰 ID를 기준으로 리뷰 검색 로직 
-//    	List<Review> result = new ArrayList<>(); 
-//    	for (Review review : reviewList) { 
-//    		if (review.getReviewId() == reviewId) { 
-//    			result.add(review); 
-//    		} 
-//    	} 
-//    	return result; 
-//    }
 
     // 리뷰 수정
     public boolean update(Review review) throws SQLException {
@@ -181,17 +172,4 @@ public class ReviewDAO {
 		}		
 		return false;
     }
-    
-//    public boolean delete(int reviewId) { // 리뷰 삭제 로직 
-//    	return reviewList.removeIf(review -> review.getReviewId() == reviewId);
-//    }
-//    
-//    public Review findById(int reviewId) { 
-//    	for (Review review : reviews) { 
-//    		if (review.getReviewId() == reviewId) { 
-//    			return review; 
-//    		} 
-//    	}
-//    	return null;
-//    }
 }

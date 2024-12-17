@@ -3,9 +3,7 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import model.dao.CommunityDAO;
 import model.dao.ReviewDAO;
-import model.domain.Community;
 import model.domain.User;
 import model.domain.Review;
 import java.util.ArrayList;
