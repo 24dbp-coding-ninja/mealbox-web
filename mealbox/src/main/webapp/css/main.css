@@ -73,7 +73,8 @@ body {
 
 #cardImg {
   display: block;
-  width: 100%;
+  width: 300px;
+  height: 300px;
 }
 
 #cardText {
